@@ -1,0 +1,12 @@
+\babel@toc {english}{}
+\contentsline {section}{\numberline {1}Definizione del Problema}{2}
+\contentsline {section}{\numberline {2}Opportunit\IeC {\`a} di business e Posizionamento del prodotto}{2}
+\contentsline {subsection}{\numberline {2.1}Il GESTORE sara\IeC {\textquoteright } in grado di:}{2}
+\contentsline {subsection}{\numberline {2.2}Il CLIENTE sara\IeC {\textquoteright } in grado di:}{2}
+\contentsline {section}{\numberline {3}Utenti del sistema}{3}
+\contentsline {section}{\numberline {4}Elenco delle funzionalit\IeC {\`a}}{3}
+\contentsline {subsection}{\numberline {4.1}Come System Administrator voglio:}{3}
+\contentsline {subsection}{\numberline {4.2}Come Gestore voglio:}{3}
+\contentsline {subsection}{\numberline {4.3}Come Cliente voglio:}{4}
+\contentsline {subsection}{\numberline {4.4}Come Visitatore voglio:}{4}
+\contentsline {section}{\numberline {5}Altri Requisiti}{4}
