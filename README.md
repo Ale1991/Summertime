@@ -9,3 +9,4 @@ download diretto per windows: http://www.xm1math.net/texmaker/texmakerwin32_inst
 
 
 il file doc_Prenotavolo e' diventato obsoleto se passiamo al tex... se mi dai la conferma lo cancello cosi' continuiamo a lavorare sul file tex_Summertime
+Meglio cancellarlo, così ci teniamo solo quello che serve
