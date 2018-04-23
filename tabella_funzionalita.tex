@@ -1,0 +1,39 @@
+\documentclass[a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[italian,english]{babel}
+\usepackage{amssymb,latexsym,amsfonts,amsmath}
+\usepackage{lipsum}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage {booktabs}
+\usepackage {caption}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage[enable-survey]{pdfpages}
+\usepackage{array}
+\usepackage{longtable}
+
+
+\begin{document}
+
+\begin{tabularx}{\textwidth}{p{0.15\textwidth}cXc}
+\toprule
+Utenti & Funzionalita & Descrizione & Peso \\
+
+\midrule
+Cliente \newline Gestore & Prenotazione & Utilizzare il calendario per scegliere data e ora e verificare per l’orario del giorno scelto quanti e quali tavoli/ombrelloni
+sono disponibili ed infine effettuare la prenotazione & 1\\
+
+\midrule
+Cliente \newline Gestore & Prenotazione & 
+\begin{itemize}
+\item Scelgo data e ora
+\item visualizzo quanti e quali posti sono disponibili
+\item scelgo eventualmente quanti e quali posti prenotare
+\item prenoto
+\end{itemize}
+& 1\\
+\bottomrule
+\end{tabularx}
+\end{document}
