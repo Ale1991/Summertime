@@ -25,3 +25,5 @@ Per esempio, io ipotetico cliente che odio i balli di gruppo e mi piace la music
 Per l'accordo tra Gestore e artista si può fare una sezione "Annunci" dove il Gestore offre lavoro (con relative specifiche di giorno, orario, preferenze, ecc.) mentre l'artista si propone.
 
 Oppure, tagliando la testa al toro, possiamo concentrarci sulle cose sicure e vedere se è il caso o meno di concentrarsi sul resto.
+
+Ho dato una sistemata alle cartelle della repository e tolto i file inutili
