@@ -1,0 +1,120 @@
+\documentclass[a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[italian,english]{babel}
+\usepackage{amssymb,latexsym,amsfonts,amsmath}
+\usepackage{lipsum}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage {booktabs}
+\usepackage {caption}
+\usepackage[enable-survey]{pdfpages}
+
+\begin{document}
+
+
+\title{Documento di visione del sistema}
+\date{April 20 , 2018}
+\maketitle
+\author{Alessio Susco \hspace*{6cm} Stefano Capotosto}
+
+\tableofcontents
+
+\clearpage
+
+\section{Definizione del Problema}
+Lo scopo del sistema software “Summertime” è quello di velocizzare e digitalizzare le fasi dell’attuale sistema di prenotazione utilizzato dalla maggior parte delle attivita’ commerciali relative alla balneazione. In particolare , si fara’ riferimento a quelle attivita’ che offrono servizi di stabilimento balneare e Bar-Ristorante-Pizzeria.
+
+
+
+\section{Opportunità di business e Posizionamento del prodotto}
+Il software sara’ in grado di fornire numerosi vantaggi sia ai gestori sia ai clienti.
+Nel dettaglio:
+
+\subsection{Il GESTORE sara’ in grado di:}
+
+\begin{itemize}
+\item svincolarsi dal collegamento diretto con il cliente rendendo la prenotazione asincrona e indipendente dalla disponibilita’ del personale a raccogliere/ricevere prenotazioni;
+\item monitorare continuamente ed in modo sistematico le prenotazioni future per effettuare stime precise sulle provviste e sul personale necessario per un servizio ottimale;
+\item monitorare annualmente ed in modo analitico le prenotazioni passate al fine di adottare strategie di marketing mirate a migliorare la propria attivita’ nei periodi meno produttivi e ad ottimizzare quelli piu’ affollati;
+\item ridurre il proprio carico di lavoro da organizzatore dato che l’interfaccia grafica mostrera’ al personale quali postazioni sono state prenotate e da chi;
+\item offrire un servizio aggiuntivo di servizio in spiaggia;
+\item Individuare tramite le recensioni dei clienti quali sono i punti da migliorare nel servizio.
+\end{itemize}
+
+
+
+\subsection{Il CLIENTE sara’ in grado di:}
+\begin{itemize}
+\item effettuare una prenotazione in qualsiasi orario e in qualunque data senza mettersi direttamente in contatto con il gestore;
+\item verificare quanti e quali tavoli/ombrelloni sono disponibili ed in quale orario del giorno scelto;
+\item scegliere il giorno o l’orario piu’ vantaggioso in termini economici sapendo a priori le strategie di marketing adottate dal gestore.
+\end{itemize}
+
+Tali vantaggi, offrono al prodotto un enorme mole di potenziali acquirenti indipendentemente che le attivita’ si trovino in piccole localita’ turistiche o in grandi metropoli.
+
+\section{Utenti del sistema}
+Il sistema sara’ composto dalle seguenti tipologie di utenti:
+\begin{itemize}
+\item System Administrator;
+\item Gestore;
+\item Cliente;
+\item Visitatore.
+\end{itemize}
+Possibili software esterni potenzialmente interfacciabili sono:
+
+\begin{itemize}
+\item Trip Advisor;
+\item Paypal;
+\item Google Maps.
+\end{itemize}
+
+
+
+\section{Elenco delle funzionalità}
+
+\subsection{Come System Administrator voglio:}
+\begin{itemize}
+\item Poter aggiungere/modificare/cancellare i dati di un Gestore qualora ci sia una richiesta da parte di quest'ultimo;
+\item Visualizzare le informazioni dei Clienti e dei Gestori;
+\item Disporre di una pagina che mi permetta di organizzare al meglio la gestione dell'applicazione web;
+\item Rispondere a dubbi/chiarimenti da parte di altri tipi di utenti indipendentemente dallo stato di registrazione.
+\end{itemize}
+
+\subsection{Come Gestore voglio:}
+\begin{itemize}
+\item Personalizzare il mio profilo, indicando la zona, orari di apertura, eventi musicali, menù, metodi di pagamento accettati ed eventualmente servizi aggiuntivi (Servizio in spiaggia, Climatizzazione, Wi-Fi, ammissione di animali, ecc.);;
+\item Attivare/disattivare la prenotazione dei miei tavoli/ombrelloni;
+\item Ricevere una notifica in caso di prenotazione avvenuta con successo da parte del cliente;
+\item Visualizzare tramite l'interfaccia grafica quali tavoli/ombrelloni sono stati prenotati e da chi;
+\item Una schermata che mi permetta di visualizzare la storia delle prenotazioni da parte dei clienti, in modo da “tirare le somme” ed ottimizzare l'organizzazione in base ai periodi di affluenza dei clienti;
+\item Proporre al cliente dei menù speciali che a prezzo scontato o con punti fedeltà aggiuntivi invoglino il cliente a prenotare un tavolo;
+\item Attivare/Disattivare il “Servizio in Spiaggia” e scegliere quale prodotto rendere disponibile per il cliente tramite tale servizio.
+\end{itemize}
+
+
+\subsection{Come Cliente voglio:}
+\begin{itemize}
+\item Effettuare una prenotazione in qualsiasi orario e in qualunque data resa disponibile dal gestore senza contattarlo direttamente;
+\item Avere la possibilità di scrivere la recensione di un ristorante/lido ed assegnare a quest'ultimo un punteggio che va da 1 stella a 5;
+\item Scoprire quali sono i ristoranti con le migliori recensioni della zona;
+\item Scoprire quali lidi offrono eventi musicali;
+\item Ricevere una notifica in caso di prenotazione avvenuta con successo;
+\item Guadagnare dei punti fedeltà per ogni prenotazione andata a buon fine;
+\item Guadagnare dei punti fedeltà per ogni amico presentato da me che ha effettuato la sua prima prenotazione;
+\item Verificare per l'orario del giorno scelto quanti e quali tavoli/ombrelloni sono disponibili;
+\item Visualizzare il menù del ristorante scelto;
+\item Visualizzare eventuali menù speciali che mi permettano di risparmiare qualcosa sul prezzo finale oppure ottenere dei punti fedeltà aggiuntivi;
+\item Poter cancellare la prenotazione ed ottenere un rimborso;
+\item Avere la possibilità di cancellare il mio account.
+\end{itemize}
+
+\subsection{Come Visitatore voglio:}
+\begin{itemize}
+\item Avere la possibilità di registrarmi al portale per avere i diritti di Cliente o Gestore e visualizzare i vantaggi di entrambi i tipi di utenti;
+
+\item Visualizzare le attività commerciali relative alla ristorazione/balneazione in base a determinati criteri di ricerca (Menù, zona, recensioni, ecc.).
+\end{itemize}
+\section{Altri Requisiti}
+
+\end{document}

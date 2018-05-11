@@ -1,0 +1,88 @@
+\documentclass[a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[italian,english]{babel}
+\usepackage{amssymb,latexsym,amsfonts,amsmath}
+\usepackage{lipsum}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage {booktabs}
+\usepackage {caption}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage[enable-survey]{pdfpages}
+\usepackage{array}
+\usepackage{longtable}
+
+
+\begin{document}
+
+\begin{tabularx}{\textwidth}{p{0.15\textwidth}cXc}
+\toprule
+Utenti & Funzionalità & Descrizione & Peso \\
+
+\midrule
+Cliente \newline Gestore & Prenotazione & Utilizzare il calendario per scegliere data e ora e verificare per l’orario del giorno scelto quanti e quali tavoli/ombrelloni
+sono disponibili ed infine effettuare la prenotazione & 1\\
+
+\midrule
+Cliente \newline Gestore & Prenotazione & 
+\begin{itemize}
+\item Scelgo data e ora
+\item visualizzo quanti e quali posti sono disponibili
+\item scelgo eventualmente quanti e quali posti prenotare
+\item prenoto
+\end{itemize}
+& 1\\
+
+\midrule
+Cliente & Annullare prenotazione + rimborso & Permette all'utente registrato di annullare la prenotazione e di ricevere un rimborso sulla carta di credito\\
+
+\midrule
+Cliente & Recensione & Assegnare un punteggio al lido che va da 1 a 5 stelle ed eventualmente aggiungere un commento\\
+
+
+\bottomrule
+\end{tabularx}
+
+\newpage
+\begin{tabularx}{\textwidth}{p{0.15\textwidth}cXc}
+
+\toprule
+Utenti & Funzionalità & Descrizione & Peso \\
+
+\midrule
+Visitatore & Registrazione & Registrarsi al portale per avere i diritti di Cliente o Gestore\\
+
+\midrule
+Gestore & Personalizzazione Profilo & Il Gestore può personalizzare il proprio profilo indicando zona, orari di apertura, intrattenimenti, metodi di pagamento accettati ed eventuali servizi aggiuntivi\\
+
+\midrule
+Gestore & Attivazione/disattivazione ombrelloni & Il Gestore può attivare/disattivare la prenotazione dei propri ombrelloni\\
+
+\midrule
+Cliente \newline Gestore & Notifica & Entrambi i tipi di utenti ricevono una notifica in caso di prenotazione avvenuta con successo\\
+
+\midrule
+System Administrator & Cambiamento dati Gestore & Sotto opportuna richiesta da parte del Gestore, l'amministrazione modifica, aggiunge e cancella i dati del Gestore\\
+
+\midrule
+System Administrator & Visualizzazione dati Cliente e Gestore & L'amministratore, nei limiti della privacy, visualizza le informazioni registrate dal Cliente e dal Gestore\\
+\bottomrule
+\end{tabularx}
+
+\newpage
+\begin{tabularx}{\textwidth}{p{0.15\textwidth}cXc}
+\toprule
+Utenti & Funzionalità & Descrizione & Peso \\
+
+\midrule
+System Administrator & Gestione portale & L'amministratore dispone di una pagina per organizzare al meglio l'applicazione web\\
+
+\midrule
+System Administrator & Assistenza & L'amministratore risponde alle domande ed ai chiarimenti degli altri tipi di utenti indipendentemente dallo stato di registrazione\\
+\bottomrule
+
+\end{tabularx}
+
+\end{document}
