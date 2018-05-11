@@ -1,12 +1,12 @@
 # Summertime
+
 1) Istallazione completa Distribuzione TeXLive
-link: https://www.tug.org/texlive/acquire-netinstall.html
-download diretto per windows: http://mirror.ctan.org/systems/texlive/tlnet/install-tl-windows.exe
+link: <https://www.tug.org/texlive/acquire-netinstall.html>
+download diretto per windows: <http://mirror.ctan.org/systems/texlive/tlnet/install-tl-windows.exe>
 
 2) Istallazione editor TeXMaker
-link: http://www.xm1math.net/texmaker/download.html
-download diretto per windows: http://www.xm1math.net/texmaker/texmakerwin32_install.exe
-
+link: <http://www.xm1math.net/texmaker/download.html>
+download diretto per windows: <http://www.xm1math.net/texmaker/texmakerwin32_install.exe>
 
 il file doc_Prenotavolo e' diventato obsoleto se passiamo al tex... se mi dai la conferma lo cancello cosi' continuiamo a lavorare sul file tex_Summertime
 
@@ -25,3 +25,5 @@ Per esempio, io ipotetico cliente che odio i balli di gruppo e mi piace la music
 Per l'accordo tra Gestore e artista si può fare una sezione "Annunci" dove il Gestore offre lavoro (con relative specifiche di giorno, orario, preferenze, ecc.) mentre l'artista si propone.
 
 Oppure, tagliando la testa al toro, possiamo concentrarci sulle cose sicure e vedere se è il caso o meno di concentrarsi sul resto.
+
+provo a usare atom+git
