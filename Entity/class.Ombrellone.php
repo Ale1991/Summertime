@@ -4,59 +4,33 @@ error_reporting(E_ALL);
 
 /**
  * UML - class.Ombrellone.php
- *
  * $Id$
- *
  * This file is part of UML.
- *
- * Automatically generated on 25.09.2018, 16:00:00 with ArgoUML PHP module 
- * (last revised $Date: 2010-01-12 20:14:42 +0100 (Tue, 12 Jan 2010) $)
- *
- * @author firstname and lastname of author, <author@example.org>
  */
 
-if (0 > version_compare(PHP_VERSION, '5')) {
+if (0 > version_compare(PHP_VERSION, '5')) {//da vedere bene
     die('This file was generated for PHP 5');
 }
 
-/**
- * include Lido
- *
- * @author firstname and lastname of author, <author@example.org>
- */
+/* include Lido */
 require_once('class.Lido.php');
 
-/**
- * include Prenotazione
- *
- * @author firstname and lastname of author, <author@example.org>
- */
+/* include Prenotazione */
 require_once('class.Prenotazione.php');
-
-/* user defined includes */
-// section -64--88-56-1--32a8f8ee:1638c88a92e:-8000:00000000000009C5-includes begin
-// section -64--88-56-1--32a8f8ee:1638c88a92e:-8000:00000000000009C5-includes end
-
-/* user defined constants */
-// section -64--88-56-1--32a8f8ee:1638c88a92e:-8000:00000000000009C5-constants begin
-// section -64--88-56-1--32a8f8ee:1638c88a92e:-8000:00000000000009C5-constants end
 
 /**
  * Short description of class Ombrellone
- *
- * @access public
- * @author firstname and lastname of author, <author@example.org>
- */
+ * @access public 
+ * */
 class Ombrellone
 {
     // --- ASSOCIATIONS ---
-    // generateAssociationEnd :     // generateAssociationEnd : 
 
     // --- ATTRIBUTES ---
 
     /**
-     * Short description of attribute riga
-     *
+     * Short description of attribute riga:
+     * definisce la posizione dell'ombrellone
      * @access public
      * @var Integer
      */
@@ -64,7 +38,7 @@ class Ombrellone
 
     /**
      * Short description of attribute colonna
-     *
+     * definisce la posizione dell'ombrellone
      * @access public
      * @var Integer
      */
@@ -72,7 +46,7 @@ class Ombrellone
 
     /**
      * Short description of attribute occupato
-     *
+     * stato dell'ombrellone relativo alle prenotazioni
      * @access public
      * @var Boolean
      */
@@ -80,7 +54,7 @@ class Ombrellone
 
     /**
      * Short description of attribute ID
-     *
+     * attributo calcolato dal metodo getID come combinazione tra riga e colonna
      * @access public
      * @var String
      */
@@ -90,18 +64,14 @@ class Ombrellone
 
     /**
      * Short description of method getID
-     *
+     * calcola un ID univoco per ogni oggetto di tipo ombrellone basato sulla posizione dell'oggetto all'interno del lido
      * @access public
-     * @author firstname and lastname of author, <author@example.org>
      * @return String
      */
-    public function getID()
+    public function getID($riga,$colonna)
     {
-        $returnValue = null;
-
-        // section -64--88-56-1--32a8f8ee:1638c88a92e:-8000:0000000000000A04 begin
-        // section -64--88-56-1--32a8f8ee:1638c88a92e:-8000:0000000000000A04 end
-
+        $id=$riga.$colonna
+        $returnValue = $id;
         return $returnValue;
     }
 
