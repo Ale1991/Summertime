@@ -15,21 +15,16 @@ class Ombrellone
     public $occupato =null;
     public $id = null;
 
-         public function __construct ($riga , $colonna , $occupato)
+         public function __construct ($riga , $colonna)
          {
            $this->riga = $riga;
            $this->colonna = $colonna;
-           $this->occupato = $occupato;
-            $id=$this->riga.$this->colonna;
-            $this->id = $id;
-        
-           
-
+           $id=$this->riga.$this->colonna;
+           $this->id = $id;
          }
 
     public function getID()
     {
-      
         $id=$this->riga.$this->colonna;
         return $id;
     }
@@ -37,7 +32,6 @@ class Ombrellone
     public function setOccupato($occupato)
     {
       $this->occupato=$occupato;
-   
     }
 
     public function getOccupato()
@@ -67,7 +61,6 @@ class Ombrellone
         $returnValue = $this->colonna;
         return $returnValue;
     }
-
 } /* end of class Ombrellone */
 
 
