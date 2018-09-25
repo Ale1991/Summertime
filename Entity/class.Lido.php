@@ -9,7 +9,7 @@ error_reporting(E_ALL);
  *
  * This file is part of UML.
  *
- * Automatically generated on 23.05.2018, 13:06:57 with ArgoUML PHP module 
+ * Automatically generated on 25.09.2018, 16:00:00 with ArgoUML PHP module 
  * (last revised $Date: 2010-01-12 20:14:42 +0100 (Tue, 12 Jan 2010) $)
  *
  * @author firstname and lastname of author, <author@example.org>
@@ -86,6 +86,22 @@ class Lido
      */
     public $indirizzo = null;
 
+    /**
+     * Short description of attribute righe
+     *
+     * @access public
+     * @var Integer
+     */
+    public $righe = null;
+
+    /**
+     * Short description of attribute colonne
+     *
+     * @access public
+     * @var Integer
+     */
+    public $colonne = null;
+
     // --- OPERATIONS ---
 
     /**
@@ -126,10 +142,9 @@ class Lido
      * @author firstname and lastname of author, <author@example.org>
      * @param  riga
      * @param  colonna
-     * @param  ID
      * @return Ombrellone
      */
-    public function aggiungiOmbrellone($riga, $colonna, $ID)
+    public function aggiungiOmbrellone($riga, $colonna)
     {
         $returnValue = null;
 
@@ -144,10 +159,11 @@ class Lido
      *
      * @access public
      * @author firstname and lastname of author, <author@example.org>
-     * @param  ID
+     * @param  riga
+     * @param  colonna
      * @return mixed
      */
-    public function rimuoviOmbrellone($ID)
+    public function rimuoviOmbrellone($riga, $colonna)
     {
         // section -64--88-56-1--32a8f8ee:1638c88a92e:-8000:00000000000009F9 begin
         // section -64--88-56-1--32a8f8ee:1638c88a92e:-8000:00000000000009F9 end
@@ -180,6 +196,66 @@ class Lido
 
         // section -64--88-56-1--32a8f8ee:1638c88a92e:-8000:0000000000000A02 begin
         // section -64--88-56-1--32a8f8ee:1638c88a92e:-8000:0000000000000A02 end
+
+        return $returnValue;
+    }
+
+    /**
+     * Short description of method setRighe
+     *
+     * @access public
+     * @author firstname and lastname of author, <author@example.org>
+     * @return mixed
+     */
+    public function setRighe()
+    {
+        // section -64--88-56-1--32a8f8ee:1638c88a92e:-8000:0000000000000A14 begin
+        // section -64--88-56-1--32a8f8ee:1638c88a92e:-8000:0000000000000A14 end
+    }
+
+    /**
+     * Short description of method getRighe
+     *
+     * @access public
+     * @author firstname and lastname of author, <author@example.org>
+     * @return Integer
+     */
+    public function getRighe()
+    {
+        $returnValue = null;
+
+        // section -64--88-56-1--32a8f8ee:1638c88a92e:-8000:0000000000000A16 begin
+        // section -64--88-56-1--32a8f8ee:1638c88a92e:-8000:0000000000000A16 end
+
+        return $returnValue;
+    }
+
+    /**
+     * Short description of method setColonne
+     *
+     * @access public
+     * @author firstname and lastname of author, <author@example.org>
+     * @return mixed
+     */
+    public function setColonne()
+    {
+        // section -64--88-56-1--32a8f8ee:1638c88a92e:-8000:0000000000000A18 begin
+        // section -64--88-56-1--32a8f8ee:1638c88a92e:-8000:0000000000000A18 end
+    }
+
+    /**
+     * Short description of method getColonne
+     *
+     * @access public
+     * @author firstname and lastname of author, <author@example.org>
+     * @return Integer
+     */
+    public function getColonne()
+    {
+        $returnValue = null;
+
+        // section -64--88-56-1--32a8f8ee:1638c88a92e:-8000:0000000000000A1A begin
+        // section -64--88-56-1--32a8f8ee:1638c88a92e:-8000:0000000000000A1A end
 
         return $returnValue;
     }

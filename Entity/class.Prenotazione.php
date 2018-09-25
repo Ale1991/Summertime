@@ -9,7 +9,7 @@ error_reporting(E_ALL);
  *
  * This file is part of UML.
  *
- * Automatically generated on 23.05.2018, 13:06:57 with ArgoUML PHP module 
+ * Automatically generated on 25.09.2018, 16:00:00 with ArgoUML PHP module 
  * (last revised $Date: 2010-01-12 20:14:42 +0100 (Tue, 12 Jan 2010) $)
  *
  * @author firstname and lastname of author, <author@example.org>
@@ -26,6 +26,13 @@ if (0 > version_compare(PHP_VERSION, '5')) {
  */
 require_once('class.Cliente.php');
 
+/**
+ * include Ombrellone
+ *
+ * @author firstname and lastname of author, <author@example.org>
+ */
+require_once('class.Ombrellone.php');
+
 /* user defined includes */
 // section -64--88-0-6-17608819:1633b2931b6:-8000:000000000000086D-includes begin
 // section -64--88-0-6-17608819:1633b2931b6:-8000:000000000000086D-includes end
@@ -41,9 +48,10 @@ require_once('class.Cliente.php');
  * @author firstname and lastname of author, <author@example.org>
  */
 class Prenotazione
+    extends Ombrellone
 {
     // --- ASSOCIATIONS ---
-    // generateAssociationEnd : 
+    // generateAssociationEnd :     // generateAssociationEnd : 
 
     // --- ATTRIBUTES ---
 

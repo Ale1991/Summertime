@@ -9,7 +9,7 @@ error_reporting(E_ALL);
  *
  * This file is part of UML.
  *
- * Automatically generated on 23.05.2018, 13:06:57 with ArgoUML PHP module 
+ * Automatically generated on 25.09.2018, 16:00:00 with ArgoUML PHP module 
  * (last revised $Date: 2010-01-12 20:14:42 +0100 (Tue, 12 Jan 2010) $)
  *
  * @author firstname and lastname of author, <author@example.org>
@@ -25,6 +25,13 @@ if (0 > version_compare(PHP_VERSION, '5')) {
  * @author firstname and lastname of author, <author@example.org>
  */
 require_once('class.Lido.php');
+
+/**
+ * include Prenotazione
+ *
+ * @author firstname and lastname of author, <author@example.org>
+ */
+require_once('class.Prenotazione.php');
 
 /* user defined includes */
 // section -64--88-56-1--32a8f8ee:1638c88a92e:-8000:00000000000009C5-includes begin
@@ -43,7 +50,7 @@ require_once('class.Lido.php');
 class Ombrellone
 {
     // --- ASSOCIATIONS ---
-    // generateAssociationEnd : 
+    // generateAssociationEnd :     // generateAssociationEnd : 
 
     // --- ATTRIBUTES ---
 
@@ -124,6 +131,68 @@ class Ombrellone
 
         // section -64--88-56-1--32a8f8ee:1638c88a92e:-8000:0000000000000A08 begin
         // section -64--88-56-1--32a8f8ee:1638c88a92e:-8000:0000000000000A08 end
+
+        return $returnValue;
+    }
+
+    /**
+     * Short description of method setRiga
+     *
+     * @access public
+     * @author firstname and lastname of author, <author@example.org>
+     * @param  riga
+     * @return mixed
+     */
+    public function setRiga($riga)
+    {
+        // section -64--88-56-1--32a8f8ee:1638c88a92e:-8000:0000000000000A1C begin
+        // section -64--88-56-1--32a8f8ee:1638c88a92e:-8000:0000000000000A1C end
+    }
+
+    /**
+     * Short description of method getRiga
+     *
+     * @access public
+     * @author firstname and lastname of author, <author@example.org>
+     * @return Integer
+     */
+    public function getRiga()
+    {
+        $returnValue = null;
+
+        // section -64--88-56-1--32a8f8ee:1638c88a92e:-8000:0000000000000A20 begin
+        // section -64--88-56-1--32a8f8ee:1638c88a92e:-8000:0000000000000A20 end
+
+        return $returnValue;
+    }
+
+    /**
+     * Short description of method setColonna
+     *
+     * @access public
+     * @author firstname and lastname of author, <author@example.org>
+     * @param  colonna
+     * @return mixed
+     */
+    public function setColonna($colonna)
+    {
+        // section -64--88-56-1--32a8f8ee:1638c88a92e:-8000:0000000000000A22 begin
+        // section -64--88-56-1--32a8f8ee:1638c88a92e:-8000:0000000000000A22 end
+    }
+
+    /**
+     * Short description of method getColonna
+     *
+     * @access public
+     * @author firstname and lastname of author, <author@example.org>
+     * @return Integer
+     */
+    public function getColonna()
+    {
+        $returnValue = null;
+
+        // section -64--88-56-1--32a8f8ee:1638c88a92e:-8000:0000000000000A25 begin
+        // section -64--88-56-1--32a8f8ee:1638c88a92e:-8000:0000000000000A25 end
 
         return $returnValue;
     }
