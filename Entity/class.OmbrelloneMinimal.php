@@ -7,12 +7,17 @@ if (0 > version_compare(PHP_VERSION, '5')) {//da vedere bene
 //require_once('class.Lido.php');
 //require_once('class.Prenotazione.php');
 
-
+/**
+ * Short description of class Ombrellone:
+ * gli oggetti di tipo Ombrellone vengono costruiti passando la posizione (riga,colonna) e automaticamente viene calcolato un ID univoco per ogni oggetto appartenente ad un lido
+ * assumendo di default il valore booleano false=0 per quanto riguarda lo stato occupato=0 (libero)
+ * @access public 
+ * */
 class Ombrellone
 {
     public $riga = null;
     public $colonna = null;
-    public $occupato =null;
+    public $occupato =false;
     public $id = null;
 
          public function __construct ($riga , $colonna)
