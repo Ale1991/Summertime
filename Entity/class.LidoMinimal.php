@@ -24,10 +24,13 @@ class Lido
     private $righe = null;
     private $colonne = null;
 
-    public function __construct ($righe , $colonne)
+    public function __construct ($righe , $colonne,$nomeLido,$indirizzo)
          {
            $this->righe = $righe;
            $this->colonne = $colonne;
+           $this->nomeLido = $nomeLido;
+           $this->indirizzo = $indirizzo;
+         }
 
 
 
