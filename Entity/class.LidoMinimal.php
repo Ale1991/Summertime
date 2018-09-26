@@ -11,9 +11,10 @@ require_once('class.OmbrelloneMinimal.php');
  * un oggetto di tipo Lido e' associato ad un unico Oggetto di tipo Gestore ed e' costituito da un insieme di Oggetti di tipo Ombrellone 
  * @access public
  */
+
 class Lido
 {
-
+    
     private $nomeLido = null;
     private $numeroOmbrelloni = null;
     private $prenotazioni = null;
@@ -22,12 +23,12 @@ class Lido
     private $colonne = null;
 
     public function __construct ($righe , $colonne,$nomeLido,$indirizzo)
-         {
-           $this->righe = $righe;
-           $this->colonne = $colonne;
-           $this->nomeLido = $nomeLido;
-           $this->indirizzo = $indirizzo;
-         }
+    {
+        $this->righe = $righe;
+        $this->colonne = $colonne;
+        $this->nomeLido = $nomeLido;
+        $this->indirizzo = $indirizzo;
+    }
 
 
 
@@ -69,27 +70,52 @@ class Lido
         $this->colonne=$colonne;
     }
 
-
     public function getColonne()
     {
         $returnValue = $this->colonne;
         return $returnValue;
     }
 
+    public function generaGriglia()
+    {
+        $alfabeto=['A', 'B', 'C', 'D', 'E','F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+        $arrayRighe=array();
+        $griglia=array();
+        for($r=0;$r<$this->righe;$r++)
+        {
+            $arrayRighe[$r]=$alfabeto[$r];
+        }
+        $arrayColonne=array();
+        for($c=1;$c<=$this->colonne;$c++)
+        {
+            $arrayColonne[$c]=$c;
+        }
+        
+        for($i = 0; $i<count($arrayRighe); $i++)
+        {
+            $a=$arrayRighe[$i];
+            for($j = 1; $j<=count($arrayColonne); $j++)
+            {
+                $b=$arrayColonne[$j];
+                $griglia[]=new Ombrellone($a,$b);
+            }
+        }
+   
+    return $griglia;
+        
+    }
+
+/*  DA STUDIARNE LA NECESSITA'
     public function aggiungiOmbrellone($riga, $colonna)
     {
-
+        
     }
 
     public function rimuoviOmbrellone($riga, $colonna)
     {
-        
+         
     }
-
-    public function generaGriglia($riga, $colonna)
-    {
-        
-    }
+*/
 
 } /* end of class Lido */
 
