@@ -4,11 +4,8 @@ if (0 > version_compare(PHP_VERSION, '5')) {
     die('This file was generated for PHP 5');
 }
 
-/* include Gestore */
-require_once('class.Gestore.php');
-
 /* include Ombrellone */
-require_once('class.Ombrellone.php');
+require_once('class.OmbrelloneMinimal.php');
 /**
  * Short description of class Lido
  * un oggetto di tipo Lido e' associato ad un unico Oggetto di tipo Gestore ed e' costituito da un insieme di Oggetti di tipo Ombrellone 
@@ -56,7 +53,7 @@ class Lido
         return $returnValue;
     }
 
-    public function setRighe()
+    public function setRighe($righe)
     {
         $this->righe=$righe;
     }
@@ -67,7 +64,7 @@ class Lido
         return $returnValue;
     }
 
-    public function setColonne()
+    public function setColonne($colonne)
     {
         $this->colonne=$colonne;
     }
