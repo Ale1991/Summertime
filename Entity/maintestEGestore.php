@@ -1,7 +1,8 @@
 <?php
 //MAIN PER IL TEST DELLE CLASSI GESTORE->INDIRIZZO->LIDO->OMBRELLONI
-//include 'C:\Users\Alessio\Desktop\newpath\EGestore.php';
+require_once('EIndirizzo.php');
 require_once('EGestore.php');
+
 
 $nome='Alessio';
 $cognome='Susco';

@@ -57,47 +57,14 @@ class ELido
 
 
 
-    public function setNome($nomeLido)
-    {
-        $this->nomeLido=$nomeLido;
-    }
-    public function getNome()
-    {
-        $returnValue = $this->nomeLido;
-        return $returnValue;
-    }
-
-    public function setIndirizzo($indirizzo)
-    {
-        $this->indirizzo=$indirizzo;
-    }
-    public function getIndirizzo()
-    {
-        $returnValue = $this->indirizzo;
-        return $returnValue;
-    }
-
-    public function setRighe($righe)
-    {
-        $this->righe=$righe;
-    }
-
-    public function getRighe()
-    {
-        $returnValue = $this->righe;
-        return $returnValue;
-    }
-
-    public function setColonne($colonne)
-    {
-        $this->colonne=$colonne;
-    }
-
-    public function getColonne()
-    {
-        $returnValue = $this->colonne;
-        return $returnValue;
-    }
+    public function setNome($nomeLido){$this->nomeLido=$nomeLido;}
+    public function getNome(){return $this->nomeLido;}
+    public function setIndirizzo($indirizzo){$this->indirizzo=$indirizzo;}
+    public function getIndirizzo(){return $this->indirizzo;}
+    public function setRighe($righe){$this->righe=$righe;}
+    public function getRighe(){return $this->righe;}
+    public function setColonne($colonne){$this->colonne=$colonne;}
+    public function getColonne(){return $this->colonne;}
 
     public function generaGriglia()
     {
@@ -122,36 +89,34 @@ class ELido
                 $b=$arrayColonne[$j];
                 $griglia[]=new Ombrellone($a,$b);
             }
-        }
-    //return $griglia;   
+        } 
     $this->griglia = $griglia;
     }
 
-        public function getNNNL()
-         {
-           $nomeoriginale = $this->nomeLido;
-           $NNN= array();
-           $nomemaiuscolo = strtoupper($nomeoriginale)."XXX";
-           preg_match_all('/[^AEIOUX]/', $nomemaiuscolo , $consonanti);
-           preg_match_all('/[AEIOUX]/', $nomemaiuscolo , $vocali);
-           for($i = 0 , $size = sizeof($consonanti[0]) ; $i < $size; $i++)
-           {
-             array_push($NNN , $consonanti[0][$i]);
-           }
-           if(sizeof($NNN) < 3)
-           {
-             for($i = 0 , $size = 3 - sizeof($consonanti[0]) ; $i < $size; $i++)
-             {
-               array_push($NNN , $vocali[0][$i]);
-             }
-             if (sizeof($NNN) < 3)
-             {
-               array_push($NNN , "X");
-             }
-           }
-
-            return implode('' , $NNN);
-         }
+    public function getNNNL()
+    {
+        $nomeoriginale = $this->nomeLido;
+        $NNN= array();
+        $nomemaiuscolo = strtoupper($nomeoriginale)."XXX";
+        preg_match_all('/[^AEIOUX]/', $nomemaiuscolo , $consonanti);
+        preg_match_all('/[AEIOUX]/', $nomemaiuscolo , $vocali);
+        for($i = 0 , $size = sizeof($consonanti[0]) ; $i < $size; $i++)
+        {
+            array_push($NNN , $consonanti[0][$i]);
+        }
+        if(sizeof($NNN) < 3)
+        {
+            for($i = 0 , $size = 3 - sizeof($consonanti[0]) ; $i < $size; $i++)
+            {
+                array_push($NNN , $vocali[0][$i]);
+            }
+            if (sizeof($NNN) < 3)
+            {
+                array_push($NNN , "X");
+            }
+        }
+        return implode('' , $NNN);
+    }
 
 /*  DA STUDIARNE LA NECESSITA'
     public function aggiungiOmbrellone($riga, $colonna)

@@ -11,7 +11,7 @@ class EIndirizzo
  //public $NNNVia;
  public $IDIndirizzo;
  //public $path = ('C:\Users\Alessio\Desktop\newpath\PROJECTCF\codici.txt');
- public $path = ('C:\Users\Alessio\Desktop\Summertime\Summertime\Entity\codici_comuni_italiani');//va sistemato il relative path con il require
+ public $path = ('C:\Users\Alessio\Desktop\Summertime\Summertime\Entity\codici_comuni_italiani.txt');//va sistemato il relative path con il require
 
 public function __construct ($via , $civico , $comune , $provincia)
 {
@@ -74,7 +74,8 @@ public function __construct ($via , $civico , $comune , $provincia)
     }
   }
   fclose($handle);
-  $IDIndirizzo=$NNNVia.$this->civico.$this->codice;
+  //$IDIndirizzo=$NNNVia.$this->civico.$this->codice;
+  $IDIndirizzo=$this-
   $this->IDIndirizzo = $IDIndirizzo;
 }
 

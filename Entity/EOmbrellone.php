@@ -24,8 +24,7 @@ class Ombrellone
          {
            $this->riga = $riga;
            $this->colonna = $colonna;
-           $id=$this->riga.$this->colonna;
-           $this->id = $id;
+           $this->id = $this->getID();
          }
 
     public function getID()
@@ -34,38 +33,12 @@ class Ombrellone
         return $id;
     }
 
-    public function setOccupato($occupato)
-    {
-      $this->occupato=$occupato;
-    }
-
-    public function getOccupato()
-    {
-        $returnValue = $this->occupato;
-        return $returnValue;
-    }
-
-    public function setRiga($riga)
-    {
-      $this->riga=$riga;
-    }
-
-    public function getRiga()
-    {
-        $returnValue = $this->riga;
-        return $returnValue;
-    }
-
-    public function setColonna($colonna)
-    {
-      $this->colonna=$colonna;
-    }
-
-    public function getColonna()
-    {
-        $returnValue = $this->colonna;
-        return $returnValue;
-    }
+    public function setOccupato($occupato){$this->occupato=$occupato;}
+    public function getOccupato(){return $this->occupato;}
+    public function setRiga($riga){$this->riga=$riga;}
+    public function getRiga(){return $this->riga;}
+    public function setColonna($colonna){$this->colonna=$colonna;}
+    public function getColonna(){return $this->colonna;}
 } /* end of class Ombrellone */
 
 

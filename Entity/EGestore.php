@@ -1,17 +1,20 @@
 <?php
 require_once('ELido.php');
-class EGestore
+require_once('EUtente.php');
+class EGestore extends EUtente
 {
- public $nome = "";
- public $cognome = "";
- public $lidi=array();
 
+ public $lidi=array();
+ public $IDGestore;//da togliere
+ public $nome;//da togliere
+ public $cognome;//da togliere
 
          public function __construct ($nome , $cognome)
          {
            $this->nome = $nome;
            $this->cognome = $cognome;
-           
+           //$IDGestore= $this->getNNNG().$this->getCCCG();
+           //$this->IDGestore=$IDGestore;
          }
 
          public function getNNNG()
@@ -75,6 +78,11 @@ class EGestore
         public function getLidi()
         {
           return $this->lidi;
+        }
+
+        public function rimuoviLido($IDLido)
+        {
+          //....da completare
         }
 }
 ?>
