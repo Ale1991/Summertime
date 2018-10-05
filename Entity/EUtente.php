@@ -1,214 +1,89 @@
 <?php
 
-/*
- * @Access public
- * @package Entity
- */
-
-/**
- * Description of EUtente
- *
- * @author Stefano
- */
-class EUtente {
-    private $userId; //int
-    private $nome; //string
+class EUtente 
+{
+    private $nomeUtente=''; //string
+    private $password=''; //string
+    private $loginStatus=false; //boolean
+    private $nome;
     private $cognome; //string
-    private $data_nascita; //DateTime
-    private $luogo_nascita; //EResidenza
-    private $sesso; //char
-    private $nome_utente; //string
-    private $mail; //string
-    private $residenza; //EResidenza
-    private $is_proprietario=false; //boolean
-    private $is_amministratore=false; //boolean
-    private $login_status=false; //boolean
+    private $email; //string
+    private $isGestore=false; //boolean
+    private $isAmministratore=false; //boolean
     
-    //Questa funzione restituisce una stringa
-    public function getNome()
+    /*     public function __construct ($nomeUtente,$password){
+            $this->nomeUtente=$nomeUtente;
+            $this->password=$password;
+            }
+         */
+        
+    public function getNomeUtente(){return $this->nomeUtente;}
+    public function setNomeUtente($nomeUtente){$this->nomeUtente=$nomeUtente;}
+    public function getPassword(){return $this->password;}
+    public function setPassword($password){$this->password=$password;}
+    public function getLoginStatus(){return $this->loginStatus;}
+    public function setLoginStatus($loginStatus){$this->loginStatus=$loginStatus;}
+    public function getNome(){return $this->nome;}
+    public function setNome($nome){$this->nome=$nome;}
+    public function getCognome(){return $this->cognome;}
+    public function setCognome($cognome){$this->cognome=$cognome;}
+    public function getEmail(){return $this->email;}
+    public function setEmail($email){$this->email=$email;}
+    public function getIsGestore(){return $this->isGestore;}
+    public function setIsGestore($isGestore){$this->isGestore=$isGestore;}
+    public function getIsAmministratore(){return $this->isAmministratore;}
+    public function setIsAmministratore($isAmministratore){$this->isAmministratore=$isAmministratore;}
+    
+    //getNNNU & getCCCU servono per calcolare l'id, attualmente superfluo, della classe cliente
+    public function getNNNG()
     {
-        return $this->nome;
-    }
-    
-    public function getUserId()
+    $nomeoriginale = $this->nome;
+    $NNN= array();
+    $nomemaiuscolo = strtoupper($nomeoriginale)."XXX";
+    preg_match_all('/[^AEIOUX]/', $nomemaiuscolo , $consonanti);
+    preg_match_all('/[AEIOUX]/', $nomemaiuscolo , $vocali);
+    for($i = 0 , $size = sizeof($consonanti[0]) ; $i < $size; $i++)
     {
-        return $this->userId;
+      array_push($NNN , $consonanti[0][$i]);
     }
-    //Questa funzione restituisce una stringa
-    public function getCognome()
+    if(sizeof($NNN) < 3)
     {
-        return $this->cognome;
+      for($i = 0 , $size = 3 - sizeof($consonanti[0]) ; $i < $size; $i++)
+      {
+        array_push($NNN , $vocali[0][$i]);
+      }
+      if (sizeof($NNN) < 3)
+      {
+        array_push($NNN , "X");
+      }
+    }
+    return implode('' , $NNN);
     }
     
-    //Questa funzione restituisce un oggetto di tipo "DateTime"
-    public function getData_nascita()
+    public function getCCCG()
     {
-        return $this->data_nascita;
-    }
-    
-    //Questa funzione restituisce un oggetto di tipo "EResidenza"
-    public function getLuogo_nascita()
+    $cognomeoriginale = $this->cognome;
+    $CCC= array();
+    $cognomemaiuscolo = strtoupper($cognomeoriginale)."XXX";
+    preg_match_all('/[^AEIOUX]/', $cognomemaiuscolo , $consonanti);
+    preg_match_all('/[AEIOUX]/', $cognomemaiuscolo , $vocali);
+    for($i = 0 , $size = sizeof($consonanti[0]) ; $i < $size; $i++)
     {
-        return $this->luogo_nascita;
+      array_push($CCC , $consonanti[0][$i]);
     }
-    
-    //Questa funzione restituisce un char
-    public function getSesso()
+    if(sizeof($CCC) < 3)
     {
-        return $this->sesso;
+      for($i = 0 , $size = 3 - sizeof($consonanti[0]) ; $i < $size; $i++)
+      {
+        array_push($CCC , $vocali[0][$i]);
+      }
+      if (sizeof($CCC) < 3)
+      {
+        array_push($CCC , "X");
+      }
     }
-    
-    //Questa funzione restituisce una stringa
-    public function getNome_utente()
-    {
-        return $this->nome_utente;
+    return implode('' , $CCC);
     }
-    
-    //Questa funzione restituisce una stringa
-    public function getMail()
-    {
-        return $this->mail;
-    }
-    
-    //Questa funzione restituisce un oggetto di tipo "EResidenza"
-    public function getResidenza()
-    {
-        return $this->residenza;
-    }
-    
-    //Questa funzione restituisce un booleano
-    public function getIs_proprietario()
-    {
-        return $this->is_propietario;
-    }
-    
-    //Questa funzione restituisce un booleano
-    public function getIs_amministratore()
-    {
-        return $this->is_amministratore;
-    }
-    
-    public function getLogin_status()
-    {
-        return $this->login_status;
-    }
-    
-
-     /**
-     * @access public
-     * @param $nome string
-     * Inserisce il nome dell'utente (string) 
-     */
-    public function setNome($nome) {
-        $this->nome=$nome;
-    }
-    
-     /**
-     * @access public
-     * @param $cognome string
-     * Inserisce il cognome dell'utente (string) 
-     */
-    public function setCognome($cognome) {
-        $this->cognome=$cognome;
-    }
-    
-     /**
-     * @access public
-     * @param $luogo_nascita EResidenza
-     * Inserisce il luogo di nascita dell'utente (EResidenza) 
-     */
-    public function setLuogo_nascita(EResidenza $luogo_nascita) {
-        $this->luogo_nascita=$luogo_nascita;
-    }
-    
-     /**
-     * @access public
-     * @param $data_nascita data
-     * Inserisce la data di nascita dell'utente (data) 
-     */
-    public function setData_nascita(DateTime $data_nascita) {
-        $this->data_nascita=$data_nascita;
-    }
-    
-     /**
-     * @access public
-     * @param $sesso char
-     * Inserisce il sesso dell'utente (char) 
-     */
-    public function setSesso($sesso) {
-        $this->sesso=$sesso;
-    }
-    
-     /**
-     * @access public
-     * @param $nome_utente string
-     * Inserisce il nome_utente dell'utente (string) 
-     */
-    public function setNome_utente($nome_utente) {
-        $this->nome_utente=$nome_utente;
-    }
-    
-     /**
-     * @access public
-     * @param $mail string
-     * Inserisce la mail dell'utente (string) 
-     */
-    public function setMail($mail) {
-        $this->mail=$mail;
-    }
-    
-      /**
-     * @access public
-     * @param $residenza EResidenza
-     * Inserisce la residenza dell'utente (EResidenza) 
-     */
-    public function setResidenza(EResidenza $residenza) {
-        $this->residenza=$residenza;
-    }
-    
-     /**
-     * @access public
-     * @param Entity.EOrdine aOrdine
-     * @ParamType aOrdine Entity.EOrdine
-     */
-    
-     /**
-     * @access public
-     * @param $prop boolean
-     * Modifica lo stato dell'utente semplice in proprietario (boolean) 
-     */
-    public function setIs_proprietario($prop) {
-        $this->is_proprietario=$prop;
-    }
-    
-    /**
-     * @access public
-     * @param $amm boolean
-     * Modifica lo stato dell'utente semplice in amministratore (boolean) 
-     */
-    public function setIs_amministratore($amm) {
-        $this->is_amministratore=$amm;
-    }
-    
-    public function set_UserId($i)
-    {
-        $this->id=$i;
-    }
-    
-   
-    
-    
-    
-    
-  
-    
-    
-    
-    
-    
-    
-    
-    
     
 }
 

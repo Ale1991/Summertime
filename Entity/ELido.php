@@ -18,7 +18,6 @@ class ELido
     public $nomeLido = null;
     public $IDLido;
     public $numeroOmbrelloni = null;
-    public $prenotazioni = null;
     public $indirizzo = null;
     public $righe = null;
     public $colonne = null;
@@ -28,30 +27,7 @@ class ELido
     {
         $this->nomeLido = $nomeLido;
         $this->indirizzo = $indirizzo;
-
-        $nomeoriginale = $this->nomeLido;
-        $NNN= array();
-        $nomemaiuscolo = strtoupper($nomeoriginale)."XXX";
-        preg_match_all('/[^AEIOUX]/', $nomemaiuscolo , $consonanti);
-        preg_match_all('/[AEIOUX]/', $nomemaiuscolo , $vocali);
-        for($i = 0 , $size = sizeof($consonanti[0]) ; $i < $size; $i++)
-        {
-            array_push($NNN , $consonanti[0][$i]);
-        }
-        if(sizeof($NNN) < 3)
-        {
-            for($i = 0 , $size = 3 - sizeof($consonanti[0]) ; $i < $size; $i++)
-            {
-                array_push($NNN , $vocali[0][$i]);
-            }
-            if (sizeof($NNN) < 3)
-            {
-                array_push($NNN , "X");
-            }
-        }
-        $NNNLido=implode('' , $NNN);
-
-        $IDLido=$NNNLido.$indirizzo->getIDIndirizzo();
+        $IDLido=$this->getNNNL().$indirizzo->getIDIndirizzo();
         $this->IDLido = $IDLido;
     }
 
