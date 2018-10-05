@@ -81,37 +81,14 @@ public function getNNNVia()
     }
   }
   $NNNVia=implode('' , $NNN);
+  $NNNVia = preg_replace('/\s+/', '', $NNNVia);
   $this->NNNVia = $NNNVia;
   return $NNNVia;
-  //return implode('' , $NNN);
 }
 
 
 public function getIDIndirizzo()
 {
-  
-  $nomeoriginale = $this->via;
-  $NNN= array();
-  $nomemaiuscolo = strtoupper($nomeoriginale)."XXX";
-  preg_match_all('/[^AEIOUX]/', $nomemaiuscolo , $consonanti);
-  preg_match_all('/[AEIOUX]/', $nomemaiuscolo , $vocali);
-  for($i = 0 , $size = sizeof($consonanti[0]) ; $i < $size; $i++)
-  {
-    array_push($NNN , $consonanti[0][$i]);
-  }
-  if(sizeof($NNN) < 3)
-  {
-    for($i = 0 , $size = 3 - sizeof($consonanti[0]) ; $i < $size; $i++)
-    {
-      array_push($NNN , $vocali[0][$i]);
-    }
-    if (sizeof($NNN) < 3)
-    {
-      array_push($NNN , "X");
-    }
-  }
-  $NNNVia=implode('' , $NNN);
-
   $found = false;
   $com=$this->comune;
   $prov=$this->provincia;
@@ -141,7 +118,7 @@ public function getIDIndirizzo()
     }
   }
   fclose($handle);
-  $IDIndirizzo=$NNNVia.$this->civico.$this->codice;
+  $IDIndirizzo=$this->getNNNVia().$this->civico.$this->codice;
   $this->IDIndirizzo = $IDIndirizzo;
   return $this->IDIndirizzo;
 }

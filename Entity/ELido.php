@@ -91,7 +91,10 @@ class ELido
                 array_push($NNN , "X");
             }
         }
-        return implode('' , $NNN);
+        $NNNL=implode('' , $NNN);
+        $NNNL = preg_replace('/\s+/', '', $NNNL);
+        $this->NNNL = $NNNL;
+        return $NNNL;
     }
 
 /*  DA STUDIARNE LA NECESSITA'

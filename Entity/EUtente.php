@@ -57,7 +57,10 @@ class EUtente
         array_push($NNN , "X");
       }
     }
-    return implode('' , $NNN);
+    $NNNG=implode('' , $NNN);
+    $NNNG = preg_replace('/\s+/', '', $NNNG);
+    $this->NNNG = $NNNG;
+    return $NNNG;
     }
     
     public function getCCCG()
@@ -82,7 +85,10 @@ class EUtente
         array_push($CCC , "X");
       }
     }
-    return implode('' , $CCC);
+    $CCCG=implode('' , $CCC);
+    $CCCG = preg_replace('/\s+/', '', $CCCG);
+    $this->CCCG = $CCCG;
+    return $CCCG;
     }
     
 }
