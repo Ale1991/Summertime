@@ -20,10 +20,11 @@ class FPrenotazione extends Fdb
         $utente=$prenotazione->getIdUtente();
         $dataPrenotazione=$prenotazione->getDate();
         $dataPrenotazioneS=$dataPrenotazione->format("Y-m-d H:i:s");
-        $sql="INSERT INTO `prenotazioni` (`idPrenotazione`, `idLido`, `numOmbrellone`, `idUtente`, `dataPrenotazione`,`effettuata`) VALUES (NULL, ':lido', ':numOmbrellone', ':idUtente', ':dataPrenotazioneS', CURRENT_TIMESTAMP)";
-        $stmt=$this->db->prepare($sql);
-        $stmt->bindParam(':lido', $lido, PDO::PARAM_INT);
-        $stmt->execute();
+        //$sql="INSERT INTO `prenotazioni` (`idPrenotazione`, `idLido`, `numOmbrellone`, `idUtente`, `dataPrenotazione`,`effettuata`) VALUES (NULL, ':lido', ':numOmbrellone', ':idUtente', ':dataPrenotazioneS', CURRENT_TIMESTAMP)";
+        //$stmt=$this->db->prepare($sql);
+        //$stmt->bindParam(':lido', $lido, PDO::PARAM_INT);
+        //$stmt->execute();
+        $this->db->query("INSERT INTO prenotazioni (idPrenotazione, idLido, numOmbrellone, idUtente, dataPrenotazione,effettuata) VALUES (NULL, '$lido', '$numOmbrellone', '$utente', '$dataPrenotazioneS', CURRENT_TIMESTAMP)");
     }
         
         
