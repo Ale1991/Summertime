@@ -58,11 +58,11 @@ class EPrenotazione
 
     /** Setters and Getters */
 
-/*     public function setNumeroPrenotazione($numeroPrenotazione)
+     public function setNumeroPrenotazione($numeroPrenotazione)
     {
         $this->numeroPrenotazione = $numeroPrenotazione;
     }
- */
+ 
     public function getNumeroPrenotazione()
     {
         return $this->numeroPrenotazione;
