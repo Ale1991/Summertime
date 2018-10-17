@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Ott 17, 2018 alle 16:43
+-- Creato il: Ott 17, 2018 alle 16:58
 -- Versione del server: 10.1.30-MariaDB
 -- Versione PHP: 7.2.2
 
@@ -43,7 +43,6 @@ CREATE TABLE `prenotazione` (
 
 INSERT INTO `prenotazione` (`id`, `idLido`, `numOmbrellone`, `idUtente`, `dataPrenotazione`, `Effettuata`) VALUES
 (2, 0, ':nu', 0, '0000-00-00', '2018-10-10 13:17:39'),
-(3, 0, ':nu', 0, '0000-00-00', '2018-10-10 13:29:46'),
 (4, 0, ':nu', 0, '0000-00-00', '2018-10-10 13:44:06'),
 (5, 0, ':nu', 0, '0000-00-00', '2018-10-10 13:55:02'),
 (6, 0, ':nu', 0, '0000-00-00', '2018-10-10 13:56:26'),
@@ -59,7 +58,9 @@ INSERT INTO `prenotazione` (`id`, `idLido`, `numOmbrellone`, `idUtente`, `dataPr
 (16, 66, 'A13', 10, '2017-11-11', '2018-10-17 13:16:32'),
 (17, 66, 'A13', 10, '2017-11-11', '2018-10-17 14:17:43'),
 (18, 66, 'A13', 10, '2017-11-11', '2018-10-17 14:18:41'),
-(19, 66, 'A13', 10, '2017-11-11', '2018-10-17 14:40:42');
+(19, 66, 'A13', 10, '2017-11-11', '2018-10-17 14:40:42'),
+(20, 66, 'A13', 10, '2017-11-11', '2018-10-17 14:54:40'),
+(21, 66, 'A13', 10, '2017-11-11', '2018-10-17 14:55:41');
 
 --
 -- Indici per le tabelle scaricate
@@ -79,7 +80,7 @@ ALTER TABLE `prenotazione`
 -- AUTO_INCREMENT per la tabella `prenotazione`
 --
 ALTER TABLE `prenotazione`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

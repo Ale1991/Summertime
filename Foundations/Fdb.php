@@ -91,6 +91,7 @@ class Fdb
     public function cerca($k,$v)
 	{
          $z=substr(get_class($this),1);
+         $z=ucfirst($z);
          $query= "SELECT * FROM ".$z." WHERE ".$k." = ? ";
          $stmt=$this->db->prepare($query);
    	 $stmt->execute([$v]);
@@ -101,7 +102,8 @@ class Fdb
     public function cancella($k,$v)
    {
    	$z=substr(get_class($this),1);
-   	
+        
+   	$z=ucfirst($z);
    	$query= "DELETE FROM ".$z." WHERE ".$k." = ? ";
 		
 		$y=$this->db->prepare($query);

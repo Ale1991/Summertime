@@ -6,7 +6,7 @@
 //require_once('EOmbrellone.php');
 
 //date_default_timezone_set('Europe/Rome'); //fuso orario italiano
-class Eprenotazione
+class EPrenotazione
 {
     /** Numero prenotazione*/
     private $numeroPrenotazione;
