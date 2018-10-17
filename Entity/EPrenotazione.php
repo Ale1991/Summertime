@@ -6,7 +6,7 @@
 //require_once('EOmbrellone.php');
 
 //date_default_timezone_set('Europe/Rome'); //fuso orario italiano
-class EPrenotazione
+class Eprenotazione
 {
     /** Numero prenotazione*/
     private $numeroPrenotazione;
@@ -28,6 +28,7 @@ class EPrenotazione
     //private $ombrelloni=array();
     private $numOmbrellone;
 
+    
 
     /** Costruttore */
    /* public function __construct ($numeroPrenotazione, $amount, $idCliente, $idLido, $idProprietario, $idCartaDiCredito)

@@ -14,22 +14,32 @@
 class Fdb 
 {
 
-    protected $hostname;
-    protected $dbname;
-    protected $user;
-    protected $pass;
-    protected $db;
+    private $hostname;
+    private $dbname;
+    private $user;
+    private $pass;
+    public $risultato;
+    public $db;
+    public $obj;
     
 
     
-    public function __construct() {
+    public function __construct() 
+    {
       $this->hostname="localhost";
       $this->dbname="summertime";
       $this->user="root";
       $this->pass="summertime";
+      //$this->obj=$x;
       $this->connetti($this->hostname,$this->dbname,$this->user,$this->pass);
+      $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
       
         }
+        
+    public function __destruct()
+    {
+    	$this->db=null;
+    }
     
     public function get_hostname()
     {
@@ -56,6 +66,8 @@ class Fdb
         return $this->db;
     }
     
+    public function set_obj(object $o){$this->obj=$o;}
+    
     
     public function connetti($hostname,$dbname,$user,$pass)
     {
@@ -75,6 +87,33 @@ class Fdb
         
     //put your code here
     }
+    
+    public function cerca($k,$v)
+	{
+         $z=substr(get_class($this),1);
+         $query= "SELECT * FROM ".$z." WHERE ".$k." = ? ";
+         $stmt=$this->db->prepare($query);
+   	 $stmt->execute([$v]);
+   	 $row = $stmt->fetch(PDO::FETCH_ASSOC);
+   	 print var_dump($row);
+	}
+        
+    public function cancella($k,$v)
+   {
+   	$z=substr(get_class($this),1);
+   	
+   	$query= "DELETE FROM ".$z." WHERE ".$k." = ? ";
+		
+		$y=$this->db->prepare($query);
+		$y->execute([$v]);
+	}
+        
+    
+        
+       
+    
+    
+        
     
 
     
