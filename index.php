@@ -54,7 +54,7 @@ and open the template in the editor.
 
 
         $prova=new FPrenotazione();
-        $prova->inserisci($pren);
+        //$prova->inserisci($pren);
         
         
         
