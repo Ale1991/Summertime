@@ -16,9 +16,9 @@ class FPrenotazione extends Fdb
   public function inserisci(EPrenotazione & $prenotazione)
 	{
 		$query="INSERT INTO Prenotazione VALUES ( null ,?,?,?,?, null )";
-                $dataPrenotazione=$prenotazione->getDate();
+                $dataPrenotazione=$prenotazione->getData();
                 $dataPrenotazioneS=$dataPrenotazione->format("Y-m-d H:i:s");
-                $arr= array($prenotazione->getIdLido(), $prenotazione->getNumOmbrellone(), $prenotazione->getIdUtente(), $dataPrenotazioneS);
+                $arr= array($prenotazione->getLido()->getIdLido(), $prenotazione->getOmbrellone()->getID(), $prenotazione->getUtente()->getNomeUtente(), $dataPrenotazioneS);
                 
                 //$arr= array($this->obj->get_ristorante()->get-id(),$this->obj->get_utente()->get_nome_utente(),$this->obj->get_tavolo()->get_id(),$this->obj->get_effettuata(),$this->obj->get_data_prenotazione(),$this->obj->get_visualizzata(),$this->obj->get_info());
 		$stmt=$this->db->prepare($query);

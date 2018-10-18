@@ -36,7 +36,7 @@ and open the template in the editor.
         
         $data=new DateTime();
         $data->setTime('0', '0', '0');
-        $data->setDate('2017', '11', '11');        
+        $data->setDate('2017', '11', '18');        
 
         $ombrellone=new EOmbrellone('5','1');
 
@@ -50,12 +50,11 @@ and open the template in the editor.
 
 
         $pren=new EPrenotazione($data , $ombrellone , $lido , $utente);
-        $idLido=$pren->getLido()->getIdLido();
-
-        print_r($idLido);
-        //print_r($pren);
+        //$idLido=$pren->getLido()->getIdLido();
 
 
+        $prova=new FPrenotazione();
+        $prova->inserisci($pren);
         
         
         
