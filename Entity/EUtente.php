@@ -11,11 +11,10 @@ class EUtente
     private $isGestore=false; //boolean
     private $isAmministratore=false; //boolean
     
-    /*     public function __construct ($nomeUtente,$password){
+    public function __construct ($nomeUtente){
             $this->nomeUtente=$nomeUtente;
-            $this->password=$password;
             }
-         */
+    
         
     public function getNomeUtente(){return $this->nomeUtente;}
     public function setNomeUtente($nomeUtente){$this->nomeUtente=$nomeUtente;}
@@ -90,6 +89,7 @@ class EUtente
     $this->CCCG = $CCCG;
     return $CCCG;
     }
+
     
 }
 

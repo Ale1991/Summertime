@@ -9,6 +9,7 @@ class EGestore extends EUtente
   public function aggiungiLido($nomeLido,$indirizzo){array_push($this->lidi,new ELido($nomeLido,$indirizzo) );}
   public function getLidi(){return $this->lidi;}
   public function rimuoviLido($IDLido){/*....da completare*/}
+
 }
 
 

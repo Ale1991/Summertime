@@ -5,7 +5,7 @@ if (0 > version_compare(PHP_VERSION, '5')) {
 }
 
 /* include Ombrellone */
-require_once('EOmbrellone.php');
+//require_once('EOmbrellone.php');
 require_once('EIndirizzo.php');
 /**
  * Short description of class Lido
@@ -24,9 +24,10 @@ class ELido
     public $colonne = null;
     public $griglia;
 
-    public function __construct ($nomeLido,$indirizzo)//($righe,$colonne,$nomeLido,$indirizzo)
+    public function __construct ($nomeLido, $gestore , $indirizzo)//($righe,$colonne,$nomeLido,$indirizzo)
     {
         $this->nomeLido = $nomeLido;
+        $this->gestore = $gestore;
         $this->indirizzo = $indirizzo;
         $IDLido=$this->getNNNL().$indirizzo->getIDIndirizzo();
         $this->IDLido = $IDLido;

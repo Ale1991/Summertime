@@ -13,7 +13,7 @@ if (0 > version_compare(PHP_VERSION, '5')) {//da vedere bene
  * assumendo di default il valore booleano false=0 per quanto riguarda lo stato occupato=0 (libero)
  * @access public 
  * */
-class Ombrellone
+class EOmbrellone
 {
     public $riga = null;
     public $colonna = null;
@@ -29,7 +29,8 @@ class Ombrellone
 
     public function getID()
     {
-        $id=$this->riga.$this->colonna;
+        $alfabeto=['A', 'B', 'C', 'D', 'E','F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+        $id=$alfabeto[$this->riga-1].$this->colonna;
         return $id;
     }
 
