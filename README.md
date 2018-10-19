@@ -14,7 +14,8 @@ CONFIGURAZIONE VIRTUAL HOST: potete cambiare la directory del classico localhost
 un nuovo nome, ecc...la configurazione e' abbastanza semplice ed e' composta da due passi:
 
 1)aprite il file  C:\xampp\apache\conf\extra\httpd-vhosts.conf e aggiungete:
-'''
+
+```
 
 NameVirtualHost *:80
   <VirtualHost *:80>
@@ -35,7 +36,7 @@ NameVirtualHost *:80
 	</Directory>
 </VirtualHost>  
 
-'''
+```
 2)aprite il file  C:\Windows\System32\drivers\etc\hosts   e aggiungete
 127.0.0.1   summertime 
 (dove summertime e' lo stesso nome che avete usato per ServerName nel file httpd-vhosts.conf)
