@@ -14,7 +14,7 @@ CONFIGURAZIONE VIRTUAL HOST: potete cambiare la directory del classico localhost
 un nuovo nome, ecc...la configurazione e' abbastanza semplice ed e' composta da due passi:
 
 1)aprite il file  C:\xampp\apache\conf\extra\httpd-vhosts.conf e aggiungete:
-# --
+#
 NameVirtualHost *:80
   <VirtualHost *:80>
     DocumentRoot "C:\xampp\htdocs"
@@ -29,7 +29,6 @@ NameVirtualHost *:80
         # AllowOverride All      # Deprecated
         # Order Allow,Deny       # Deprecated
         # Allow from all         # Deprecated
-
         # --New way of doing it
         Require all granted    
 	</Directory>
