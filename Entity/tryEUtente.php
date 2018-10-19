@@ -1,10 +1,6 @@
 <?php
-require_once('EUtente.php');
-require_once('EGestore.php');
-require_once('ELido.php');
-require_once('EIndirizzo.php');
 
-
+require_once 'includes/autoload.inc.php';
 
 $a=new EGestore();
 $a->setNomeUtente('Alessio');

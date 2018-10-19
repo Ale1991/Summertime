@@ -6,7 +6,7 @@ if (0 > version_compare(PHP_VERSION, '5')) {
 
 /* include Ombrellone */
 //require_once('EOmbrellone.php');
-require_once('EIndirizzo.php');
+/* require_once('EIndirizzo.php'); */
 /**
  * Short description of class Lido
  * un oggetto di tipo Lido e' associato ad un unico Oggetto di tipo Gestore ed e' costituito da un insieme di Oggetti di tipo Ombrellone 

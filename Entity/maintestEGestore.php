@@ -1,8 +1,7 @@
 <?php
 //MAIN PER IL TEST DELLE CLASSI GESTORE->INDIRIZZO->LIDO->OMBRELLONI
-require_once('EIndirizzo.php');
-require_once('EGestore.php');
 
+require_once 'includes/autoload.inc.php';
 
 $nome='Alessio';
 $cognome='Susco';

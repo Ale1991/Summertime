@@ -1,5 +1,5 @@
 <?php
-require('Smarty/Smarty.class.php');
+require('..\Smarty\Smarty.class.php');
 /**
  * @access public
  * @package View

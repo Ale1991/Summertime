@@ -26,7 +26,7 @@ class Fdb
     
     public function __construct() 
     {
-      $this->hostname="localhost";
+      $this->hostname="summertime";
       $this->dbname="summertime";
       $this->user="root";
       $this->pass="summertime";

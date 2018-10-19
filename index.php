@@ -11,12 +11,9 @@ and open the template in the editor.
     </head>
     <body>
         <?php
-        require_once 'Foundations/Fdb.php';
-        require_once 'Foundations/FPrenotazione.php';
-        require_once 'Entity/EPrenotazione.php';
-        require_once 'Entity/ELido.php';
-        require_once 'Entity/EOmbrellone.php';
-        require_once 'Entity/EGestore.php';
+        require_once 'includes/autoload.inc.php';
+        require_once 'includes/config.inc.php';
+
 /*         //$prova=new Fdb();
         //print $prova->get_hostname();
         $pren=new EPrenotazione();
@@ -54,7 +51,7 @@ and open the template in the editor.
 
 
         $prova=new FPrenotazione();
-        //$prova->inserisci($pren);
+        $prova->inserisci($pren);
         
         
         
