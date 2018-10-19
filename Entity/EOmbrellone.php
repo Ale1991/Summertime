@@ -20,17 +20,23 @@ class EOmbrellone
     public $occupato =false;
     public $id = null;
 
-         public function __construct ($riga , $colonna)
+         public function __construct (/* $riga , $colonna */)
          {
-           $this->riga = $riga;
+/*            $this->riga = $riga;
            $this->colonna = $colonna;
-           $this->id = $this->getID();
+           $this->id = $this->getID(); */
          }
 
     public function getID()
     {
         $alfabeto=['A', 'B', 'C', 'D', 'E','F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-        $id=$alfabeto[$this->riga-1].$this->colonna;
+        if ($this->riga!=null & $this->colonna){
+            $id=$alfabeto[$this->riga-1].$this->colonna;
+        }
+        else{
+            $id='N.D.';
+        }
+        
         return $id;
     }
 
