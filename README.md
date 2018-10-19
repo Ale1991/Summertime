@@ -38,7 +38,9 @@ NameVirtualHost *:80
 
 ```
 2)aprite il file  C:\Windows\System32\drivers\etc\hosts   e aggiungete
+```
 127.0.0.1   summertime 
+```
 (dove summertime e' lo stesso nome che avete usato per ServerName nel file httpd-vhosts.conf)
 
 3) fatti questi due passi, il nuovo localhost sara' http://summertime/...
