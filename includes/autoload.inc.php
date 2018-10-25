@@ -3,23 +3,29 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
 */
-function __autoload($class_name) {
-    switch ($class_name[0]) {
+
+function my_autoloader($class_name){
+     switch ($class_name[0]) {
         case 'V':
-            require_once ('View/'.$class_name.'.php');
+            include ('View/'.$class_name.'.php');
             break;
         case 'F':
-            require_once ('Foundations/'.$class_name.'.php');
+            include ('Foundations/'.$class_name.'.php');
             break;
         case 'E':
-            require_once ('Entity/'.$class_name.'.php');
+            include ('Entity/'.$class_name.'.php');
             break;
         case 'C':
-            require_once ('Control/'.$class_name.'.php');
+            include ('Control/'.$class_name.'.php');
             break;
-    /*     case 'U':
-            require_once ('../Foundation/'.$class_name.'.php'); */
+         case 'U':
+            include ('Foundations/Utility/'.$class_name.'.php'); 
+            break;
     }
+    
 }
+
+spl_autoload_register('my_autoloader');
+
 
 ?>

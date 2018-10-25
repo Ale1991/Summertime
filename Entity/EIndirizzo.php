@@ -10,7 +10,7 @@ class EIndirizzo
  private $codice;
  private $IDIndirizzo;
  
- private $path = ('C:\Users\Alessio\Desktop\Summertime\Summertime\Entity\codici_comuni_italiani.txt');//va sistemato il relative path con il require
+ private $path = ('Entity\codici_comuni_italiani.txt');//va sistemato il relative path con il require
 
 public function __construct ($via , $civico , $comune , $provincia)
 {

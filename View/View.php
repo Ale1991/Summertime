@@ -1,5 +1,5 @@
 <?php
-require('..\Smarty\Smarty.class.php');
+require('lib\Smarty\Smarty.class.php');
 /**
  * @access public
  * @package View
@@ -7,13 +7,13 @@ require('..\Smarty\Smarty.class.php');
 
 class View extends Smarty {
     public function __construct() {
-        $this->Smarty();
-        global $config;
-        $this->template_dir = $config['smarty']['template_dir'];
-        $this->compile_dir = $config['smarty']['compile_dir'];
-        $this->config_dir = $config['smarty']['config_dir'];
-        $this->cache_dir = $config['smarty']['cache_dir'];
-        $this->caching = false;
+
+     $smarty=new Smarty();  
+     $smarty->setTemplateDir('Summertime\Summertime\templates');//C:\Users\Alessio\Desktop\S
+     $smarty->setCompileDir('Summertime\Summertime\templates\main\templates_c');
+     $smarty->setCacheDir('Summertime\Summertime\templates\main\cache');
+     $smarty->setConfigDir('Summertime\Summertime\templates\main\configs');
+     //$smarty->assign('name','Penguin');
     }
 }
 ?>
