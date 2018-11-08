@@ -26,7 +26,7 @@ class Fdb
     
     public function __construct() 
     {
-      $this->hostname="summertime";
+      $this->hostname="localhost";
       $this->dbname="summertime";
       $this->user="root";
       $this->pass="summertime";
@@ -95,8 +95,15 @@ class Fdb
          $query= "SELECT * FROM ".$z." WHERE ".$k." = ? ";
          $stmt=$this->db->prepare($query);
    	 $stmt->execute([$v]);
-   	 $row = $stmt->fetch(PDO::FETCH_ASSOC);
-   	 print var_dump($row);
+         return $stmt;
+         //print var_dump($stmt);
+   	 //$row = $stmt->fetch(PDO::FETCH_ASSOC);
+         //while($row = $stmt->fetch(PDO::FETCH_ASSOC))
+         //       {
+         // echo '' . $row['id'] . ' ' . $row['idLido'] . '';
+         //       }
+         //return $row;
+         
 	}
         
     public function cancella($k,$v)

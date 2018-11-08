@@ -11,20 +11,44 @@
  *
  * @author Stefano
  */
+require_once 'Foundations/Fdb.php';
 class FPrenotazione extends Fdb 
 {
   public function inserisci(EPrenotazione & $prenotazione)
 	{
 		$query="INSERT INTO Prenotazione VALUES ( null ,?,?,?,?, null )";
                 $dataPrenotazione=$prenotazione->getData();
-                $dataPrenotazioneS=$dataPrenotazione->format("Y-m-d H:i:s");
-                $arr= array($prenotazione->getLido()->getIdLido(), $prenotazione->getOmbrellone()->getID(), $prenotazione->getUtente()->getNomeUtente(), $dataPrenotazioneS);
+                //$dataPrenotazioneS=$dataPrenotazione->format("Y-m-d H:i:s");
+                $arr= array($prenotazione->getLido()->getIdLido(), $prenotazione->getOmbrellone()->getID(), $prenotazione->getUtente()->getNomeUtente(), $dataPrenotazione);
                 
                 //$arr= array($this->obj->get_ristorante()->get-id(),$this->obj->get_utente()->get_nome_utente(),$this->obj->get_tavolo()->get_id(),$this->obj->get_effettuata(),$this->obj->get_data_prenotazione(),$this->obj->get_visualizzata(),$this->obj->get_info());
 		$stmt=$this->db->prepare($query);
                 $stmt->execute($arr);
 		
 	}
+        
+  public function verificaDisp(EPrenotazione & $prenotazione)
+  {
+      $idLido=$prenotazione->getLido()->getIdLido();
+      $numOmbrellone=$prenotazione->getOmbrellone()->getID();
+      $dataPrenotazione=$prenotazione->getData();
+      $query= "SELECT * FROM Prenotazione WHERE idLido = ? AND numOmbrellone = ? AND dataPrenotazione = ?";
+      $stmt=$this->db->prepare($query);
+      $stmt->execute([$idLido,$numOmbrellone,$dataPrenotazione]);
+      $i=0;
+      $res=true;
+      while($row = $stmt->fetch(PDO::FETCH_ASSOC))
+      {
+      $i++;
+      }
+      if($i>0) {$res=false;}
+      //print var_dump($res);
+      return $res;
+      
+      
+      
+      
+  }
     
  
         

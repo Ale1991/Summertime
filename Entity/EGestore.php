@@ -1,5 +1,5 @@
 <?php
-/* require_once 'Entity/EUtente.php'; */
+require_once 'Entity/EUtente.php';
 class EGestore extends EUtente
 {
   private $lidi=array();

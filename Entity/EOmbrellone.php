@@ -15,22 +15,25 @@ if (0 > version_compare(PHP_VERSION, '5')) {//da vedere bene
  * */
 class EOmbrellone
 {
-    public $riga = null;
-    public $colonna = null;
-    public $occupato =false;
-    public $id = null;
+    private $riga;
+    private $colonna;
+    private $occupato =false;
+    private $id; 
+    private $idLido;
 
-         public function __construct (/* $riga , $colonna */)
+         public function __construct ()
          {
-/*            $this->riga = $riga;
-           $this->colonna = $colonna;
-           $this->id = $this->getID(); */
+          
+           $this->id = $this->generaID(); 
          }
-
-    public function getID()
+        
+    
+    
+    
+    public function generaID()
     {
         $alfabeto=['A', 'B', 'C', 'D', 'E','F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-        if ($this->riga!=null & $this->colonna){
+        if ($this->riga!=null & $this->colonna!=null){
             $id=$alfabeto[$this->riga-1].$this->colonna;
         }
         else{
@@ -42,10 +45,14 @@ class EOmbrellone
 
     public function setOccupato($occupato){$this->occupato=$occupato;}
     public function getOccupato(){return $this->occupato;}
+    public function getIdLido(){return $this->idLido;}
     public function setRiga($riga){$this->riga=$riga;}
     public function getRiga(){return $this->riga;}
     public function setColonna($colonna){$this->colonna=$colonna;}
     public function getColonna(){return $this->colonna;}
+    public function getID(){return $this->id;}
+    public function setIdLido($idLido){$this->idLido=$idLido;}
+    public function setID($id){$this->id=$id;}
 } /* end of class Ombrellone */
 
 
