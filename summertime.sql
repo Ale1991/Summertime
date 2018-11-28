@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Ott 17, 2018 alle 16:58
+-- Creato il: Nov 28, 2018 alle 18:15
 -- Versione del server: 10.1.30-MariaDB
 -- Versione PHP: 7.2.2
 
@@ -25,15 +25,38 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Struttura della tabella `ombrellone`
+--
+
+CREATE TABLE `ombrellone` (
+  `id` varchar(2) NOT NULL,
+  `riga` int(4) NOT NULL,
+  `colonna` int(4) NOT NULL,
+  `occupato` tinyint(1) NOT NULL,
+  `idLido` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dump dei dati per la tabella `ombrellone`
+--
+
+INSERT INTO `ombrellone` (`id`, `riga`, `colonna`, `occupato`, `idLido`) VALUES
+('A3', 1, 3, 0, 'RSDVNTVRM66D763'),
+('C2', 3, 2, 0, 'RSDVNTVRM66D763');
+
+-- --------------------------------------------------------
+
+--
 -- Struttura della tabella `prenotazione`
 --
 
 CREATE TABLE `prenotazione` (
   `id` int(11) NOT NULL,
-  `idLido` int(11) NOT NULL,
+  `idLido` varchar(50) NOT NULL,
   `numOmbrellone` varchar(3) NOT NULL,
-  `idUtente` int(11) NOT NULL,
-  `dataPrenotazione` date NOT NULL,
+  `idUtente` varchar(70) NOT NULL,
+  `dataInizio` date NOT NULL,
+  `dataFine` date NOT NULL,
   `Effettuata` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -41,30 +64,21 @@ CREATE TABLE `prenotazione` (
 -- Dump dei dati per la tabella `prenotazione`
 --
 
-INSERT INTO `prenotazione` (`id`, `idLido`, `numOmbrellone`, `idUtente`, `dataPrenotazione`, `Effettuata`) VALUES
-(2, 0, ':nu', 0, '0000-00-00', '2018-10-10 13:17:39'),
-(4, 0, ':nu', 0, '0000-00-00', '2018-10-10 13:44:06'),
-(5, 0, ':nu', 0, '0000-00-00', '2018-10-10 13:55:02'),
-(6, 0, ':nu', 0, '0000-00-00', '2018-10-10 13:56:26'),
-(7, 0, ':nu', 0, '0000-00-00', '2018-10-10 13:56:43'),
-(8, 0, ':nu', 0, '0000-00-00', '2018-10-10 13:56:58'),
-(9, 0, ':nu', 0, '0000-00-00', '2018-10-10 13:58:27'),
-(10, 0, ':nu', 0, '0000-00-00', '2018-10-10 14:02:01'),
-(11, 0, ':nu', 0, '0000-00-00', '2018-10-10 14:02:41'),
-(12, 0, ':nu', 0, '0000-00-00', '2018-10-10 14:06:59'),
-(13, 66, 'A13', 10, '2017-11-11', '2018-10-10 14:11:35'),
-(14, 66, 'A13', 10, '2017-11-11', '2018-10-17 13:14:01'),
-(15, 66, 'A13', 10, '2017-11-11', '2018-10-17 13:15:21'),
-(16, 66, 'A13', 10, '2017-11-11', '2018-10-17 13:16:32'),
-(17, 66, 'A13', 10, '2017-11-11', '2018-10-17 14:17:43'),
-(18, 66, 'A13', 10, '2017-11-11', '2018-10-17 14:18:41'),
-(19, 66, 'A13', 10, '2017-11-11', '2018-10-17 14:40:42'),
-(20, 66, 'A13', 10, '2017-11-11', '2018-10-17 14:54:40'),
-(21, 66, 'A13', 10, '2017-11-11', '2018-10-17 14:55:41');
+INSERT INTO `prenotazione` (`id`, `idLido`, `numOmbrellone`, `idUtente`, `dataInizio`, `dataFine`, `Effettuata`) VALUES
+(25, 'RSDVNTVRM66D763', 'A3', 'Alessio', '2018-05-03', '2018-05-08', '2018-11-20 15:30:08'),
+(26, 'RSDVNTVRM66D763', 'A3', 'Alessio', '2018-11-23', '2018-11-24', '2018-11-27 09:16:10'),
+(27, 'RSDVNTVRM66D763', 'C2', 'Alessio', '2018-05-03', '2018-05-15', '2018-11-27 09:17:28'),
+(28, 'RSDVNTVRM66D763', 'A3', 'Alessio', '2019-06-14', '2019-06-19', '2018-11-28 17:02:14');
 
 --
 -- Indici per le tabelle scaricate
 --
+
+--
+-- Indici per le tabelle `ombrellone`
+--
+ALTER TABLE `ombrellone`
+  ADD PRIMARY KEY (`id`,`idLido`);
 
 --
 -- Indici per le tabelle `prenotazione`
@@ -80,7 +94,7 @@ ALTER TABLE `prenotazione`
 -- AUTO_INCREMENT per la tabella `prenotazione`
 --
 ALTER TABLE `prenotazione`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
