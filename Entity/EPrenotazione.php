@@ -19,7 +19,8 @@ class EPrenotazione
 
 
     /** Oggetto Data relativa alla prenotazione */
-    private $Data;  
+    private $dataInizio;
+    private $dataFine;
     /** Oggetto Ombrellone */
     //private $ombrelloni=array();
     private $Ombrellone;
@@ -29,9 +30,10 @@ class EPrenotazione
     private $Utente;
 
     /** Costruttore */
-   public function __construct ($Data , $Ombrellone , $Lido , $Utente)
+   public function __construct ($dataInizio , $dataFine, $Ombrellone , $Lido , $Utente)
     {
-        $this->Data = $Data;
+        $this->dataInizio = $dataInizio;
+        $this->dataFine = $dataFine;
         $this->Ombrellone = $Ombrellone;
         $this->Lido = $Lido;
         $this->Utente = $Utente;
@@ -45,8 +47,11 @@ class EPrenotazione
     public function setAmount($amount){$this->amount = $amount;}
     public function getAmount(){return $this->amount;}
 
-    public function setData(Datetime $Data){$this->Data = $Data;}
-    public function getData(){return $this->Data;}
+    public function setDataInizio(Datetime $dataInizio){$this->dataInizio = $dataInizio;}
+    public function getDataInizio(){return $this->dataInizio;}
+    
+    public function setDataFine (Datetime $dataFine) {$this->dataFine = $dataFine;}
+    public function getDataFine () {return $this->dataFine;}
     
     public function setUtente($Utente){$this->Utente = $Utente;}
     public function getUtente(){return $this->Utente;}

@@ -15,11 +15,14 @@ class VPrenotazione
 {
     public function MostraFormPrenotazione($lido,$utente)
     {
+        $periodo=$lido->getDataForm();
         $smarty=new Smarty();
         $smarty->setTemplateDir('templates/main/template');
         $smarty->setCompileDir('templates/main/templates_c');
         $smarty->assign('nomelido',$lido->getNome());
         $smarty->assign('nomeutente',$utente->getNomeUtente());
+        $smarty->assign('dataApertura',$periodo[0]->format("Y-m-d H:i:s"));
+        $smarty->assign('dataChiusura',$periodo[1]->format("Y-m-d H:i:s"));
         $smarty->display('welcome.tpl');
     }
     //put your code her

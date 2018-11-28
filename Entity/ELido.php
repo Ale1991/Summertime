@@ -23,6 +23,8 @@ class ELido
     public $righe = null;
     public $colonne = null;
     public $griglia;
+    public $dataApertura;
+    public $dataChiusura;
 
     public function __construct ($nomeLido, $gestore , $indirizzo)//($righe,$colonne,$nomeLido,$indirizzo)
     {
@@ -44,6 +46,10 @@ class ELido
     public function setColonne($colonne){$this->colonne=$colonne;}
     public function getColonne(){return $this->colonne;}
     public function getIdLido(){return $this->IDLido;}
+    public function setDataApertura(DateTime $dataApertura) {$this->dataApertura=$dataApertura;}
+    public function getDataApertura() {return $this->dataApertura;}
+    public function setDataChiusura(DateTime $dataChiusura) {$this->dataChiusura=$dataChiusura;}
+    public function getDataChiusura(){return $this->dataChiusura;}
 
     public function generaGriglia()
     {
@@ -99,6 +105,28 @@ class ELido
         $this->NNNL = $NNNL;
         return $NNNL;
     }
+    
+    public function getDataForm()
+    {
+        $periodo=Array();
+        $oggi=new DateTime();
+        $oggi->getTimestamp();
+        if($oggi<$this->dataApertura)
+        {
+            $periodo[0]=$this->dataApertura;
+            $periodo[1]=$this->dataChiusura;
+            return $periodo;
+            
+        }
+        elseif($oggi>$this->dataApertura && $oggi<$this->dataChiusura)
+        {
+            $periodo[0]=$oggi;
+            $periodo[1]=$this->dataChiusura;
+        }
+        return $periodo;
+    }
+
+
 
 /*  DA STUDIARNE LA NECESSITA'
     public function aggiungiOmbrellone($riga, $colonna)

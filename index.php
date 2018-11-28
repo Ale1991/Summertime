@@ -13,18 +13,25 @@ and open the template in the editor.
         <?php
         require_once 'lib/Smarty/Smarty.class.php';
         require_once 'includes/autoload.inc.php';
-        //$a=new DateTime();
+        $a=new DateTime();
+        $b=new DateTime();
         //$a->setTime('0', '0', '0');
-        //$a->setDate('2017', '11', '11');
+        $a->setDate('2018', '6', '1');
+        $b->setDate('2018', '9', '15');
         //$data=$a;
         //$ombrellone= new EOmbrellone();
         $gestore= new EGestore("Mimmo");
         $indirizzo=new EIndirizzo("via roma",66,"Francavilla al Mare","CH");
         $lido= new ELido("Rosa dei venti", $gestore, $indirizzo);
+        $lido->setDataApertura($a);
+        $lido->setDataChiusura($b);
+        //$prova=$lido->getDataForm();
+        //print var_dump($prova);
         $utente= new EUtente("Alessio");
         $var=new CPrenotazione();
         $var->ImpostaFormPrenotazione($lido, $utente);
         //$prova=new FPrenotazione();
+        
         
         
         

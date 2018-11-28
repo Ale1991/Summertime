@@ -16,14 +16,16 @@ class CPrenotazione
     public function ImpostaFormPrenotazione($lido,$utente)
     {
         $id=filter_input(INPUT_POST, 'ombrellone');
-        $data=filter_input(INPUT_POST, 'data');
-        if($id!="" && $data!=NULL)
+        $data1=filter_input(INPUT_POST, 'data1');
+        $data2=filter_input(INPUT_POST, 'data2');
+        if($id!="" && $data1!=NULL && $data2!=NULL)
         {
             $idLido=$lido->getIdLido();
             $Ombr=new FOmbrellone();
             $Ombrellone=$Ombr->getObject($id,$idLido);
             //print var_dump($Ombrellone);
-            $pren=new EPrenotazione($data, $Ombrellone, $lido, $utente);
+            $pren=new EPrenotazione($data1, $data2, $Ombrellone, $lido, $utente);
+            //print var_dump($pren);
             $fpren=new FPrenotazione();
             if($fpren->verificaDisp($pren))
             {

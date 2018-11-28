@@ -7,8 +7,10 @@
 <form method="post" action="index.php">
   Inserisci l'ID dell'ombrellone <br>
   <input type="text" name="ombrellone"><br>
-   Data:
-  <input type="date" name="data">
+   Dal:
+  <input type="date" name="data1" min={$dataApertura} max={$dataChiusura}>
+   Al:
+  <input type="date" name="data2" min={$dataApertura} max={$dataChiusura}>
   
                
     <input type="submit" value="Prenota ora!">
