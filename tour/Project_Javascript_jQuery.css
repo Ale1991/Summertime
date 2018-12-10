@@ -1,0 +1,43 @@
+.container-ombrelloni {
+	position: relative;
+	top: 30px;
+	outline:2px solid #000;
+	font-size: 0;
+	margin:auto;
+	padding: 0;
+    border: none;
+    width: 40;
+}
+
+.grid-ombrelloni {
+	margin:15px;
+	padding:0;
+	outline:1px solid #000;
+    display:inline-block;
+    border-style: solid;
+	border-color: black;
+}
+
+
+
+.grid-ombrelloni img {
+   width: 80%;
+   position: center;
+}
+
+.selectedList {
+	position: relative;
+	top: 30px;
+	
+
+}
+
+.listaOmbrelloni {
+	position: relative;
+	text-transform: lowercase;
+	line-height: 10;
+	color: red;
+	top: 30px;
+
+
+}
