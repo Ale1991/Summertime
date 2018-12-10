@@ -1,4 +1,4 @@
-.container-ombrelloni {
+/* .container-ombrelloni2 {
 	position: relative;
 	top: 30px;
 	outline:2px solid #000;
@@ -6,23 +6,33 @@
 	margin:auto;
 	padding: 0;
     border: none;
-    width: 40;
-}
+	width: 40;
+	z-index: 1;
+} */
+
+
 
 .grid-ombrelloni {
 	margin:15px;
 	padding:0;
-	outline:1px solid #000;
-    display:inline-block;
+    display: inline-flex;
     border-style: solid;
-	border-color: black;
-}
+	border-color: rgb(146, 36, 36);
+	border-radius:50px;
+	/* background:orange; */
+	/* z-index: -1; */
+} 
 
 
-
-.grid-ombrelloni img {
-   width: 80%;
+.grid-ombrelloni-img {
+   width: 100%;
    position: center;
+   border-radius:50px;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
 }
 
 .selectedList {
@@ -38,6 +48,5 @@
 	line-height: 10;
 	color: red;
 	top: 30px;
-
-
 }
+

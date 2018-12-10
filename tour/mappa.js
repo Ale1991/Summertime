@@ -16,16 +16,35 @@ function load()
 	},
 		
 	success: function(data){
-		//mappa=data;
-		console.dir(data);
+		mappa=data;
+		console.dir(mappa);
+		var dati = data.splice(data.length -1 , 1);
+		
+		
+
+
 		
 		var containertitolo =document.getElementById("titolo-lido");
-		var titolo = document.createElement("h1");
-		containertitolo.appendChild(titolo);
 
-		var text = document.createTextNode('posto_' + this.id);
-		titolo.appendChild(text); 
 
+		var nomeLido = document.createElement("h1");
+		containertitolo.appendChild(nomeLido);
+		var textNomeLido = document.createTextNode('Lido ' + dati[0].nomeLido);		
+		nomeLido.appendChild(textNomeLido); 	
+		
+        var nomeGestore = document.createElement("h3");
+		containertitolo.appendChild(nomeGestore);
+		var textNomeGestore = document.createTextNode('Di: ' + dati[0].cognome+ ' ' + dati[0].nome);//
+		nomeGestore.appendChild(textNomeGestore);
+
+
+		var idLido = document.createElement("h6");
+		containertitolo.appendChild(idLido);
+		var textIdLido = document.createTextNode('Id Lido: ' + dati[0].idLido);
+		idLido.appendChild(textIdLido); 
+
+		
+		
 
 
 		var lastElement = data[data.length - 1].riga;
@@ -74,7 +93,9 @@ function load()
 		};
 		$(".grid-ombrelloni").width(40);
 		$(".grid-ombrelloni").height(40);
-		$(".grid-ombrelloni").append('<img id="image" src="umbrella.jpg" />')
+		$(".grid-ombrelloni").append('<img class ="grid-ombrelloni-img" src="umbrella.jpg" />')
+		//$(".grid-ombrelloni").append('<img class="img-circle" src="umbrella.jpg" />')
+
 		
 
 	}

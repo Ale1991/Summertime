@@ -16,15 +16,15 @@ if (0 > version_compare(PHP_VERSION, '5')) {
 class ELido
 {
     
-    public $nomeLido = null;
-    public $IDLido;
-    public $numeroOmbrelloni = null;
-    public $indirizzo = null;
-    public $righe = null;
-    public $colonne = null;
-    public $griglia;
-    public $dataApertura;
-    public $dataChiusura;
+    private $nomeLido = null;
+    private $IDLido;
+    private $numeroOmbrelloni = null;
+    private $indirizzo = null;
+    private $righe = null;
+    private $colonne = null;
+    private $griglia;
+    private $dataApertura;
+    private $dataChiusura;
 
     public function __construct ($nomeLido, $gestore , $indirizzo)//($righe,$colonne,$nomeLido,$indirizzo)
     {
@@ -37,8 +37,8 @@ class ELido
 
 
 
-    public function setNome($nomeLido){$this->nomeLido=$nomeLido;}
-    public function getNome(){return $this->nomeLido;}
+    public function setNomeLido($nomeLido){$this->nomeLido=$nomeLido;}
+    public function getNomeLido(){return $this->nomeLido;}
     public function setIndirizzo($indirizzo){$this->indirizzo=$indirizzo;}
     public function getIndirizzo(){return $this->indirizzo;}
     public function setRighe($righe){$this->righe=$righe;}

@@ -16,33 +16,37 @@ $gestore->aggiungiLido($nomeLido,$indirizzoLido);
 
 $a=$gestore->getLidi();
 $lidouno=$a[0];
-$lidouno->setRighe(2);
-$lidouno->setColonne(4);
+$lidouno->setRighe(8);
+$lidouno->setColonne(16);
 //$lidouno->setDataApertura(01/06/2018);
 //$lidouno->setDataChiusura(30/09/2018);
 $lidouno->generaGriglia();
 $griglia=$lidouno->getGriglia();
 
+ for($i=0;$i<count($griglia);$i++)
+  {
+      $array[$i]=[
+          'riga' => $griglia[$i]->getRiga(),
+          'colonna' => $griglia[$i]->getColonna(),
+          'id' => $griglia[$i]->getID(),
+          'occupato' => $griglia[$i]->getOccupato(),
+      ];
+    }
 
-//print_r($map);
-//echo json_encode($griglia);
-//$map = array_merge($gestore, $griglia);
-//echo json_encode($gestore);
-$dati = $gestore->getNome() . $gestore->getCognome() . $lidouno->getNome() . $lidouno->getIdLido();
+      $dati= [
+        'idLido' => $lidouno->getIdLido(),
+        'nomeLido' => $lidouno->getNomeLido(),
+        'nomeUtente' => $gestore->getNomeUtente(),
+        'password' => $gestore->getPassword(),
+        'loginStatus' => $gestore->getLoginStatus(),
+        'nome' => $gestore->getNome(),
+        'cognome' => $gestore->getCognome(),
+        'email' => $gestore->getEmail(),
+        'isGestore' => $gestore->getIsGestore(),
+        'isAmministratore' => $gestore->getIsAmministratore()
+      ];
 
-$arrayGestore = [
-     $gestore
-    //'nome' => $gestore->getNome(),
-    //'cognome' => $gestore->getCognome(),
-    //'nomeLido' => $lidouno->getNome(),
-    //'idLido' => $lidouno->getIdLido(),
-    //'dataApertura' => $lidouno->getDataApertura(),
-    //'dataChiusura' => $lidouno->getDataChiusura(),
-
-];
-
-
-$array = array_merge($arrayGestore , $griglia);
-echo json_encode($griglia);
+$array[]=$dati;
+echo json_encode($array);
 //print_r($array);
 ?>

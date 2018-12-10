@@ -1,9 +1,4 @@
 <?php
-error_reporting(E_ALL);
-if (0 > version_compare(PHP_VERSION, '5')) {//da vedere bene
-    die('This file was generated for PHP 5');
-}
-
 //require_once('class.Lido.php');
 //require_once('class.Prenotazione.php');
 
@@ -15,11 +10,11 @@ if (0 > version_compare(PHP_VERSION, '5')) {//da vedere bene
  * */
 class EOmbrellone
 {
-    public $riga;
-    public $colonna;
-    public $occupato =false;
-    public $id; 
-    //public $idLido;
+    private $riga;
+    private $colonna;
+    private $occupato ='false';
+    private $id; 
+    private $idLido;
 
          public function __construct ($r,$c)
          {
