@@ -9,6 +9,8 @@ function load()
 	cache: false,
 	async: false,
 	dataType: 'json',
+	
+			
 	data: {
 		'session': '<?php echo md5(uniqid(mt_rand(),true))?>', 
 		'id': 17
@@ -17,7 +19,7 @@ function load()
 		
 	success: function(data){
 		mappa=data;
-		console.dir(mappa);
+		//console.dir(mappa);
 		var dati = data.splice(data.length -1 , 1);
 		
 		
@@ -96,8 +98,6 @@ function load()
 				}
 				i++;
 			};
-
-			
 		};
 	}
 });
@@ -144,15 +144,17 @@ document.addEventListener("DOMContentLoaded", function () { //javascript pure do
 				elem.parentNode.removeChild(elem);
 			}
 		}
+
+
 	})
+	//console.log(document.getElementById('submit'))
+/* 	var button = document.getElementsByName('submitdata');
+	button.submit();
+	console.log(button); */
+
+
 })
 
 
 
 //function per debug variabili con button associato nell'HTML
-function checkdiv() {
-	
-	
-
-	console.log(container);
-}

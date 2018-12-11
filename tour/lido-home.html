@@ -130,14 +130,14 @@
 											<div class="sidebar-wrap">
 												<div class="side search-wrap animate-box">
 													<h3 class="sidebar-heading">Scegli il tuo posto!</h3>
-													<form method="post" class="colorlib-form">
+													<form method="POST" class="colorlib-form" name="submitdata">
 														<div class="row">
 															<div class="col-md-12">
 																<div class="form-group">
 																	<label for="date">Check-in:</label>
 																	<div class="form-field">
 																		<i class="icon icon-calendar2"></i>
-																		<input type="text" id="date" class="form-control date" placeholder="Check-in date">
+																		<input type="text" id="date-in" class="form-control date" placeholder="Check-in date">
 																	</div>
 																</div>
 															</div>
@@ -146,12 +146,12 @@
 																	<label for="date">Check-out:</label>
 																	<div class="form-field">
 																		<i class="icon icon-calendar2"></i>
-																		<input type="text" id="date" class="form-control date" placeholder="Check-out date">
+																		<input type="text" id="date-out" class="form-control date" placeholder="Check-out date">
 																	</div>
 																</div>
 															</div>
 															<div class="col-md-12">
-																<input type="submit" name="submit" id="submit" value="Find Hotel" class="btn btn-primary btn-block">
+																<input type="submit" name="submit" id="submit" value="VERIFICA DISPONIBILITA'" class="btn btn-primary btn-block">
 															</div>
 														</div>
 													</form>
@@ -262,7 +262,7 @@
 	<script src="js/bootstrap-datepicker.js"></script>
 	<!-- Stellar Parallax -->
 	<script src="js/jquery.stellar.min.js"></script>
-
+	
 	<!-- Main -->
 	<script src="js/main.js"></script>
 
