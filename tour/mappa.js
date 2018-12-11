@@ -9,6 +9,7 @@ function load()
 	cache: false,
 	async: false,
 	dataType: 'json',
+	AccessControlAllowOrigin: true,
 	
 			
 	data: {
