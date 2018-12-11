@@ -51,14 +51,13 @@ function load()
 		var numerorighe = lastElement.charCodeAt(0) - 64 ;
 		var numerocolonne = data[data.length - 1].colonna;
 		
-		document.getElementById("container-ombrelloni").style.width =  40*1.9*numerocolonne + "px";
-		
-		
+		document.getElementById("container-ombrelloni").style.width =  40*1.8*numerocolonne + "px";//set logica dimensione righe
+		document.getElementById("container-ombrelloni").style.backgroundImage = "url('sabbia.jpg')";
+			
 		var i=0;
 		for (var rows = 0; rows < numerorighe; rows++) {
 			for (var columns = 0; columns < numerocolonne; columns++) {
 				//$("#container").append('<div class=grid id=' + mappa[i].id + '>  </div>');//sintassi jquery
-
 				var element = document.createElement("div");//sintassi pure js
 				var container = document.getElementById("container-ombrelloni");
 				container.appendChild(element);
@@ -86,18 +85,20 @@ function load()
 				var divSelected = document.createAttribute("selected");
 				divSelected.value = "false";
 				element.setAttributeNode(divSelected);
+
+				if (element.getAttributeNode("occupato").value == 'false') 
+				{ 
+					element.style.borderColor = "green";
+				}
+				else{
+					element.style.borderColor = "red";
+					element.style.pointerEvents = "none";
+				}
 				i++;
 			};
 
 			
 		};
-		$(".grid-ombrelloni").width(40);
-		$(".grid-ombrelloni").height(40);
-		$(".grid-ombrelloni").append('<img class ="grid-ombrelloni-img" src="umbrella.jpg" />')
-		//$(".grid-ombrelloni").append('<img class="img-circle" src="umbrella.jpg" />')
-
-		
-
 	}
 });
 }
@@ -129,7 +130,7 @@ document.addEventListener("DOMContentLoaded", function () { //javascript pure do
 			var text = document.createTextNode('posto_'+this.id);
 			element.appendChild(text); 
 			
-			clickedDiv.style.borderColor = "green";
+			clickedDiv.style.borderColor = "blue";
 			//console.log(document.getElementById('list-'+this.id));
  
 		}
@@ -138,7 +139,7 @@ document.addEventListener("DOMContentLoaded", function () { //javascript pure do
 			if (clickedDiv.getAttribute("selected") == 'true') 
 			{
 				clickedDiv.setAttribute("selected", 'false');
-				clickedDiv.style.borderColor = "black";
+				clickedDiv.style.borderColor = "green";
 				var elem = document.getElementById('list-' + this.id);
 				elem.parentNode.removeChild(elem);
 			}

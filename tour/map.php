@@ -11,13 +11,13 @@ $n='32';
 $com='Sulmona';
 $prov='AQ';
 $indirizzoLido=new EIndirizzo($v,$n,$com,$prov);
-$nomeLido='Lampara';
+$nomeLido='Alcyone';
 $gestore->aggiungiLido($nomeLido,$indirizzoLido);
 
 $a=$gestore->getLidi();
 $lidouno=$a[0];
-$lidouno->setRighe(8);
-$lidouno->setColonne(16);
+$lidouno->setRighe(6);
+$lidouno->setColonne(14);
 //$lidouno->setDataApertura(01/06/2018);
 //$lidouno->setDataChiusura(30/09/2018);
 $lidouno->generaGriglia();
@@ -45,7 +45,7 @@ $griglia=$lidouno->getGriglia();
         'isGestore' => $gestore->getIsGestore(),
         'isAmministratore' => $gestore->getIsAmministratore()
       ];
-
+$array[0]['occupato'] = 'true';
 $array[]=$dati;
 echo json_encode($array);
 //print_r($array);

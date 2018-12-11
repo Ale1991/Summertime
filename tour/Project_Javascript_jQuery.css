@@ -1,4 +1,4 @@
-/* .container-ombrelloni2 {
+/* .container-ombrelloni {
 	position: relative;
 	top: 30px;
 	outline:2px solid #000;
@@ -19,12 +19,16 @@
     border-style: solid;
 	border-color: rgb(146, 36, 36);
 	border-radius:50px;
+	width: 40px;
+	height: 40px;
+	content:url(umbrella.jpg);
+	user-select: none;
 	/* background:orange; */
 	/* z-index: -1; */
 } 
 
 
-.grid-ombrelloni-img {
+/* .grid-ombrelloni-img {
    width: 100%;
    position: center;
    border-radius:50px;
@@ -32,8 +36,8 @@
     -khtml-user-select: none;
     -moz-user-select: none;
     -o-user-select: none;
-    user-select: none;
-}
+	user-select: none;
+} */
 
 .selectedList {
 	position: relative;
