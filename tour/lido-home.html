@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
+
+<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Tour Template</title>
@@ -9,19 +10,19 @@
 	<meta name="keywords" content="" />
 	<meta name="author" content="" />
 
-  <!-- Facebook and Twitter integration -->
-	<meta property="og:title" content=""/>
-	<meta property="og:image" content=""/>
-	<meta property="og:url" content=""/>
-	<meta property="og:site_name" content=""/>
-	<meta property="og:description" content=""/>
+	<!-- Facebook and Twitter integration -->
+	<meta property="og:title" content="" />
+	<meta property="og:image" content="" />
+	<meta property="og:url" content="" />
+	<meta property="og:site_name" content="" />
+	<meta property="og:description" content="" />
 	<meta name="twitter:title" content="" />
 	<meta name="twitter:image" content="" />
 	<meta name="twitter:url" content="" />
 	<meta name="twitter:card" content="" />
 
 	<link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
-	
+
 	<!-- Animate.css -->
 	<link rel="stylesheet" href="css/animate.css">
 	<!-- Icomoon Icon Fonts-->
@@ -38,7 +39,7 @@
 	<!-- Owl Carousel -->
 	<link rel="stylesheet" href="css/owl.carousel.min.css">
 	<link rel="stylesheet" href="css/owl.theme.default.min.css">
-	
+
 	<!-- Date Picker -->
 	<link rel="stylesheet" href="css/bootstrap-datepicker.css">
 	<!-- Flaticons  -->
@@ -61,11 +62,12 @@
 	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.17/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.17/jquery-ui.min.js"></script>
-		<!--Script js per costruzione griglia  -->
+	<!--Script js per costruzione griglia  -->
 	<script type="text/javascript" src="mappa.js"></script>
-	</head>
-	<body>
-		
+</head>
+
+<body>
+
 	<div class="colorlib-loader"></div>
 
 	<div id="page">
@@ -102,21 +104,21 @@
 		<aside id="colorlib-hero">
 			<div class="flexslider">
 				<ul class="slides">
-			   	<li style="background-image: url(images/cover-img-4.jpg);">
-			   		<div class="overlay"></div>
-			   		<div class="container-fluid">
-			   			<div class="row">
-				   			<div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
-				   				<div class="slider-text-inner text-center">
-				   					<h2>by colorlib.com</h2>
-				   					<h1>Hotel Overview</h1>
-				   				</div>
-				   			</div>
-				   		</div>
-			   		</div>
-			   	</li>
-			  	</ul>
-		  	</div>
+					<li style="background-image: url(images/cover-img-4.jpg);">
+						<div class="overlay"></div>
+						<div class="container-fluid">
+							<div class="row">
+								<div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
+									<div class="slider-text-inner text-center">
+										<h2>by colorlib.com</h2>
+										<h1>Hotel Overview</h1>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
 		</aside>
 
 		<div class="colorlib-wrap">
@@ -124,46 +126,47 @@
 				<div class="row">
 					<div class="col-md-9">
 						<div class="row">
-							<div class="col-md-4 col-md-offset-0 heading2 animate-box" id="titolo-lido"></div>	
-										<!-- SIDEBAR-->
-										<div class="col-md-6">
-											<div class="sidebar-wrap">
-												<div class="side search-wrap animate-box">
-													<h3 class="sidebar-heading">Scegli il tuo posto!</h3>
-													<form method="POST" class="colorlib-form" name="submitdata">
-														<div class="row">
-															<div class="col-md-12">
-																<div class="form-group">
-																	<label for="date">Check-in:</label>
-																	<div class="form-field">
-																		<i class="icon icon-calendar2"></i>
-																		<input type="text" id="date-in" class="form-control date" placeholder="Check-in date">
-																	</div>
-																</div>
-															</div>
-															<div class="col-md-12">
-																<div class="form-group">
-																	<label for="date">Check-out:</label>
-																	<div class="form-field">
-																		<i class="icon icon-calendar2"></i>
-																		<input type="text" id="date-out" class="form-control date" placeholder="Check-out date">
-																	</div>
-																</div>
-															</div>
-															<div class="col-md-12">
-																<input type="submit" name="submit" id="submit" value="VERIFICA DISPONIBILITA'" class="btn btn-primary btn-block">
-															</div>
+							<div class="col-md-4 col-md-offset-0 heading2 animate-box" id="titolo-lido"></div>
+							<!-- SIDEBAR-->
+							<div class="col-md-6">
+								<div class="sidebar-wrap">
+									<div class="side search-wrap animate-box">
+										<h3 class="sidebar-heading">Scegli il tuo posto!</h3>
+										<form  class="colorlib-form" name="submitdata"><!--method="POST"  -->
+											<div class="row">
+												<div class="col-md-12">
+													<div class="form-group">
+														<label for="date">Check-in:</label>
+														<div class="form-field">
+															<i class="icon icon-calendar2"></i>
+															<input type="text" id="dateIn" class="form-control date" placeholder="Check-in date">
 														</div>
-													</form>
+													</div>
 												</div>
+												<div class="col-md-12">
+													<div class="form-group">
+														<label for="date">Check-out:</label>
+														<div class="form-field">
+															<i class="icon icon-calendar2"></i>
+															<input type="text" id="dateOut" class="form-control date" placeholder="Check-out date">
+														</div>
+													</div>
+												</div>
+												<div class="col-md-12">
+													<input type="submit" name="submit" id="submit" value="VERIFICA DISPONIBILITA'" class="btn btn-primary btn-block">
+												</div>
+												<ul id='form-messages'></ul>
 											</div>
-										</div>
+										</form>
+									</div>
+								</div>
+							</div>
 							<div class="container-fluid">
-								<div class="wrap-division">								
+								<div class="wrap-division">
 									<div class="row">
 										<div class="col-md-12 animate-box">
 											<div class="room-wrap">
-												<div  id="container-ombrelloni"></div>
+												<div id="container-ombrelloni"></div>
 												<ul class="col-md-12 animate-box" id="selectedList">LISTA OMBRELLONI SELEZIONATI</ul>
 											</div>
 										</div>
@@ -181,7 +184,8 @@
 				<div class="row row-pb-md">
 					<div class="col-md-3 colorlib-widget">
 						<h4>Tour Agency</h4>
-						<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit. Eos cumque dicta adipisci architecto culpa amet.</p>
+						<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit. Eos cumque dicta adipisci
+							architecto culpa amet.</p>
 						<p>
 							<ul class="colorlib-social-icons">
 								<li><a href="#"><i class="icon-twitter"></i></a></li>
@@ -262,10 +266,10 @@
 	<script src="js/bootstrap-datepicker.js"></script>
 	<!-- Stellar Parallax -->
 	<script src="js/jquery.stellar.min.js"></script>
-	
+
 	<!-- Main -->
 	<script src="js/main.js"></script>
 
-	</body>
-</html>
+</body>
 
+</html>

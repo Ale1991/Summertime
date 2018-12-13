@@ -16,7 +16,7 @@ $gestore->aggiungiLido($nomeLido,$indirizzoLido);
 
 $a=$gestore->getLidi();
 $lidouno=$a[0];
-$lidouno->setRighe(6);
+$lidouno->setRighe(8);
 $lidouno->setColonne(14);
 //$lidouno->setDataApertura(01/06/2018);
 //$lidouno->setDataChiusura(30/09/2018);
@@ -29,7 +29,7 @@ $griglia=$lidouno->getGriglia();
           'riga' => $griglia[$i]->getRiga(),
           'colonna' => $griglia[$i]->getColonna(),
           'id' => $griglia[$i]->getID(),
-          'occupato' => $griglia[$i]->getOccupato(),
+          'occupato' => $griglia[$i]->getOccupato(),//set  "true" 
       ];
     }
 

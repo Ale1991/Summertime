@@ -42,16 +42,37 @@ class CPrenotazione
         {
         $vpren=new VPrenotazione();
         $vpren->MostraFormPrenotazione($lido, $utente);
-        
-        }
-        
-    }
-  
-    
-    
-    
+        }   
+    }   
 }
+
+$date_in = isset($_POST['dateIn']) ? $_POST['dateIn'] : '';
+$ok = true;
+$messages = array();
+
+if (!isset($date_in) || empty($date_in) ){
+    $ok = false;
+    $messages[] = 'DATE-IN cannot be empty';
+}
+
+if ($ok) {
     
+            $ok = true;
+            $messages[] = 'Successful date choise!';
+        //if ($date_in === 'dcode' ) {
+           // $ok = true;
+            //$messages[] = 'Successful date choise!';
+        //} else {
+            //$ok = false;
+            //$messages[] = 'Incorrect date!';
+        //}
+    }
+    echo json_encode(
+        array(
+            'ok' => $ok,
+            'messages' => $messages
+        )
+    );
 
     //put your code here
-
+?>
