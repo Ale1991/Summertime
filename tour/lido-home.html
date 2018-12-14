@@ -132,10 +132,15 @@
 								<div class="sidebar-wrap">
 									<div class="side search-wrap animate-box">
 										<h3 class="sidebar-heading">Scegli il tuo posto!</h3>
-										<form  class="colorlib-form" name="submitdata"><!--method="POST"  -->
+										<form class="colorlib-form" name="submitdata">
+											<!--method="POST"  -->
 											<div class="row">
+												<label class="container">Singolo giorno
+													<input type="checkbox" id="singleDay-check" checked="checked">
+													<span class="checkmark"></span>
+												</label>
 												<div class="col-md-12">
-													<div class="form-group">
+													<div class="form-group" id="form-group in">
 														<label for="date">Check-in:</label>
 														<div class="form-field">
 															<i class="icon icon-calendar2"></i>
@@ -144,7 +149,7 @@
 													</div>
 												</div>
 												<div class="col-md-12">
-													<div class="form-group">
+													<div class="form-group" id="form-group out">
 														<label for="date">Check-out:</label>
 														<div class="form-field">
 															<i class="icon icon-calendar2"></i>
@@ -155,7 +160,6 @@
 												<div class="col-md-12">
 													<input type="submit" name="submit" id="submit" value="VERIFICA DISPONIBILITA'" class="btn btn-primary btn-block">
 												</div>
-												<ul id='form-messages'></ul>
 											</div>
 										</form>
 									</div>
@@ -168,6 +172,7 @@
 											<div class="room-wrap">
 												<div id="container-ombrelloni"></div>
 												<ul class="col-md-12 animate-box" id="selectedList">LISTA OMBRELLONI SELEZIONATI</ul>
+												<ul class="col-md-12 animate-box" id="errorMessages">LISTA ERRORI</ul>
 											</div>
 										</div>
 									</div>

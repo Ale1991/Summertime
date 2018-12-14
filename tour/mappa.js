@@ -94,25 +94,10 @@ function getJSONGrid(data) {
 $(function () {
 	load();
 });
-
-function postJSONDate() {
-	const form = {
-		dateIn: document.getElementById('dateIn'),
-		dateOut: document.getElementById('dateOut'),
-		//submit: document.getElementById('submit'),
-		//messages : document.getElementById('form-messages'),
-	};
-	requestData = `dateIn=${form.dateIn.value}&dateOut=${form.dateOut.value}`//
-	console.log(requestData);
-
-}
-
-
 //SISTEMARE LA FUNCTION CALL PER AJAX POST A CPrenotazione.php NEL DOM READY CON EVENT LISTENER
 
-
-function sendDate() {
-	$.ajax({
+/* function sendDate() {
+	var jqXHR = $.ajax({
 		url: "/tour/Control/CPrenotazione.php",
 		type: "POST",
 		cache: false,
@@ -121,7 +106,7 @@ function sendDate() {
 
 		data: requestData,
 
-		success: postJSONDate,
+		success: postJSONDate(),
 
 		error: function (xhr, status, error) {
 			var err = eval("(" + xhr.responseText + ")");
@@ -129,15 +114,85 @@ function sendDate() {
 		}
 	});
 	console.log("PRESSED");
+} */
+
+function sendDate() {
+	const form = {
+		dateIn: document.getElementById('dateIn'),
+		dateOut: document.getElementById('dateOut'),
+		//submit: document.getElementById('submit'),
+		messages: document.getElementById('errorMessages'),
+	};
+
+	if (form.dateOut.value < form.dateIn.value) {
+		console.log("data out < data in")
+	} else {
+		console.log("date ok!!")
+	}
+
+	requestData = `dateIn=${form.dateIn.value}&dateOut=${form.dateOut.value}`//
+	var ajaxPOST = $.post("/tour/Control/CPrenotazione.php", requestData, function () {
+		//console.log(requestData);
+		//console.log(ajaxPOST.responseText.ok.value);
+	});
+
+	const li = document.createElement("li");
+	li.textContent = JSON.stringify(ajaxPOST.responseText);
+
+	//form.messages.appendChild(li);
+	console.log(li.textContent);
+
 }
 
 
 
+$(document).ready(function () {  //jQuery string (tolto per eliminare la dipendenza da jQuery)
+	//document.addEventListener("DOMContentLoaded", function () { //javascript pure dom ready
+
+	$('#dateIn').datepicker('setStartDate', 'today');
+	$('#dateOut').datepicker('setStartDate', 'today');
+	
+	document.getElementById('form-group out').style.display = 'none';
+
+	$('#singleDay-check').on('change', function () {
+		var val = this.checked ;
+		
+
+		if (this.checked === false) {
+			document.getElementById('form-group out').style.display = 'block';
+			$("#dateIn").datepicker({
+				todayBtn: 1,
+				autoclose: true,
+				startDate: 'today'
+			}).on('changeDate', function (selected) {
+				var minDate = new Date(selected.date.valueOf());
+				$('#dateOut').datepicker('setStartDate', minDate);
+				//$('#enddate').datepicker('setDate', minDate); // <--THIS IS THE LINE ADDED
+			});
+		}
+
+		else {
+			document.getElementById('form-group out').style.display = 'none';
+			$("#dateIn").datepicker({
+				todayBtn: 1,
+				autoclose: true,
+				startDate: 'today'
+			}).on('changeDate', function (selected) {
+				var minDate = new Date(selected.date.valueOf());
+				$('#dateOut').datepicker('setStartDate', minDate);
+				//$('#dateOut').datepicker('setDate', minDate); // <--THIS IS THE LINE ADDED
+				$('#dateOut').datepicker('setDate', minDate);
+
+			})
+		}
+
+	});
 
 
 
-//$(document).ready(function () {  //jQuery string (tolto per eliminare la dipendenza da jQuery)
-document.addEventListener("DOMContentLoaded", function () { //javascript pure dom ready
+
+
+
 
 	$(".grid-ombrelloni").click(function () {
 		var clickedDiv = document.getElementById(this.id);
@@ -147,7 +202,6 @@ document.addEventListener("DOMContentLoaded", function () { //javascript pure do
 			var element = document.createElement("li");
 			var container = document.getElementById("selectedList");
 			container.appendChild(element);
-
 			var liID = document.createAttribute("id");
 			liID.value = "list-" + this.id;
 			element.setAttributeNode(liID);
@@ -168,40 +222,9 @@ document.addEventListener("DOMContentLoaded", function () { //javascript pure do
 	})
 	//console.log(document.getElementById('date-in'));
 
-/* 	const form = {
-		dateIn: document.getElementById('dateIn'),
-		dateOut: document.getElementById('dateOut'),
-		submit: document.getElementById('submit'),
-		
-	}; */
-
-	//$(".submit").click(sendDate);
-	var btn =document.getElementById("submit");
+	var btn = document.getElementById("submit");
 	btn.addEventListener('click', sendDate);
-	//$("submit").click(function () {console.log("button pressed")} )
-	//jquery sintax sostituisce ->
-/* 	form.submit.addEventListener('click', () => {
-		//console.log('BUTTON PRESSEEEEEEEED');
-		const request = new XMLHttpRequest();
-		request.onload = () => {
-			let responseObject = null;
-			try {
-				responseObject = JSON.parse(request.responseText);
-			} catch (e) {
-				console.error('could not parse JSON')
-			}
-			if (responseObject) {
-				handleResponse(responseObject);
-			}
-			//console.log(request.responseText)
-		};
 
-		const requestData = `dateIn=${form.dateIn.value}&dateOut=${form.dateOut.value}`//
-		//console.log(requestData);
-		request.open('post', '/tour/Control/CPrenotazione.php')
-		request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-		request.send(requestData);
-	}); */
 })
 
 
@@ -209,9 +232,3 @@ function handleResponse(responseObj) {
 	console.log(responseObj);
 }
 
-/* var a = document.getElementById("submit");
-console.log(a);
- */
-/* $(".submit").addEventListener('click', () => {
-		console.log('BUTTON PRESSEEEEEEEED');
-}) */
