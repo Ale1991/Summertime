@@ -151,48 +151,35 @@ $(document).ready(function () {  //jQuery string (tolto per eliminare la dipende
 
 	$('#dateIn').datepicker('setStartDate', 'today');
 	$('#dateOut').datepicker('setStartDate', 'today');
-	
 	document.getElementById('form-group out').style.display = 'none';
 
 	$('#singleDay-check').on('change', function () {
-		var val = this.checked ;
-		
 
+		$('#dateIn').val('');
+		$('#dateOut').val('');
+		document.getElementById('form-group out').style.display = 'none';
 		if (this.checked === false) {
-			document.getElementById('form-group out').style.display = 'block';
-			$("#dateIn").datepicker({
-				todayBtn: 1,
-				autoclose: true,
-				startDate: 'today'
-			}).on('changeDate', function (selected) {
+
+			$("#dateIn").datepicker().on('changeDate', function (selected) {
 				var minDate = new Date(selected.date.valueOf());
 				$('#dateOut').datepicker('setStartDate', minDate);
-				//$('#enddate').datepicker('setDate', minDate); // <--THIS IS THE LINE ADDED
+				if (this.checked === false) {
+					document.getElementById('form-group out').style.display = 'block';
+				}
+				else {
+					document.getElementById('form-group out').style.display = 'none';
+				}
 			});
 		}
-
 		else {
-			document.getElementById('form-group out').style.display = 'none';
-			$("#dateIn").datepicker({
-				todayBtn: 1,
-				autoclose: true,
-				startDate: 'today'
-			}).on('changeDate', function (selected) {
+			$("#dateIn").datepicker().on('changeDate', function (selected) {
+				document.getElementById('form-group out').style.display = 'none';
 				var minDate = new Date(selected.date.valueOf());
 				$('#dateOut').datepicker('setStartDate', minDate);
-				//$('#dateOut').datepicker('setDate', minDate); // <--THIS IS THE LINE ADDED
 				$('#dateOut').datepicker('setDate', minDate);
-
 			})
 		}
-
 	});
-
-
-
-
-
-
 
 	$(".grid-ombrelloni").click(function () {
 		var clickedDiv = document.getElementById(this.id);
@@ -226,9 +213,3 @@ $(document).ready(function () {  //jQuery string (tolto per eliminare la dipende
 	btn.addEventListener('click', sendDate);
 
 })
-
-
-function handleResponse(responseObj) {
-	console.log(responseObj);
-}
-
