@@ -1,4 +1,5 @@
 var requestData = null;
+var mappa;
 function load() {
 	$.ajax({
 		url: "map.php",
@@ -6,20 +7,14 @@ function load() {
 		cache: false,
 		async: false,
 		dataType: 'json',
-
-		data: {
-			'session': '<?php echo md5(uniqid(mt_rand(),true))?>',
-			'id': 17
-
-		},
-
+		data: { 'session': '<?php echo md5(uniqid(mt_rand(),true))?>', 'id': 17 },
 		success: getJSONGrid
 	});
 }
-
+//var ajaxGET = $.get("map.php", getJSONGrid());
 
 function getJSONGrid(data) {
-
+	mappa = data;
 	var dati = data.splice(data.length - 1, 1);
 
 	var containertitolo = document.getElementById("titolo-lido");
@@ -88,33 +83,11 @@ function getJSONGrid(data) {
 			i++;
 		};
 	};
-
 }
 
 $(function () {
 	load();
 });
-//SISTEMARE LA FUNCTION CALL PER AJAX POST A CPrenotazione.php NEL DOM READY CON EVENT LISTENER
-
-/* function sendDate() {
-	var jqXHR = $.ajax({
-		url: "/tour/Control/CPrenotazione.php",
-		type: "POST",
-		cache: false,
-		async: false,
-		//dataType: 'json',
-
-		data: requestData,
-
-		success: postJSONDate(),
-
-		error: function (xhr, status, error) {
-			var err = eval("(" + xhr.responseText + ")");
-			alert(err.Message);
-		}
-	});
-	console.log("PRESSED");
-} */
 
 function sendDate() {
 	const form = {
@@ -124,27 +97,28 @@ function sendDate() {
 		messages: document.getElementById('errorMessages'),
 	};
 
-	if (form.dateOut.value < form.dateIn.value) {
-		console.log("data out < data in")
-	} else {
-		console.log("date ok!!")
-	}
+	/* 	if (form.dateOut.value < form.dateIn.value) {
+			console.log(form.dateOut.value)
+		} else {
+			console.log("date ok!!")
+			
+		} */
+
 
 	requestData = `dateIn=${form.dateIn.value}&dateOut=${form.dateOut.value}`//
 	var ajaxPOST = $.post("/tour/Control/CPrenotazione.php", requestData, function () {
 		//console.log(requestData);
-		//console.log(ajaxPOST.responseText.ok.value);
+		console.log(ajaxPOST.responseText);
 	});
 
-	const li = document.createElement("li");
-	li.textContent = JSON.stringify(ajaxPOST.responseText);
-
-	//form.messages.appendChild(li);
-	console.log(li.textContent);
+	/* 	const li = document.createElement("li");
+		li.textContent =ajaxPOST.responseText;
+	
+		//form.messages.appendChild(li);
+		console.log(li.textContent); */
+		//SISTEMARE LISTA ERRORI SERVER RESPOST AL $_POST	
 
 }
-
-
 
 $(document).ready(function () {  //jQuery string (tolto per eliminare la dipendenza da jQuery)
 	//document.addEventListener("DOMContentLoaded", function () { //javascript pure dom ready
@@ -157,28 +131,18 @@ $(document).ready(function () {  //jQuery string (tolto per eliminare la dipende
 
 		$('#dateIn').val('');
 		$('#dateOut').val('');
-		document.getElementById('form-group out').style.display = 'none';
-		if (this.checked === false) {
-
-			$("#dateIn").datepicker().on('changeDate', function (selected) {
-				var minDate = new Date(selected.date.valueOf());
-				$('#dateOut').datepicker('setStartDate', minDate);
-				if (this.checked === false) {
-					document.getElementById('form-group out').style.display = 'block';
-				}
-				else {
-					document.getElementById('form-group out').style.display = 'none';
-				}
-			});
+		if (this.checked === true) {
+			document.getElementById('form-group out').style.display = 'none';
 		}
 		else {
-			$("#dateIn").datepicker().on('changeDate', function (selected) {
-				document.getElementById('form-group out').style.display = 'none';
-				var minDate = new Date(selected.date.valueOf());
-				$('#dateOut').datepicker('setStartDate', minDate);
-				$('#dateOut').datepicker('setDate', minDate);
-			})
+			document.getElementById('form-group out').style.display = 'block';
 		}
+	});
+
+	$("#dateIn").datepicker().on('changeDate', function (selected) {
+
+		$('#dateOut').datepicker('setStartDate', $('#dateIn').val());//FUNZIONANTE
+		$('#dateOut').datepicker('setDate', $('#dateIn').val());//FUNZIONANTE
 	});
 
 	$(".grid-ombrelloni").click(function () {

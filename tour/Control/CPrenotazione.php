@@ -47,12 +47,17 @@ class CPrenotazione
 }
 
 $date_in = isset($_POST['dateIn']) ? $_POST['dateIn'] : '';
+$date_out = isset($_POST['dateOut']) ? $_POST['dateOut'] : '';
 $ok = true;
 $messages = array();
 
 if (!isset($date_in) || empty($date_in) ){
     $ok = false;
     $messages[] = 'DATE-IN cannot be empty';
+}
+if (!isset($date_out) || empty($date_out) ){
+    $ok = false;
+    $messages[] = 'DATE-OUT cannot be empty';
 }
 
 if ($ok) {
@@ -75,4 +80,13 @@ if ($ok) {
     );
 
     //put your code here
+
+
+$file = 'date.txt';
+// Open the file to get existing content
+$current = file_get_contents($file);
+// Append a new person to the file
+$current .= "$date_in" . "->" . "$date_out\r\n";
+// Write the contents back to the file
+file_put_contents($file, $current);
 ?>
