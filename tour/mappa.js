@@ -207,9 +207,7 @@ $(document).ready(function () {  //jQuery string (tolto per eliminare la dipende
 			}
 		}
 	})
-	//console.log(document.getElementById('date-in'));
 
 	var btn = document.getElementById("submit");
 	btn.addEventListener('click', sendDate);
-
 })
