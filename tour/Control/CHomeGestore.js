@@ -1,8 +1,8 @@
-var requestData = null;
-var mappa;
+/* var requestData = null;
+var mappa; */
 function load() {
 	$.ajax({
-		url: "map.php",
+		url: "/tour/Control/CHomeGestore.php",
 		type: "GET",
 		cache: false,
 		async: false,
@@ -33,6 +33,11 @@ function getJSONGrid(data) {
 	containertitolo.appendChild(idLido);
 	var textIdLido = document.createTextNode('Id Lido: ' + dati[0].idLido);
 	idLido.appendChild(textIdLido);
+
+	var containerHeaderText = document.getElementById("headText");
+	var nomeLidoHead = document.createElement("h1");
+	containerHeaderText.appendChild(nomeLidoHead);
+	nomeLidoHead.appendChild(textNomeLido);
 
 	var lastElement = data[data.length - 1].riga;
 	var numerorighe = lastElement.charCodeAt(0) - 64;
@@ -94,30 +99,14 @@ function sendDate() {
 		dateIn: document.getElementById('dateIn'),
 		dateOut: document.getElementById('dateOut'),
 		//submit: document.getElementById('submit'),
-		messages: document.getElementById('errorMessages'),
+		//messages: document.getElementById('errorMessages'),
 	};
-
-	/* 	if (form.dateOut.value < form.dateIn.value) {
-			console.log(form.dateOut.value)
-		} else {
-			console.log("date ok!!")
-			
-		} */
-
 
 	requestData = `dateIn=${form.dateIn.value}&dateOut=${form.dateOut.value}`//
 	var ajaxPOST = $.post("/tour/Control/CPrenotazione.php", requestData, function () {
 		//console.log(requestData);
 		console.log(ajaxPOST.responseText);
 	});
-
-	/* 	const li = document.createElement("li");
-		li.textContent =ajaxPOST.responseText;
-	
-		//form.messages.appendChild(li);
-		console.log(li.textContent); */
-		//SISTEMARE LISTA ERRORI SERVER RESPOST AL $_POST	
-
 }
 
 $(document).ready(function () {  //jQuery string (tolto per eliminare la dipendenza da jQuery)
@@ -128,21 +117,18 @@ $(document).ready(function () {  //jQuery string (tolto per eliminare la dipende
 	document.getElementById('form-group out').style.display = 'none';
 
 	$('#singleDay-check').on('change', function () {
-
-		$('#dateIn').val('');
-		$('#dateOut').val('');
-		if (this.checked === true) {
-			document.getElementById('form-group out').style.display = 'none';
-		}
-		else {
-			document.getElementById('form-group out').style.display = 'block';
-		}
+		$('#dateIn').val('');//reset valori iniziali
+		$('#dateOut').val('');//reset valori iniziali
+		document.getElementById('form-group out').style.display = 'none';
 	});
 
 	$("#dateIn").datepicker().on('changeDate', function (selected) {
+		$('#dateOut').datepicker('setStartDate', $('#dateIn').val());//inizializzo l'inizio dei valori della data finale con quella iniziale
+		$('#dateOut').datepicker('setDate', $('#dateIn').val());//inizializzo la data finale con il valore di quella iniziale in modo da non far mandare il campo vuoto
 
-		$('#dateOut').datepicker('setStartDate', $('#dateIn').val());//FUNZIONANTE
-		$('#dateOut').datepicker('setDate', $('#dateIn').val());//FUNZIONANTE
+		if ($('#dateIn').val() != '' && document.getElementById('singleDay-check').checked == false) {
+			document.getElementById('form-group out').style.display = 'block';
+		}
 	});
 
 	$(".grid-ombrelloni").click(function () {
@@ -160,7 +146,6 @@ $(document).ready(function () {  //jQuery string (tolto per eliminare la dipende
 			element.appendChild(text);
 
 			clickedDiv.style.borderColor = "blue";
-			//console.log(document.getElementById('list-'+this.id));
 		}
 		else {
 			if (clickedDiv.getAttribute("selected") == 'true') {
@@ -173,5 +158,21 @@ $(document).ready(function () {  //jQuery string (tolto per eliminare la dipende
 	})
 
 	var btn = document.getElementById("submit");
-	btn.addEventListener('click', sendDate);
+	//btn.addEventListener('click', sendDate);//funzionante ma non gestisce il caso di campi vuoti
+	btn.addEventListener('click', function () {
+		var messaggioErrori = '';
+		if ($('#dateIn').val() == '') {
+			var containerErrori = document.getElementById("errorMessages");
+			messaggioErrori = "inserire la data di check in!";
+		}
+		if ($('#dateOut').val() == '' && document.getElementById('singleDay-check').checked == false) {
+			messaggioErrori += "inserire la data di check out!"
+		}
+		if (messaggioErrori == '') {
+			sendDate();
+		}
+		else {
+			alert(messaggioErrori);
+		}
+	})
 })

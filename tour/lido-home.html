@@ -63,7 +63,7 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.17/jquery-ui.min.js"></script>
 	<!--Script js per costruzione griglia  -->
-	<script type="text/javascript" src="mappa.js"></script>
+	<script type="text/javascript" src="/tour/Control/CHomeGestore.js"></script>
 </head>
 
 <body>
@@ -109,9 +109,9 @@
 						<div class="container-fluid">
 							<div class="row">
 								<div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
-									<div class="slider-text-inner text-center">
-										<h2>by colorlib.com</h2>
-										<h1>Hotel Overview</h1>
+									<div class="slider-text-inner text-center" id="headText">
+										<!-- 										<h2>by colorlib.com</h2>
+										<h1>Hotel Overview</h1> -->
 									</div>
 								</div>
 							</div>
@@ -133,7 +133,6 @@
 									<div class="side search-wrap animate-box">
 										<h3 class="sidebar-heading">Scegli il tuo posto!</h3>
 										<form class="colorlib-form" name="submitdata">
-											<!--method="POST"  -->
 											<div class="row">
 												<label class="container">Singolo giorno
 													<input type="checkbox" id="singleDay-check" checked="checked">
@@ -172,7 +171,6 @@
 											<div class="room-wrap">
 												<div id="container-ombrelloni"></div>
 												<ul class="col-md-12 animate-box" id="selectedList">LISTA OMBRELLONI SELEZIONATI</ul>
-												<ul class="col-md-12 animate-box" id="errorMessages">LISTA ERRORI</ul>
 											</div>
 										</div>
 									</div>
