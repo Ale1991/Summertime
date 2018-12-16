@@ -2,7 +2,8 @@
 var mappa; */
 function load() {
 	$.ajax({
-		url: "/tour/Control/CHomeGestore.php",
+		url: "CHomeGestoreServer.php",
+		//url: "map.php",
 		type: "GET",
 		cache: false,
 		async: false,
