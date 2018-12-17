@@ -11,7 +11,7 @@ require_once 'includes/autoload.inc.php';
  *
  * @author Stefano
  */
-class CPrenotazione
+/* class CPrenotazione
 {
     public function ImpostaFormPrenotazione($lido, $utente)
     {
@@ -38,7 +38,7 @@ class CPrenotazione
             $vpren->MostraFormPrenotazione($lido, $utente);
         }
     }
-}
+} */
 
 $data_in = isset($_POST['dataIn']) ? $_POST['dataIn'] : ''; //dati per effettuare query sul db
 $data_out = isset($_POST['dataOut']) ? $_POST['dataOut'] : ''; //dati per effettuare query sul db
@@ -47,13 +47,25 @@ $id_Utente = 'ALESSIOOOOOOO';
 $id_Lido = isset($_POST['idLido']) ? $_POST['idLido'] : ''; //dati per effettuare query sul db
 $ombrelloni = isset($_POST['ombrelloni']) ? $_POST['ombrelloni'] : ''; //dati per effettuare query sul db
 
+$nomel= 'ciccio';
+$indirizzo = 'Pescara';
+$lido = new ELido($nomel,$id_Utente,$indirizzo);
+$lido->setIdLido($id_Lido);
+
 for($i=0;$i<count($ombrelloni);$i++){
-    $pren = new EPrenotazione($data_in, $data_out, $ombrellone[$i], $id_Lido, $id_Utente);
+    $id = $ombrelloni[$i];
+    $riga=substr($id,0,1);
+    $colonna=substr($id,1);
+    $omb = new EOmbrellone($riga,$colonna,$indirizzo);
+
+    
+
+    $pren = new EPrenotazione($data_in, $data_out, $omb, $lido, $id_Utente);
     $fpren = new FPrenotazione();
     $fpren->inserisci($pren);
 }
 
-$file = 'prenotazioni.txt';
+$file = 'prenotazionisenza.txt';
 // Open the file to get existing content
 $current = file_get_contents($file);
 // Append a new person to the file

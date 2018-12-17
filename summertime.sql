@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Nov 28, 2018 alle 18:15
+-- Creato il: Dic 17, 2018 alle 11:33
 -- Versione del server: 10.1.30-MariaDB
 -- Versione PHP: 7.2.2
 
@@ -21,6 +21,33 @@ SET time_zone = "+00:00";
 --
 -- Database: `summertime`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `lido`
+--
+
+CREATE TABLE `lido` (
+  `IDLido` varchar(100) NOT NULL,
+  `nomeLido` varchar(100) NOT NULL,
+  `righe` int(3) NOT NULL,
+  `colonne` int(3) NOT NULL,
+  `dataApertura` date NOT NULL,
+  `dataChiusura` date NOT NULL,
+  `via` varchar(70) NOT NULL,
+  `civico` int(4) NOT NULL,
+  `comune` varchar(100) NOT NULL,
+  `provincia` text NOT NULL,
+  `idGestore` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dump dei dati per la tabella `lido`
+--
+
+INSERT INTO `lido` (`IDLido`, `nomeLido`, `righe`, `colonne`, `dataApertura`, `dataChiusura`, `via`, `civico`, `comune`, `provincia`, `idGestore`) VALUES
+('RSDVNTVRM66D763', 'Rosa dei venti', 3, 4, '2019-06-01', '2019-09-15', 'via roma', 66, 'Francavilla al Mare', 'CH', 'Mimmo');
 
 -- --------------------------------------------------------
 
@@ -65,14 +92,44 @@ CREATE TABLE `prenotazione` (
 --
 
 INSERT INTO `prenotazione` (`id`, `idLido`, `numOmbrellone`, `idUtente`, `dataInizio`, `dataFine`, `Effettuata`) VALUES
-(25, 'RSDVNTVRM66D763', 'A3', 'Alessio', '2018-05-03', '2018-05-08', '2018-11-20 15:30:08'),
-(26, 'RSDVNTVRM66D763', 'A3', 'Alessio', '2018-11-23', '2018-11-24', '2018-11-27 09:16:10'),
-(27, 'RSDVNTVRM66D763', 'C2', 'Alessio', '2018-05-03', '2018-05-15', '2018-11-27 09:17:28'),
-(28, 'RSDVNTVRM66D763', 'A3', 'Alessio', '2019-06-14', '2019-06-19', '2018-11-28 17:02:14');
+(39, 'RSDVNTVRM66D763', 'A3', 'Alessio', '2019-06-01', '2019-06-04', '2018-12-11 08:28:37'),
+(40, 'RSDVNTVRM66D763', 'C2', 'Alessio', '2019-06-01', '2019-06-04', '2018-12-11 08:29:54'),
+(41, 'RSDVNTVRM66D763', 'A3', 'Alessio', '2019-07-20', '2019-09-01', '2018-12-11 08:30:37');
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `utente`
+--
+
+CREATE TABLE `utente` (
+  `NomeUtente` varchar(50) NOT NULL,
+  `Email` varchar(60) NOT NULL,
+  `Password` varchar(60) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dump dei dati per la tabella `utente`
+--
+
+INSERT INTO `utente` (`NomeUtente`, `Email`, `Password`) VALUES
+('Alessio91', 'alessio.susco91@gmail.com', 'alessio'),
+('fggdgf', 'stefanomoren@gmail.com', '23456'),
+('Mimmo', 'mimmo@gmail.com', 'mimmo'),
+('satch93', 'satch@gmail.com', 'satch'),
+('sffsg', 'stefanomoren@gmail.com', 'dsrgddf'),
+('stefano', 'stefanomoren@gmail.com', 'stefano'),
+('steff', 'stefanomoren@gmail.com', 'wewe');
 
 --
 -- Indici per le tabelle scaricate
 --
+
+--
+-- Indici per le tabelle `lido`
+--
+ALTER TABLE `lido`
+  ADD PRIMARY KEY (`IDLido`);
 
 --
 -- Indici per le tabelle `ombrellone`
@@ -87,6 +144,12 @@ ALTER TABLE `prenotazione`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indici per le tabelle `utente`
+--
+ALTER TABLE `utente`
+  ADD PRIMARY KEY (`NomeUtente`);
+
+--
 -- AUTO_INCREMENT per le tabelle scaricate
 --
 
@@ -94,7 +157,7 @@ ALTER TABLE `prenotazione`
 -- AUTO_INCREMENT per la tabella `prenotazione`
 --
 ALTER TABLE `prenotazione`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -1,7 +1,7 @@
 const idUtente = 'Alessio1991'
 function load() {
 	$.ajax({
-		url: "CHomeGestoreServer.php",
+		url: 'CHomeGestoreServer.php',
 		//url: "map.php",
 		type: "GET",
 		cache: false,
@@ -108,7 +108,7 @@ function sendDate() {
 	};
 
 	requestData = `dateIn=${form.dateIn.value}&dateOut=${form.dateOut.value}&IdLido=${textIdLido.nodeValue}&nomeGestore=${textNomeGestore.nodeValue}`//
-	var ajaxPOST = $.get("/tour/Control/CVerificaDisponibilita.php", requestData, function () {
+	var ajaxPOST = $.get("/Control/CVerificaDisponibilita.php", requestData, function () {
 
 
 		var json = $.parseJSON(ajaxPOST.responseText)
@@ -238,7 +238,7 @@ $(document).ready(function () {  //jQuery string (tolto per eliminare la dipende
 				'idUtente' : idUtente//DA SISTEMARE LE VARIABILI DA INVIARE TRAMITE METODO POST JSON
 			}
 			console.log(datiPrenotazione)
-			var ajaxPOST = $.post("/tour/Control/CPrenotazione.php", datiPrenotazione, function () {
+			var ajaxPOST = $.post("CPrenotazione.php", datiPrenotazione, function () {
 				//var json = $.parseJSON(ajaxPOST.responseText);
 				console.log(ajaxPOST.responseText)
 			})
