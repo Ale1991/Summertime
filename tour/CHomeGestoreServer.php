@@ -1,5 +1,10 @@
 <?php
 require_once 'includes/autoload.inc.php';
+//RISORSA UTILIZZATA PER INIZIALIZZARE LA RISORSA lido-home.html passando due parametri con ajax.GET(userIdGestore,nomeLido)
+//la quale fara' query sul db per recuperare tutti i dati dei due oggetti i quali verranno restituiti al client javascript
+//come JSON, il quale verra' elaborato dal client javascript per costruire la pagina html
+
+
 $nome='Alessio';
 $cognome='Susco';
 $gestore=new EGestore('Alessio91911');
@@ -23,38 +28,39 @@ $lidouno->setColonne(5);
 $lidouno->generaGriglia();
 $griglia=$lidouno->getGriglia();
 
-$arrayDB = ['A1' , 'A2', 'A3' , 'A4', 'B1' , 'B2', 'B3' , 'B5'];//ARRAY DI STRINGE CONTENENTE GLI ID DEGLI OMBRELLONI OCCUPATI RITORNATI DALLA QUERY SUL DB
 
+//PRENDO I DATI ARRIVATI DALLA RICHIESTA ajax.GET
+$userIdGestore = isset($_GET['userId']) ? $_GET['userId'] : '';//$userIdGestore variabile da usare per query sul db per recuperare l'oggetto gestore
+$nomeLido = isset($_GET['nomeLido']) ? $_GET['nomeLido'] : '';//$nomeLido variabile da usare per query sul db per recuperare l'oggetto lido
+$gestore->setNomeUtente($userIdGestore);//utilizzo variabile per testare se il get ha avuto successo
+$lidouno->setNomeLido($nomeLido);//utilizzo variabile per testare se il get ha avuto successo
+$gestore->setNome($userIdGestore);//utilizzo variabile per testare se il get ha avuto successo
+
+//implementare codice che dati "userIdGestore" e "nomeLido" passati dal client tramite richiesta ajax.GET 
+//faccia query su db per recuperare tutto l'oggetto $gestore e $lido per poi utilizzare i loro metodi get
+//nella costruzione dell'array($array qui sotto) che verra' inviato come JSON al client
 for($i=0;$i<count($griglia);$i++){
-  if (in_array($griglia[$i]->getID(), $arrayDB)) {
-    $array[$i]=[
-          'riga' => $griglia[$i]->getRiga(),
-          'colonna' => $griglia[$i]->getColonna(),
-          'id' => $griglia[$i]->getID(),
-          'occupato' => 'true',//set  "true" 
-        ];
-      }
-      else{
-        $array[$i]=[
-          'riga' => $griglia[$i]->getRiga(),
-          'colonna' => $griglia[$i]->getColonna(),
-          'id' => $griglia[$i]->getID(),
-          'occupato' => $griglia[$i]->getOccupato(),//set  "true" 
-        ];
-      }
-    }
+  $array[$i]=[
+    'riga' => $griglia[$i]->getRiga(),
+    'colonna' => $griglia[$i]->getColonna(),
+    'id' => $griglia[$i]->getID(),
+    'occupato' => $griglia[$i]->getOccupato(),//set  "true" 
+  ];
+}
+
  $dati= [
-        'idLido' => $lidouno->getIdLido(),
-        'nomeLido' => $lidouno->getNomeLido(),
-        'nomeUtente' => $gestore->getNomeUtente(),
-        'password' => $gestore->getPassword(),
-        'loginStatus' => $gestore->getLoginStatus(),
-        'nome' => $gestore->getNome(),
-        'cognome' => $gestore->getCognome(),
-        'email' => $gestore->getEmail(),
-        'isGestore' => $gestore->getIsGestore(),
-        'isAmministratore' => $gestore->getIsAmministratore()
-      ];
+'idLido' => $lidouno->getIdLido(),
+'nomeLido' => $lidouno->getNomeLido(),
+'nomeUtente' => $gestore->getNomeUtente(),
+'password' => $gestore->getPassword(),
+'loginStatus' => $gestore->getLoginStatus(),
+'nome' => $gestore->getNome(),
+'cognome' => $gestore->getCognome(),
+'email' => $gestore->getEmail(),
+'isGestore' => $gestore->getIsGestore(),
+'isAmministratore' => $gestore->getIsAmministratore()
+];
+
 $array[]=$dati;
 echo json_encode($array);
 //print_r($array);

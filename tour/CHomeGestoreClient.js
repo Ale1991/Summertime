@@ -1,5 +1,4 @@
-/* var requestData = null;
-var mappa; */
+const idUtente = 'Alessio1991'
 function load() {
 	$.ajax({
 		url: "CHomeGestoreServer.php",
@@ -8,7 +7,10 @@ function load() {
 		cache: false,
 		async: false,
 		dataType: 'json',
-		data: { 'session': '<?php echo md5(uniqid(mt_rand(),true))?>', 'id': 17 },
+		data: {
+			userId: "Mario",
+			nomeLido: "Lampara"//dati da mandare al server per farsi tornare tramite json tutti i dati del gestore e del lido per costruire l'html
+		},
 		success: getJSONGrid
 	});
 }
@@ -27,12 +29,12 @@ function getJSONGrid(data) {
 
 	var nomeGestore = document.createElement("h3");
 	containertitolo.appendChild(nomeGestore);
-	var textNomeGestore = document.createTextNode('Di: ' + dati[0].cognome + ' ' + dati[0].nome);//
+	textNomeGestore = document.createTextNode(dati[0].cognome + ' ' + dati[0].nome);//
 	nomeGestore.appendChild(textNomeGestore);
 
 	var idLido = document.createElement("h6");
 	containertitolo.appendChild(idLido);
-	var textIdLido = document.createTextNode('Id Lido: ' + dati[0].idLido);
+	textIdLido = document.createTextNode(dati[0].idLido);
 	idLido.appendChild(textIdLido);
 
 	var containerHeaderText = document.getElementById("headText");
@@ -99,20 +101,32 @@ function sendDate() {
 	const form = {
 		dateIn: document.getElementById('dateIn'),
 		dateOut: document.getElementById('dateOut'),
+		//textIdLido: document.getElementById('titolo-lido').nodeValue,
+		
 		//submit: document.getElementById('submit'),
 		//messages: document.getElementById('errorMessages'),
 	};
 
-	requestData = `dateIn=${form.dateIn.value}&dateOut=${form.dateOut.value}`//
-	var ajaxPOST = $.post("/tour/Control/CPrenotazione.php", requestData, function () {
-		//console.log(requestData);
-		console.log(ajaxPOST.responseText);
+	requestData = `dateIn=${form.dateIn.value}&dateOut=${form.dateOut.value}&IdLido=${textIdLido.nodeValue}&nomeGestore=${textNomeGestore.nodeValue}`//
+	var ajaxPOST = $.get("/tour/Control/CVerificaDisponibilita.php", requestData, function () {
+
+
+		var json = $.parseJSON(ajaxPOST.responseText)
+		const dataPrenotazione = json.dataIn + "&" + json.dataOut;
+		//console.log(json.arrayDB);
+		for (i = 0; i < json.arrayDB.length; i++) {
+			var idtemp = json.arrayDB[i];
+			var element = document.getElementById(idtemp);
+			element.style.borderColor = "red";
+			element.style.pointerEvents = "none";
+			console.log(idtemp)
+		}
 	});
 }
 
 $(document).ready(function () {  //jQuery string (tolto per eliminare la dipendenza da jQuery)
 	//document.addEventListener("DOMContentLoaded", function () { //javascript pure dom ready
-
+	
 	$('#dateIn').datepicker('setStartDate', 'today');
 	$('#dateOut').datepicker('setStartDate', 'today');
 	document.getElementById('form-group out').style.display = 'none';
@@ -147,6 +161,14 @@ $(document).ready(function () {  //jQuery string (tolto per eliminare la dipende
 			element.appendChild(text);
 
 			clickedDiv.style.borderColor = "blue";
+			
+			if (dataPrenotazione != '') {
+				btnPrenotazione.style.display = 'block';
+			}
+			else {
+				alert('inserisci prima la data!')
+			}
+
 		}
 		else {
 			if (clickedDiv.getAttribute("selected") == 'true') {
@@ -154,13 +176,16 @@ $(document).ready(function () {  //jQuery string (tolto per eliminare la dipende
 				clickedDiv.style.borderColor = "green";
 				var elem = document.getElementById('list-' + this.id);
 				elem.parentNode.removeChild(elem);
+				if (document.getElementById('selectedList').getElementsByTagName('li').length == 0) {
+					btnPrenotazione.style.display = 'none';
+				}
 			}
 		}
 	})
 
-	var btn = document.getElementById("submit");
+	var btnDisponibilita = document.getElementById("submit");
 	//btn.addEventListener('click', sendDate);//funzionante ma non gestisce il caso di campi vuoti
-	btn.addEventListener('click', function () {
+	btnDisponibilita.addEventListener('click', function () {
 		var messaggioErrori = '';
 		if ($('#dateIn').val() == '') {
 			var containerErrori = document.getElementById("errorMessages");
@@ -175,5 +200,50 @@ $(document).ready(function () {  //jQuery string (tolto per eliminare la dipende
 		else {
 			alert(messaggioErrori);
 		}
+		if ($('#dateIn').val() != '' && $('#dateOut').val() != '') {
+			dataPrenotazione = $('#dateIn').val() + '&' + $('#dateOut').val();
+			dataIn = $('#dateIn').val();
+			dataOut = $('#dateOut').val();
+			//console.log(dataPrenotazione)
+		}
 	})
+
+	var btnPrenotazione = document.getElementById("submitPrenotazione");
+	btnPrenotazione.style.display = 'none';
+
+
+
+
+
+	btnPrenotazione.addEventListener('click', function () {
+		console.log(dataPrenotazione)
+		if (document.getElementById('selectedList').getElementsByTagName("li").length == 0) {
+			alert("seleziona almeno un ombrellone!")
+		}
+		else {
+			var array = [];
+			var listaOmbrelloni = document.getElementById('selectedList').getElementsByTagName("li");
+			for (var i = 0; i < document.getElementById('selectedList').getElementsByTagName("li").length; i++) {
+				//console.log(listaOmbrelloni[i].id)//console.log(array)
+				var id = listaOmbrelloni[i].id.split("-")
+				id = id[1];
+				array[i] = id;
+				console.log(array[i])
+			}
+			datiPrenotazione= {
+				'dataIn' : dataIn,
+				'dataOut' : dataOut,
+				'ombrelloni' : array,
+				'idLido': textIdLido.nodeValue,
+				'idUtente' : idUtente//DA SISTEMARE LE VARIABILI DA INVIARE TRAMITE METODO POST JSON
+			}
+			console.log(datiPrenotazione)
+			var ajaxPOST = $.post("/tour/Control/CPrenotazione.php", datiPrenotazione, function () {
+				//var json = $.parseJSON(ajaxPOST.responseText);
+				console.log(ajaxPOST.responseText)
+			})
+		}
+	})
+
+
 })

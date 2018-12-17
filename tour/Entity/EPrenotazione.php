@@ -17,7 +17,6 @@ class EPrenotazione
     /** Id carta di credito */
     private $CartaDiCredito;
 
-
     /** Oggetto Data relativa alla prenotazione */
     private $dataInizio;
     private $dataFine;
@@ -30,7 +29,7 @@ class EPrenotazione
     private $Utente;
 
     /** Costruttore */
-   public function __construct ($dataInizio , $dataFine, $Ombrellone , $Lido , $Utente)
+    public function __construct($dataInizio, $dataFine, $Ombrellone, $Lido, $Utente)
     {
         $this->dataInizio = $dataInizio;
         $this->dataFine = $dataFine;
@@ -40,64 +39,77 @@ class EPrenotazione
         /* $this->prenotazioneEffettuata = true; */
     }
 
+    public function setNumeroPrenotazione($numeroPrenotazione)
+    {$this->numeroPrenotazione = $numeroPrenotazione;}
+    public function getNumeroPrenotazione()
+    {return $this->numeroPrenotazione;}
 
-    public function setNumeroPrenotazione($numeroPrenotazione){$this->numeroPrenotazione = $numeroPrenotazione;}
-    public function getNumeroPrenotazione(){return $this->numeroPrenotazione;}
+    public function setAmount($amount)
+    {$this->amount = $amount;}
+    public function getAmount()
+    {return $this->amount;}
 
-    public function setAmount($amount){$this->amount = $amount;}
-    public function getAmount(){return $this->amount;}
+    public function setDataInizio(Datetime $dataInizio)
+    {$this->dataInizio = $dataInizio;}
+    public function getDataInizio()
+    {return $this->dataInizio;}
 
-    public function setDataInizio(Datetime $dataInizio){$this->dataInizio = $dataInizio;}
-    public function getDataInizio(){return $this->dataInizio;}
-    
-    public function setDataFine (Datetime $dataFine) {$this->dataFine = $dataFine;}
-    public function getDataFine () {return $this->dataFine;}
-    
-    public function setUtente($Utente){$this->Utente = $Utente;}
-    public function getUtente(){return $this->Utente;}
+    public function setDataFine(Datetime $dataFine)
+    {$this->dataFine = $dataFine;}
+    public function getDataFine()
+    {return $this->dataFine;}
 
-    public function setLido($Lido){$this->Lido = $Lido;}
-    public function getLido(){return $this->Lido;}
+    public function setUtente($Utente)
+    {$this->Utente = $Utente;}
+    public function getUtente()
+    {return $this->Utente;}
 
-    public function setCartaDiCredito($CartaDiCredito){$this->CartaDiCredito = $CartaDiCredito;}//?????????
-    public function getCartaDiCredito(){return $this->CartaDiCredito;}//?????????????
+    public function setLido($Lido)
+    {$this->Lido = $Lido;}
+    public function getLido()
+    {return $this->Lido;}
 
-    public function setPrenotazioneEffettuata($prenotazioneEffettuata){$this->prenotazioneEffettuata = $prenotazioneEffettuata;}//???
-    public function getPrenotazioneEffettuata(){return $this->$prenotazioneEffettuata;}//????
+    public function setCartaDiCredito($CartaDiCredito)
+    {$this->CartaDiCredito = $CartaDiCredito;} //?????????
+    public function getCartaDiCredito()
+    {return $this->CartaDiCredito;} //?????????????
 
-    public function setOmbrellone($Ombrellone){$this->Ombrellone=$Ombrellone;}
-    public function getOmbrellone(){return $this->Ombrellone;}
+    public function setPrenotazioneEffettuata($prenotazioneEffettuata)
+    {$this->prenotazioneEffettuata = $prenotazioneEffettuata;} //???
+    public function getPrenotazioneEffettuata()
+    {return $this->$prenotazioneEffettuata;} //????
+
+    public function setOmbrellone($Ombrellone)
+    {$this->Ombrellone = $Ombrellone;}
+    public function getOmbrellone()
+    {return $this->Ombrellone;}
 
 /////////////////////////////////////////////////////////////////////////////////////////////
     /** Possibile generazione codice casuale, andrà poi confrontato su db */
-        /** Lunghezza del codice (usare rand(min,max) per una lunghezza casuale)*/
-        //$codelength = 20;
-        /** Caratteri del codelength */
-        //$elenco = "abcdefghijklmnopqrstuvwxyz0123456789";
-        //$code='';
-        /** Ciclo for */
-        //for($i=0;$i<=$codelength;$i++)
-        //{
-        //$code.=substr($elenco,rand(0,strlen($elenco)),1);
-        //}
-        /** Stampa codice */
-        //echo $code;
+    /** Lunghezza del codice (usare rand(min,max) per una lunghezza casuale)*/
+    //$codelength = 20;
+    /** Caratteri del codelength */
+    //$elenco = "abcdefghijklmnopqrstuvwxyz0123456789";
+    //$code='';
+    /** Ciclo for */
+    //for($i=0;$i<=$codelength;$i++)
+    //{
+    //$code.=substr($elenco,rand(0,strlen($elenco)),1);
+    //}
+    /** Stampa codice */
+    //echo $code;
 
-        /** Setters and Getters */
+    /** Setters and Getters */
 
 //?????
     public function aggiungiOmbrellone($riga, $colonna)
     {
-    array_push($this->ombrelloni, new EOmbrellone($riga , $colonna));
+        array_push($this->ombrelloni, new EOmbrellone($riga, $colonna));
     }
 
     public function __toString()
     {
-        $ts="NumeroPrenotazione: ".$this->getNumeroPrenotazione()." Amount: ".$this->getAmount()." Data: ".$this->getDate();
+        $ts = "NumeroPrenotazione: " . $this->getNumeroPrenotazione() . " Amount: " . $this->getAmount() . " Data: " . $this->getDate();
     }
 
-
-
 }
-
-?>
