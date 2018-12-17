@@ -16,15 +16,16 @@ if (0 > version_compare(PHP_VERSION, '5')) {
 class ELido
 {
     
-    private $nomeLido = null;
-    private $IDLido;
-    private $numeroOmbrelloni = null;
-    private $indirizzo = null;
-    private $righe = null;
-    private $colonne = null;
-    private $griglia;
-    private $dataApertura;
-    private $dataChiusura;
+    public $nomeLido = null;
+    public $IDLido;
+    public $numeroOmbrelloni = null;
+    public $indirizzo = null;
+    public $righe = null;
+    public $colonne = null;
+    public $griglia;
+    public $dataApertura;
+    public $dataChiusura;
+    public $gestore;
 
     public function __construct ($nomeLido, $gestore , $indirizzo)//($righe,$colonne,$nomeLido,$indirizzo)
     {
@@ -39,6 +40,8 @@ class ELido
 
     public function setNomeLido($nomeLido){$this->nomeLido=$nomeLido;}
     public function getNomeLido(){return $this->nomeLido;}
+    public function setGestore($gestore){$this->gestore=gestore;}
+    public function getGestore(){return $this->gestore;}
     public function setIndirizzo($indirizzo){$this->indirizzo=$indirizzo;}
     public function getIndirizzo(){return $this->indirizzo;}
     public function setRighe($righe){$this->righe=$righe;}
@@ -50,8 +53,6 @@ class ELido
     public function getDataApertura() {return $this->dataApertura;}
     public function setDataChiusura(DateTime $dataChiusura) {$this->dataChiusura=$dataChiusura;}
     public function getDataChiusura(){return $this->dataChiusura;}
-
-    public function getGriglia(){return $this->griglia;}
 
     public function generaGriglia()
     {
@@ -74,7 +75,7 @@ class ELido
             for($j = 1; $j<=count($arrayColonne); $j++)
             {
                 $b=$arrayColonne[$j];
-                $griglia[]=new EOmbrellone($a,$b);
+                $griglia[]=new Ombrellone($a,$b);
             }
         } 
     $this->griglia = $griglia;

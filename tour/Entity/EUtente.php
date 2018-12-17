@@ -2,16 +2,17 @@
 
 class EUtente 
 {
-    protected $nomeUtente=''; //string
+    private $nomeUtente=''; //string
     private $password=''; //string
     private $loginStatus=false; //boolean
-    private $nome;
-    private $cognome; //string
+    //private $nome;
+    //private $cognome; //string
     private $email; //string
     private $isGestore=false; //boolean
     private $isAmministratore=false; //boolean
     
-    public function __construct ($nomeUtente){
+    public function __construct ($nomeUtente)
+            {
             $this->nomeUtente=$nomeUtente;
             }
     
@@ -22,10 +23,10 @@ class EUtente
     public function setPassword($password){$this->password=$password;}
     public function getLoginStatus(){return $this->loginStatus;}
     public function setLoginStatus($loginStatus){$this->loginStatus=$loginStatus;}
-    public function getNome(){return $this->nome;}
-    public function setNome($nome){$this->nome=$nome;}
-    public function getCognome(){return $this->cognome;}
-    public function setCognome($cognome){$this->cognome=$cognome;}
+    //public function getNome(){return $this->nome;}
+    //public function setNome($nome){$this->nome=$nome;}
+    //public function getCognome(){return $this->cognome;}
+    //public function setCognome($cognome){$this->cognome=$cognome;}
     public function getEmail(){return $this->email;}
     public function setEmail($email){$this->email=$email;}
     public function getIsGestore(){return $this->isGestore;}
