@@ -19,9 +19,9 @@ function load() {
 //var ajaxGET = $.get("map.php", getJSONGrid());
 function getJSONGrid(data) {
 	mappa = data;
-	
+
 	dati = data.splice(data.length - 1, 1);
-	
+
 	var containertitolo = document.getElementById("titolo-lido");
 
 	var nomeLido = document.createElement("h1");

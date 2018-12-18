@@ -37,7 +37,7 @@ class ELido
         $this->nomeLido = $nomeLido;
         $this->gestore = $gestore;
         $this->indirizzo = $indirizzo->getIndirizzo();
-        $this->via= $indirizzo->getVia();
+        $this->via = $indirizzo->getVia();
         $this->civico = $indirizzo->getCivico();
         $this->comune = $indirizzo->getComune();
         $this->provincia = $indirizzo->getProvincia();
@@ -45,18 +45,20 @@ class ELido
         $this->IDLido = $IDLido;
     }
 
-
     //metodi get via,civico,comune,provincia necessari per ricostruire velocemente l'indirizzo con javascript
-public function getVia(){return $this->via;}
+    public function getVia()
+    {return $this->via;}
 //public function setVia($via){$this->via=$via;}
-public function getCivico(){return $this->civico;}
+    public function getCivico()
+    {return $this->civico;}
 //public function setCivico($civico){$this->civico=$civico;}
-public function getComune(){return $this->comune;}
+    public function getComune()
+    {return $this->comune;}
 //public function setComune($comune){$this->comune=$comune;}
-public function getProvincia(){return $this->provincia;}
+    public function getProvincia()
+    {return $this->provincia;}
 //public function setProvincia($provincia){$this->provincia=$provincia;}
-//public function getIndirizzo(){return $this->indirizzo;}
-
+    //public function getIndirizzo(){return $this->indirizzo;}
 
     public function getGriglia()
     {return $this->griglia;}

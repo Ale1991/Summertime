@@ -1,8 +1,8 @@
 <?php
-$date_in = isset($_GET['dateIn']) ? $_GET['dateIn'] : '';//dati per effettuare query sul db
-$date_out = isset($_GET['dateOut']) ? $_GET['dateOut'] : '';//dati per effettuare query sul db
-$nome_Gestore = isset($_GET['nomeGestore']) ? $_GET['nomeGestore'] : '';//dati per effettuare query sul db
-$id_Lido = isset($_GET['IdLido']) ? $_GET['IdLido'] : '';//dati per effettuare query sul db
+$date_in = isset($_GET['dateIn']) ? $_GET['dateIn'] : ''; //dati per effettuare query sul db
+$date_out = isset($_GET['dateOut']) ? $_GET['dateOut'] : ''; //dati per effettuare query sul db
+//$nome_Gestore = isset($_GET['nomeGestore']) ? $_GET['nomeGestore'] : '';//dati per effettuare query sul db
+$id_Lido = isset($_GET['IdLido']) ? $_GET['IdLido'] : ''; //dati per effettuare query sul db
 
 $ok = true;
 $messages = array();

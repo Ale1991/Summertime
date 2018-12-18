@@ -1,16 +1,6 @@
 <?php
 require_once 'includes/autoload.inc.php';
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/**
- * Description of CPrenotazione
- *
- * @author Stefano
- */
 class CPrenotazione
 {
     public function ImpostaFormPrenotazione($lido, $utente)
@@ -39,27 +29,6 @@ class CPrenotazione
         }
     }
 }
-
-/* $data_in = isset($_POST['dataIn']) ? $_POST['dataIn'] : ''; //dati per effettuare query sul db
-$data_out = isset($_POST['dataOut']) ? $_POST['dataOut'] : ''; //dati per effettuare query sul db
-//$id_Utente = isset($_GET['idUtente']) ? $_GET['idUtente'] : ''; //ancora non implementabile perche' manca il meccanismo di login
-$id_Utente = 'ALESSIOOOOOOO';
-$id_Lido = isset($_POST['idLido']) ? $_POST['idLido'] : ''; //dati per effettuare query sul db
-$ombrelloni = isset($_POST['ombrelloni']) ? $_POST['ombrelloni'] : ''; //dati per effettuare query sul db
-
-for($i=0;$i<count($ombrelloni);$i++){
-$pren = new EPrenotazione($data_in, $data_out, $ombrellone[$i], $id_Lido, $id_Utente);
-$fpren = new FPrenotazione();
-$fpren->inserisci($pren);
-}
-
-$file = 'prenotazioni.txt';
-// Open the file to get existing content
-$current = file_get_contents($file);
-// Append a new person to the file
-$current .= "$id_Utente" . ":" . "$id_Lido" . ":" . "$data_in" . "->" . "$data_out\r\n" . "$ombrelloni[0]\r\n";
-// Write the contents back to the file
-file_put_contents($file, $current); */
 
 $nome_Gestore = isset($_GET['nomeGestore']) ? $_GET['nomeGestore'] : '';
 $gestore = new EGestore($nome_Gestore);
@@ -98,5 +67,3 @@ for ($i = 0; $i < count($array_ombrelloni); $i++) {
     $fpren = new FPrenotazione();
     $fpren->inserisci($pren);
 }
-
-//print_r($griglia);
