@@ -259,8 +259,9 @@ $(document).ready(function () {  //jQuery string (tolto per eliminare la dipende
 			}
 			var ajaxPOST = $.post("CPrenotazione.php", datiPrenotazione, function () {
 				//var json = $.parseJSON(ajaxPOST.responseText);
-				console.log(ajaxPOST.responseText)
+				//console.log(ajaxPOST.responseText)
 			})
+			location.reload();
 		}
 	})
 
