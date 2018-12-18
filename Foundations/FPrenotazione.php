@@ -38,6 +38,8 @@ class FPrenotazione extends Fdb
       $stmt->execute([$idLido,$numOmbrellone]);
       $i=0;
       $res=true;
+      //$row=$stmt->fetch(PDO::FETCH_ASSOC);
+      //print var_dump($row);
       while($row=$stmt->fetch(PDO::FETCH_ASSOC))
       {
           if($dataInizio>=$row["dataInizio"] && $dataInizio<=$row["dataFine"])
@@ -55,7 +57,9 @@ class FPrenotazione extends Fdb
           $res=false;
       }
       return $res;
-      //print var_dump($row);
+      
+   
+      
       /*$query= "SELECT * FROM Prenotazione WHERE idLido = ? AND numOmbrellone = ? AND dataPrenotazione = ?";
       $stmt=$this->db->prepare($query);
       $stmt->execute([$idLido,$numOmbrellone,$dataPrenotazione]);
@@ -70,15 +74,47 @@ class FPrenotazione extends Fdb
       return $res;
       
       */
-      
-      
   }
+      public function getOmbrelloniOccupati(ELido & $lido, DateTime & $dataA, DateTime & $dataB)
+      {
+          $idLido=$lido->getIdLido();
+          $query="SELECT * FROM Prenotazione WHERE idLido = ?";
+          $stmt=$this->db->prepare($query);
+          $stmt->execute([$idLido]);
+          $a=$dataA->format('Y-m-d');
+          $b=$dataB->format('Y-m-d');
+          $arr=array();
+          //print var_dump($a);
+          //$row = $stmt->fetch(PDO::FETCH_ASSOC);
+          //$i=0;
+          //print var_dump($row);
+          
+   
+          while($row=$stmt->fetch(PDO::FETCH_ASSOC))
+          {
+              if($a>=$row["dataInizio"] && $a<=$row["dataFine"])
+              {
+                  
+                  $arr[]=$row["numOmbrellone"];
+              }
+              elseif($b>=$row["dataFine"] && $b<=$row["dataFine"])
+              {
+                  $arr[]=$row["numOmbrellone"];
+              }
+          }
+          
+          return $arr;
+          
+      }
+      
+  }  
+  
     
  
         
         
         
-    }
+    
     
     
     //put your code here
