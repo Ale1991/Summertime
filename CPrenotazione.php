@@ -11,7 +11,7 @@ require_once 'includes/autoload.inc.php';
  *
  * @author Stefano
  */
-/* class CPrenotazione
+class CPrenotazione
 {
     public function ImpostaFormPrenotazione($lido, $utente)
     {
@@ -38,42 +38,65 @@ require_once 'includes/autoload.inc.php';
             $vpren->MostraFormPrenotazione($lido, $utente);
         }
     }
-} */
+}
 
-$data_in = isset($_POST['dataIn']) ? $_POST['dataIn'] : ''; //dati per effettuare query sul db
+/* $data_in = isset($_POST['dataIn']) ? $_POST['dataIn'] : ''; //dati per effettuare query sul db
 $data_out = isset($_POST['dataOut']) ? $_POST['dataOut'] : ''; //dati per effettuare query sul db
 //$id_Utente = isset($_GET['idUtente']) ? $_GET['idUtente'] : ''; //ancora non implementabile perche' manca il meccanismo di login
 $id_Utente = 'ALESSIOOOOOOO';
 $id_Lido = isset($_POST['idLido']) ? $_POST['idLido'] : ''; //dati per effettuare query sul db
 $ombrelloni = isset($_POST['ombrelloni']) ? $_POST['ombrelloni'] : ''; //dati per effettuare query sul db
 
-$nomel= 'ciccio';
-$indirizzo = 'Pescara';
-$lido = new ELido($nomel,$id_Utente,$indirizzo);
-$lido->setIdLido($id_Lido);
-
 for($i=0;$i<count($ombrelloni);$i++){
-    $id = $ombrelloni[$i];
-    $riga=substr($id,0,1);
-    $colonna=substr($id,1);
-    $omb = new EOmbrellone($riga,$colonna,$indirizzo);
-
-    
-
-    $pren = new EPrenotazione($data_in, $data_out, $omb, $lido, $id_Utente);
+    $pren = new EPrenotazione($data_in, $data_out, $ombrellone[$i], $id_Lido, $id_Utente);
     $fpren = new FPrenotazione();
     $fpren->inserisci($pren);
 }
 
-$file = 'prenotazionisenza.txt';
+$file = 'prenotazioni.txt';
 // Open the file to get existing content
 $current = file_get_contents($file);
 // Append a new person to the file
 $current .= "$id_Utente" . ":" . "$id_Lido" . ":" . "$data_in" . "->" . "$data_out\r\n" . "$ombrelloni[0]\r\n";
 // Write the contents back to the file
-file_put_contents($file, $current);
+file_put_contents($file, $current); */
 
 
+
+
+
+
+$gestore=new EGestore('Alessio91911');
+
+
+$v='Everest';
+$n='32';
+$com='Sulmona';
+$prov='AQ';
+$indirizzoLido=new EIndirizzo($v,$n,$com,$prov);
+$nomeLido='Alcyone';
+$gestore->aggiungiLido($nomeLido,$indirizzoLido);
+
+$a=$gestore->getLidi();
+$lidouno=$a[0];
+
+//$lidouno->setDataApertura(01/06/2018);
+//$lidouno->setDataChiusura(30/09/2018);
+
+
+
+$data_in="2018/12/20";$data_out= "2018/12/20";
+
+$riga="2";$colonna="4";
+$omb = new EOmbrellone($riga,$colonna);
+//print_r($griglia);
+
+
+$utente = new EUtente("ale");
+
+$pren = new EPrenotazione($data_in, $data_out, $omb, $lidouno, $utente);
+$fpren = new FPrenotazione();
+$fpren->inserisci($pren);
 
 
 

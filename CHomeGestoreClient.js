@@ -1,4 +1,6 @@
-const idUtente = 'Alessio1991'
+const idUtente = 'Alessio1991';
+var dataPrenotazione = '';
+
 function load() {
 	$.ajax({
 		url: 'CHomeGestoreServer.php',
@@ -8,8 +10,9 @@ function load() {
 		async: false,
 		dataType: 'json',
 		data: {
-			userId: "Mario",
-			nomeLido: "Lampara"//dati da mandare al server per farsi tornare tramite json tutti i dati del gestore e del lido per costruire l'html
+			//userId: "Mario",
+			//nomeLido: "Lampara"//dati da mandare al server per farsi tornare tramite json tutti i dati del gestore e del lido per costruire l'html
+			idLido: "RSDVNTVRM66D763"
 		},
 		success: getJSONGrid
 	});
@@ -18,6 +21,7 @@ function load() {
 
 function getJSONGrid(data) {
 	mappa = data;
+	console.log(data);
 	var dati = data.splice(data.length - 1, 1);
 
 	var containertitolo = document.getElementById("titolo-lido");
@@ -29,7 +33,7 @@ function getJSONGrid(data) {
 
 	var nomeGestore = document.createElement("h3");
 	containertitolo.appendChild(nomeGestore);
-	textNomeGestore = document.createTextNode(dati[0].cognome + ' ' + dati[0].nome);//
+	textNomeGestore = document.createTextNode(dati[0].nomeUtente);//
 	nomeGestore.appendChild(textNomeGestore);
 
 	var idLido = document.createElement("h6");
@@ -42,8 +46,9 @@ function getJSONGrid(data) {
 	containerHeaderText.appendChild(nomeLidoHead);
 	nomeLidoHead.appendChild(textNomeLido);
 
-	var lastElement = data[data.length - 1].riga;
-	var numerorighe = lastElement.charCodeAt(0) - 64;
+	//var lastElement = data[data.length - 1].riga;
+	//var numerorighe = lastElement.charCodeAt(0) - 64;
+	var numerorighe = data[data.length - 1].riga;
 	var numerocolonne = data[data.length - 1].colonna;
 
 	document.getElementById("container-ombrelloni").style.width = 40 * 1.8 * numerocolonne + "px";//set logica dimensione righe
@@ -102,7 +107,7 @@ function sendDate() {
 		dateIn: document.getElementById('dateIn'),
 		dateOut: document.getElementById('dateOut'),
 		//textIdLido: document.getElementById('titolo-lido').nodeValue,
-		
+
 		//submit: document.getElementById('submit'),
 		//messages: document.getElementById('errorMessages'),
 	};
@@ -126,7 +131,7 @@ function sendDate() {
 
 $(document).ready(function () {  //jQuery string (tolto per eliminare la dipendenza da jQuery)
 	//document.addEventListener("DOMContentLoaded", function () { //javascript pure dom ready
-	
+
 	$('#dateIn').datepicker('setStartDate', 'today');
 	$('#dateOut').datepicker('setStartDate', 'today');
 	document.getElementById('form-group out').style.display = 'none';
@@ -161,7 +166,7 @@ $(document).ready(function () {  //jQuery string (tolto per eliminare la dipende
 			element.appendChild(text);
 
 			clickedDiv.style.borderColor = "blue";
-			
+
 			if (dataPrenotazione != '') {
 				btnPrenotazione.style.display = 'block';
 			}
@@ -182,6 +187,7 @@ $(document).ready(function () {  //jQuery string (tolto per eliminare la dipende
 			}
 		}
 	})
+
 
 	var btnDisponibilita = document.getElementById("submit");
 	//btn.addEventListener('click', sendDate);//funzionante ma non gestisce il caso di campi vuoti
@@ -230,12 +236,12 @@ $(document).ready(function () {  //jQuery string (tolto per eliminare la dipende
 				array[i] = id;
 				console.log(array[i])
 			}
-			datiPrenotazione= {
-				'dataIn' : dataIn,
-				'dataOut' : dataOut,
-				'ombrelloni' : array,
+			datiPrenotazione = {
+				'dataIn': dataIn,
+				'dataOut': dataOut,
+				'ombrelloni': array,
 				'idLido': textIdLido.nodeValue,
-				'idUtente' : idUtente//DA SISTEMARE LE VARIABILI DA INVIARE TRAMITE METODO POST JSON
+				'idUtente': idUtente//DA SISTEMARE LE VARIABILI DA INVIARE TRAMITE METODO POST JSON
 			}
 			console.log(datiPrenotazione)
 			var ajaxPOST = $.post("CPrenotazione.php", datiPrenotazione, function () {

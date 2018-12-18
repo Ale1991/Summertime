@@ -78,21 +78,27 @@ class ELido
         $alfabeto = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
         $arrayRighe = array();
         $griglia = array();
-        for ($r = 0; $r < $this->righe; $r++) {
-            $arrayRighe[$r] = $alfabeto[$r];
-        }
-        $arrayColonne = array();
-        for ($c = 1; $c <= $this->colonne; $c++) {
-            $arrayColonne[$c] = $c;
-        }
+/*         for ($r = 0; $r < $this->righe; $r++) {
+$arrayRighe[$r] = $r;
+}
+$arrayColonne = array();
+for ($c = 1; $c <= $this->colonne; $c++) {
+$arrayColonne[$c] = $c;
+}
 
-        for ($i = 0; $i < count($arrayRighe); $i++) {
-            $a = $arrayRighe[$i];
-            for ($j = 1; $j <= count($arrayColonne); $j++) {
-                $b = $arrayColonne[$j];
-                $griglia[] = new EOmbrellone($a, $b);
+for ($i = 0; $i < count($arrayRighe); $i++) {
+$a = $arrayRighe[$i];
+for ($j = 1; $j <= count($arrayColonne); $j++) {
+$b = $arrayColonne[$j];
+$griglia[] = new EOmbrellone($a, $b);
+}
+} */
+        for ($i = 1; $i <= $this->righe; $i++) {
+            for ($j = 1; $j <= $this->colonne; $j++) {
+                $griglia[] = new EOmbrellone($i, $j);
             }
         }
+
         $this->griglia = $griglia;
     }
 
