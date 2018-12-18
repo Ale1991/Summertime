@@ -48,9 +48,9 @@ $id_Lido = isset($_POST['idLido']) ? $_POST['idLido'] : ''; //dati per effettuar
 $ombrelloni = isset($_POST['ombrelloni']) ? $_POST['ombrelloni'] : ''; //dati per effettuare query sul db
 
 for($i=0;$i<count($ombrelloni);$i++){
-    $pren = new EPrenotazione($data_in, $data_out, $ombrellone[$i], $id_Lido, $id_Utente);
-    $fpren = new FPrenotazione();
-    $fpren->inserisci($pren);
+$pren = new EPrenotazione($data_in, $data_out, $ombrellone[$i], $id_Lido, $id_Utente);
+$fpren = new FPrenotazione();
+$fpren->inserisci($pren);
 }
 
 $file = 'prenotazioni.txt';
@@ -61,67 +61,42 @@ $current .= "$id_Utente" . ":" . "$id_Lido" . ":" . "$data_in" . "->" . "$data_o
 // Write the contents back to the file
 file_put_contents($file, $current); */
 
-
-
-
 $nome_Gestore = isset($_GET['nomeGestore']) ? $_GET['nomeGestore'] : '';
-$gestore=new EGestore($nome_Gestore);
+$gestore = new EGestore($nome_Gestore);
 
-$data_in = isset($_POST['dataIn']) ? $_POST['dataIn'] : ''; 
+$data_in = isset($_POST['dataIn']) ? $_POST['dataIn'] : '';
 $data_in = date("Y-m-d", strtotime($data_in));
 
-$data_out = isset($_POST['dataOut']) ? $_POST['dataOut'] : ''; 
+$data_out = isset($_POST['dataOut']) ? $_POST['dataOut'] : '';
 $data_out = date("Y-m-d", strtotime($data_out));
 
-
-
-
-
-
-$id_Utente = isset($_POST['idUtenteLoggato']) ? $_POST['idUtenteLoggato'] : '';//da sistemare lato javascript recuperandolo dal login
+$id_Utente = isset($_POST['idUtenteLoggato']) ? $_POST['idUtenteLoggato'] : ''; //da sistemare lato javascript recuperandolo dal login
 $utente = new EUtente($id_Utente);
-
-
 
 $via = isset($_POST['via']) ? $_POST['via'] : '';
 $civico = isset($_POST['civico']) ? $_POST['civico'] : '';
 $comune = isset($_POST['comune']) ? $_POST['comune'] : '';
 $provincia = isset($_POST['provincia']) ? $_POST['provincia'] : '';
-$indirizzoLido=new EIndirizzo($via,$civico,$comune,$provincia);
+$indirizzoLido = new EIndirizzo($via, $civico, $comune, $provincia);
 
-
-$id_Lido = isset($_POST['idLido']) ? $_POST['idLido'] : ''; //id lido venuto dal javascript paragonabile con 
+$id_Lido = isset($_POST['idLido']) ? $_POST['idLido'] : ''; //id lido venuto dal javascript paragonabile con
 // id lido preso dal lido appena creato con aggiungiLido
 $nome_Lido = isset($_POST['nomeLido']) ? $_POST['nomeLido'] : '';
-$gestore->aggiungiLido($nome_Lido,$indirizzoLido);
+$gestore->aggiungiLido($nome_Lido, $indirizzoLido);
 
-$a=$gestore->getLidi();
-$lidouno=$a[0];
-
-//$lidouno->setDataApertura(01/06/2018);
-//$lidouno->setDataChiusura(30/09/2018);
-
-/* for($i=0;$i<count($array_ombrelloni);$i++){
-
-} */
+$a = $gestore->getLidi();
+$lidouno = $a[0];
 
 $array_ombrelloni = isset($_POST['ombrelloni']) ? $_POST['ombrelloni'] : '';
-$omb_temp=$array_ombrelloni[0];
 
+for ($i = 0; $i < count($array_ombrelloni); $i++) {
+    $omb_temp = $array_ombrelloni[$i];
+    $riga = ord($omb_temp[0]) - 64;
+    $colonna = $omb_temp[1];
+    $omb = new EOmbrellone($riga, $colonna);
+    $pren = new EPrenotazione($data_in, $data_out, $omb, $lidouno, $utente);
+    $fpren = new FPrenotazione();
+    $fpren->inserisci($pren);
+}
 
-$riga=ord($omb_temp[0])-64;
-$colonna = $omb_temp[1];
-
-$omb = new EOmbrellone($riga,$colonna);
 //print_r($griglia);
-
-
-
-
-$pren = new EPrenotazione($data_in, $data_out, $omb, $lidouno, $utente);
-$fpren = new FPrenotazione();
-$fpren->inserisci($pren);
-
-
-
-?>
