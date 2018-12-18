@@ -26,16 +26,37 @@ class ELido
     private $dataApertura;
     private $dataChiusura;
     private $gestore;
+    private $via;
+    private $civico;
+    private $comune;
+    private $provincia;
 
     public function __construct($nomeLido, $gestore, $indirizzo) //($righe,$colonne,$nomeLido,$indirizzo)
 
     {
         $this->nomeLido = $nomeLido;
         $this->gestore = $gestore;
-        $this->indirizzo = $indirizzo;
+        $this->indirizzo = $indirizzo->getIndirizzo();
+        $this->via= $indirizzo->getVia();
+        $this->civico = $indirizzo->getCivico();
+        $this->comune = $indirizzo->getComune();
+        $this->provincia = $indirizzo->getProvincia();
         $IDLido = $this->getNNNL() . $indirizzo->getIDIndirizzo();
         $this->IDLido = $IDLido;
     }
+
+
+    //metodi get via,civico,comune,provincia necessari per ricostruire velocemente l'indirizzo con javascript
+public function getVia(){return $this->via;}
+//public function setVia($via){$this->via=$via;}
+public function getCivico(){return $this->civico;}
+//public function setCivico($civico){$this->civico=$civico;}
+public function getComune(){return $this->comune;}
+//public function setComune($comune){$this->comune=$comune;}
+public function getProvincia(){return $this->provincia;}
+//public function setProvincia($provincia){$this->provincia=$provincia;}
+//public function getIndirizzo(){return $this->indirizzo;}
+
 
     public function getGriglia()
     {return $this->griglia;}

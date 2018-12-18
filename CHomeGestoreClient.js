@@ -1,5 +1,6 @@
 const idUtente = 'Alessio1991';
 var dataPrenotazione = '';
+var dati;
 
 function load() {
 	$.ajax({
@@ -10,20 +11,17 @@ function load() {
 		async: false,
 		dataType: 'json',
 		data: {
-			//userId: "Mario",
-			//nomeLido: "Lampara"//dati da mandare al server per farsi tornare tramite json tutti i dati del gestore e del lido per costruire l'html
 			idLido: "RSDVNTVRM66D763"
 		},
 		success: getJSONGrid
 	});
 }
 //var ajaxGET = $.get("map.php", getJSONGrid());
-
 function getJSONGrid(data) {
 	mappa = data;
-	console.log(data);
-	var dati = data.splice(data.length - 1, 1);
-
+	
+	dati = data.splice(data.length - 1, 1);
+	
 	var containertitolo = document.getElementById("titolo-lido");
 
 	var nomeLido = document.createElement("h1");
@@ -33,7 +31,7 @@ function getJSONGrid(data) {
 
 	var nomeGestore = document.createElement("h3");
 	containertitolo.appendChild(nomeGestore);
-	textNomeGestore = document.createTextNode(dati[0].nomeUtente);//
+	textNomeGestore = document.createTextNode(dati[0].nomeGestore);//
 	nomeGestore.appendChild(textNomeGestore);
 
 	var idLido = document.createElement("h6");
@@ -112,12 +110,12 @@ function sendDate() {
 		//messages: document.getElementById('errorMessages'),
 	};
 
-	requestData = `dateIn=${form.dateIn.value}&dateOut=${form.dateOut.value}&IdLido=${textIdLido.nodeValue}&nomeGestore=${textNomeGestore.nodeValue}`//
+	requestData = `dateIn=${form.dateIn.value}&dateOut=${form.dateOut.value}&IdLido=${dati[0].idLido}&nomeGestore=${dati[0].nomeGestore}`//
 	var ajaxPOST = $.get("/Control/CVerificaDisponibilita.php", requestData, function () {
 
 
 		var json = $.parseJSON(ajaxPOST.responseText)
-		const dataPrenotazione = json.dataIn + "&" + json.dataOut;
+		//const dataPrenotazione = json.dataIn + "&" + json.dataOut;
 		//console.log(json.arrayDB);
 		for (i = 0; i < json.arrayDB.length; i++) {
 			var idtemp = json.arrayDB[i];
@@ -222,7 +220,8 @@ $(document).ready(function () {  //jQuery string (tolto per eliminare la dipende
 
 
 	btnPrenotazione.addEventListener('click', function () {
-		console.log(dataPrenotazione)
+		//console.log(dataPrenotazione)
+		console.log(dati[0]);
 		if (document.getElementById('selectedList').getElementsByTagName("li").length == 0) {
 			alert("seleziona almeno un ombrellone!")
 		}
@@ -234,16 +233,23 @@ $(document).ready(function () {  //jQuery string (tolto per eliminare la dipende
 				var id = listaOmbrelloni[i].id.split("-")
 				id = id[1];
 				array[i] = id;
-				console.log(array[i])
+				//console.log(array[i])
 			}
 			datiPrenotazione = {
 				'dataIn': dataIn,
 				'dataOut': dataOut,
 				'ombrelloni': array,
-				'idLido': textIdLido.nodeValue,
-				'idUtente': idUtente//DA SISTEMARE LE VARIABILI DA INVIARE TRAMITE METODO POST JSON
+				'idLido': dati[0].idLido,
+				'nomeLido': dati[0].nomeLido,
+				'idGestore': dati[0].nomeGestore,
+				'idUtenteLoggato': idUtente,//DA SISTEMARE LE VARIABILI DA INVIARE TRAMITE METODO POST JSON
+
+				'via': dati[0].via,
+				'civico': dati[0].civico,
+				'comune': dati[0].comune,
+				'provincia': dati[0].provincia,
 			}
-			console.log(datiPrenotazione)
+			//console.log(datiPrenotazione)
 			var ajaxPOST = $.post("CPrenotazione.php", datiPrenotazione, function () {
 				//var json = $.parseJSON(ajaxPOST.responseText);
 				console.log(ajaxPOST.responseText)
