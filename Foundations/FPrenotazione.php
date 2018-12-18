@@ -75,9 +75,9 @@ class FPrenotazione extends Fdb
       
       */
   }
-      public function getOmbrelloniOccupati(ELido & $lido, DateTime & $dataA, DateTime & $dataB)
+      public function getOmbrelloniOccupati($idLido, DateTime & $dataA, DateTime & $dataB)
       {
-          $idLido=$lido->getIdLido();
+          
           $query="SELECT * FROM Prenotazione WHERE idLido = ?";
           $stmt=$this->db->prepare($query);
           $stmt->execute([$idLido]);
