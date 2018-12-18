@@ -64,18 +64,36 @@ file_put_contents($file, $current); */
 
 
 
+$nome_Gestore = isset($_GET['nomeGestore']) ? $_GET['nomeGestore'] : '';
+$gestore=new EGestore($nome_Gestore);
+
+$data_in = isset($_POST['dataIn']) ? $_POST['dataIn'] : ''; 
+$data_in = date("Y-m-d", strtotime($data_in));
+
+$data_out = isset($_POST['dataOut']) ? $_POST['dataOut'] : ''; 
+$data_out = date("Y-m-d", strtotime($data_out));
 
 
-$gestore=new EGestore('Alessio91911');
 
 
-$v='Everest';
-$n='32';
-$com='Sulmona';
-$prov='AQ';
-$indirizzoLido=new EIndirizzo($v,$n,$com,$prov);
-$nomeLido='Alcyone';
-$gestore->aggiungiLido($nomeLido,$indirizzoLido);
+
+
+$id_Utente = isset($_POST['idUtenteLoggato']) ? $_POST['idUtenteLoggato'] : '';//da sistemare lato javascript recuperandolo dal login
+$utente = new EUtente($id_Utente);
+
+
+
+$via = isset($_POST['via']) ? $_POST['via'] : '';
+$civico = isset($_POST['civico']) ? $_POST['civico'] : '';
+$comune = isset($_POST['comune']) ? $_POST['comune'] : '';
+$provincia = isset($_POST['provincia']) ? $_POST['provincia'] : '';
+$indirizzoLido=new EIndirizzo($via,$civico,$comune,$provincia);
+
+
+$id_Lido = isset($_POST['idLido']) ? $_POST['idLido'] : ''; //id lido venuto dal javascript paragonabile con 
+// id lido preso dal lido appena creato con aggiungiLido
+$nome_Lido = isset($_POST['nomeLido']) ? $_POST['nomeLido'] : '';
+$gestore->aggiungiLido($nome_Lido,$indirizzoLido);
 
 $a=$gestore->getLidi();
 $lidouno=$a[0];
@@ -83,16 +101,22 @@ $lidouno=$a[0];
 //$lidouno->setDataApertura(01/06/2018);
 //$lidouno->setDataChiusura(30/09/2018);
 
+/* for($i=0;$i<count($array_ombrelloni);$i++){
+
+} */
+
+$array_ombrelloni = isset($_POST['ombrelloni']) ? $_POST['ombrelloni'] : '';
+$omb_temp=$array_ombrelloni[0];
 
 
-$data_in="2018/12/20";$data_out= "2018/12/20";
+$riga=ord($omb_temp[0])-64;
+$colonna = $omb_temp[1];
 
-$riga="2";$colonna="4";
 $omb = new EOmbrellone($riga,$colonna);
 //print_r($griglia);
 
 
-$utente = new EUtente("ale");
+
 
 $pren = new EPrenotazione($data_in, $data_out, $omb, $lidouno, $utente);
 $fpren = new FPrenotazione();
