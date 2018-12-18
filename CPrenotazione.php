@@ -58,12 +58,13 @@ $lidouno = $a[0];
 
 $array_ombrelloni = isset($_POST['ombrelloni']) ? $_POST['ombrelloni'] : '';
 
+$fpren = new FPrenotazione();
 for ($i = 0; $i < count($array_ombrelloni); $i++) {
     $omb_temp = $array_ombrelloni[$i];
     $riga = ord($omb_temp[0]) - 64;
     $colonna = $omb_temp[1];
     $omb = new EOmbrellone($riga, $colonna);
     $pren = new EPrenotazione($data_in, $data_out, $omb, $lidouno, $utente);
-    $fpren = new FPrenotazione();
+
     $fpren->inserisci($pren);
 }

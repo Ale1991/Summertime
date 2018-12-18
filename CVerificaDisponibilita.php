@@ -1,56 +1,68 @@
 <?php
-$date_in = isset($_GET['dateIn']) ? $_GET['dateIn'] : ''; //dati per effettuare query sul db
-$date_out = isset($_GET['dateOut']) ? $_GET['dateOut'] : ''; //dati per effettuare query sul db
+require_once 'includes/autoload.inc.php';
+
+$date_in = isset($_GET['dataIn']) ? $_GET['dataIn'] : ''; //dati per effettuare query sul db
+$date_in = date("Y-m-d", strtotime($date_in));
+
+$date_out = isset($_GET['dataOut']) ? $_GET['dataOut'] : ''; //dati per effettuare query sul db
+$date_out = date("Y-m-d", strtotime($date_out));
+
 //$nome_Gestore = isset($_GET['nomeGestore']) ? $_GET['nomeGestore'] : '';//dati per effettuare query sul db
-$id_Lido = isset($_GET['IdLido']) ? $_GET['IdLido'] : ''; //dati per effettuare query sul db
+$id_Lido = isset($_GET['idLido']) ? $_GET['idLido'] : ''; //dati per effettuare query sul db
 
 $ok = true;
 $messages = array();
-$arrayDB = ['A1', 'A2', 'A3', 'A4', 'B1', 'B2', 'B3', 'B5']; //ARRAY DI STRINGHE CONTENENTE GLI ID DEGLI OMBRELLONI OCCUPATI RITORNATI DALLA QUERY SUL DB
 
+$fpren = new FPrenotazione();
+$arrayDB = $fpren->getOmbrelloniOccupati($id_Lido, $date_in, $date_out);
+
+//$arrayDB = ['A1', 'A2', 'A3', 'A4', 'B1', 'B2', 'B3', 'C1']; //ARRAY DI STRINGHE CONTENENTE GLI ID DEGLI OMBRELLONI OCCUPATI RITORNATI DALLA QUERY SUL DB
+
+/*
 if (!isset($date_in) || empty($date_in)) {
-    $ok = false;
-    $messages[] = 'DATE-IN cannot be empty';
+$ok = false;
+$messages[] = 'DATE-IN cannot be empty';
 }
 if (!isset($date_out) || empty($date_out)) {
-    $ok = false;
-    $messages[] = 'DATE-OUT cannot be empty';
+$ok = false;
+$messages[] = 'DATE-OUT cannot be empty';
 }
 
 if ($ok) {
 
-    $ok = true;
-    $messages[] = 'Successful date choise!';
+$ok = true;
+$messages[] = 'Successful date choise!';
 
-    //if ($date_in === 'dcode' ) {
-    // $ok = true;
-    //$messages[] = 'Successful date choise!';
-    //} else {
-    //$ok = false;
-    //$messages[] = 'Incorrect date!';
-    //}
-}
-echo json_encode(
-    array(
-        'ok' => $ok,
-        'messages' => $messages,
-        'dataIn' => $date_in,
-        'dataOut' => $date_out,
-        'nomeGestore' => $nome_Gestore,
-        'idLido' => $id_Lido,
-        'arrayDB' => $arrayDB,
-    )
-);
+//if ($date_in === 'dcode' ) {
+// $ok = true;
+//$messages[] = 'Successful date choise!';
+//} else {
+//$ok = false;
+//$messages[] = 'Incorrect date!';
+//}
+} */
+
+$array = [
+    //'ok' => $ok,
+    //'messages' => $messages,
+    'dataIn' => $date_in,
+    'dataOut' => $date_out,
+    //'nomeGestore' => $nome_Gestore,
+    'idLido' => $id_Lido,
+    'arrayDB' => $arrayDB,
+];
+
+echo json_encode($array);
 
 //put your code here
 
-$file = 'date.txt';
+/* $file = 'date.txt';
 // Open the file to get existing content
 $current = file_get_contents($file);
 // Append a new person to the file
-$current .= "$nome_Gestore" . ":" . "$id_Lido" . ":" . "$date_in" . "->" . "$date_out\r\n";
+$current .= "$arrayDB" ."$id_Lido" . ":" . "$date_in" . "->" . "$date_out\r\n";
 // Write the contents back to the file
-file_put_contents($file, $current);
+file_put_contents($file, $current); */
 
 //CODICE PER VERIFICA DISPONIBILITA DELLA GRIGLIA -> SOSTITUIRE I NEW CON DELLE QUERY SU DB PER POI UTILIZZARE IL RISULTATO COME STIRNGA DI CONFRONTO $arrayDB
 /* $lidouno->generaGriglia();

@@ -1,6 +1,7 @@
 const idUtente = 'Alessio1991';
 var dataPrenotazione = '';
 var dati;
+var mappa;
 
 function load() {
 	$.ajax({
@@ -18,10 +19,8 @@ function load() {
 }
 //var ajaxGET = $.get("map.php", getJSONGrid());
 function getJSONGrid(data) {
-	mappa = data;
-
 	dati = data.splice(data.length - 1, 1);
-
+	mappa = data;
 	var containertitolo = document.getElementById("titolo-lido");
 
 	var nomeLido = document.createElement("h1");
@@ -110,19 +109,31 @@ function sendDate() {
 		//messages: document.getElementById('errorMessages'),
 	};
 
-	requestData = `dateIn=${form.dateIn.value}&dateOut=${form.dateOut.value}&IdLido=${dati[0].idLido}&nomeGestore=${dati[0].nomeGestore}`//
-	var ajaxPOST = $.get("/Control/CVerificaDisponibilita.php", requestData, function () {
+	requestData = {
+		'dataIn': form.dateIn.value,
+		'dataOut': form.dateOut.value,
+		//'ombrelloni': array,
+		'idLido': dati[0].idLido,
+		//'nomeLido': dati[0].nomeLido,
+		//'idGestore': dati[0].nomeGestore,
+		//'idUtenteLoggato': idUtente,//DA SISTEMARE LE VARIABILI DA INVIARE TRAMITE METODO POST JSON
+	}
 
+	var ajaxPOST = $.get("CVerificaDisponibilita.php", requestData, function () {
 
-		var json = $.parseJSON(ajaxPOST.responseText)
-		//const dataPrenotazione = json.dataIn + "&" + json.dataOut;
-		//console.log(json.arrayDB);
+		for (i = 0; i < mappa.length; i++) {
+			var element = document.getElementById(mappa[i].id);
+			element.style.borderColor = "green";
+			element.style.pointerEvents = "auto";
+
+		}
+		var json = $.parseJSON(ajaxPOST.responseText);
+
 		for (i = 0; i < json.arrayDB.length; i++) {
 			var idtemp = json.arrayDB[i];
 			var element = document.getElementById(idtemp);
 			element.style.borderColor = "red";
 			element.style.pointerEvents = "none";
-			console.log(idtemp)
 		}
 	});
 }
@@ -208,7 +219,6 @@ $(document).ready(function () {  //jQuery string (tolto per eliminare la dipende
 			dataPrenotazione = $('#dateIn').val() + '&' + $('#dateOut').val();
 			dataIn = $('#dateIn').val();
 			dataOut = $('#dateOut').val();
-			//console.log(dataPrenotazione)
 		}
 	})
 
@@ -220,8 +230,7 @@ $(document).ready(function () {  //jQuery string (tolto per eliminare la dipende
 
 
 	btnPrenotazione.addEventListener('click', function () {
-		//console.log(dataPrenotazione)
-		console.log(dati[0]);
+
 		if (document.getElementById('selectedList').getElementsByTagName("li").length == 0) {
 			alert("seleziona almeno un ombrellone!")
 		}
@@ -229,11 +238,10 @@ $(document).ready(function () {  //jQuery string (tolto per eliminare la dipende
 			var array = [];
 			var listaOmbrelloni = document.getElementById('selectedList').getElementsByTagName("li");
 			for (var i = 0; i < document.getElementById('selectedList').getElementsByTagName("li").length; i++) {
-				//console.log(listaOmbrelloni[i].id)//console.log(array)
+
 				var id = listaOmbrelloni[i].id.split("-")
 				id = id[1];
 				array[i] = id;
-				//console.log(array[i])
 			}
 			datiPrenotazione = {
 				'dataIn': dataIn,
@@ -249,7 +257,6 @@ $(document).ready(function () {  //jQuery string (tolto per eliminare la dipende
 				'comune': dati[0].comune,
 				'provincia': dati[0].provincia,
 			}
-			//console.log(datiPrenotazione)
 			var ajaxPOST = $.post("CPrenotazione.php", datiPrenotazione, function () {
 				//var json = $.parseJSON(ajaxPOST.responseText);
 				console.log(ajaxPOST.responseText)
