@@ -1,6 +1,10 @@
 <?php
 require_once 'includes/autoload.inc.php';
 
+header('Access-Control-Allow-Origin: *');
+header('Content-type: application/json');
+
+
 //RISORSA UTILIZZATA PER INIZIALIZZARE LA RISORSA lido-home.html passando due parametri con ajax.GET(idLido)
 //la quale fara' query sul db per recuperare tutti i dati dei due oggetti i quali verranno restituiti al client javascript
 //come JSON, il quale verra' elaborato dal client javascript per costruire la pagina html

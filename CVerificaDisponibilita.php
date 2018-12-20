@@ -1,6 +1,9 @@
 <?php
 require_once 'includes/autoload.inc.php';
 
+header('Access-Control-Allow-Origin: *');
+header('Content-type: application/json');
+
 $date_in = isset($_GET['dataIn']) ? $_GET['dataIn'] : ''; //dati per effettuare query sul db
 $date_in = date("Y-m-d", strtotime($date_in));
 
@@ -18,7 +21,7 @@ $arrayDB = $fpren->getOmbrelloniOccupati($id_Lido, $date_in, $date_out);
 
 //$arrayDB = ['A1', 'A2', 'A3', 'A4', 'B1', 'B2', 'B3', 'C1']; //ARRAY DI STRINGHE CONTENENTE GLI ID DEGLI OMBRELLONI OCCUPATI RITORNATI DALLA QUERY SUL DB
 
-/*
+
 if (!isset($date_in) || empty($date_in)) {
 $ok = false;
 $messages[] = 'DATE-IN cannot be empty';
@@ -40,11 +43,11 @@ $messages[] = 'Successful date choise!';
 //$ok = false;
 //$messages[] = 'Incorrect date!';
 //}
-} */
+}
 
 $array = [
-    //'ok' => $ok,
-    //'messages' => $messages,
+    'ok' => $ok,
+    'messages' => $messages,
     'dataIn' => $date_in,
     'dataOut' => $date_out,
     //'nomeGestore' => $nome_Gestore,

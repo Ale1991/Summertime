@@ -1,6 +1,9 @@
 <?php
 require_once 'includes/autoload.inc.php';
 
+header('Access-Control-Allow-Origin: *');
+header('Content-type: application/json');
+
 class CPrenotazione
 {
     public function ImpostaFormPrenotazione($lido, $utente)
