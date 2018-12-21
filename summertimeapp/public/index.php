@@ -2,6 +2,10 @@
 use \Psr\Http\Message\ResponseInterface as Response;
 use \Psr\Http\Message\ServerRequestInterface as Request;
 
+header('Access-Control-Allow-Origin: *');
+header('Content-type: application/json');
+
+
 require '../vendor/autoload.php';
 //include foundation
 require '../src/Foundations/Fdb.php';
@@ -29,6 +33,8 @@ $app = new \Slim\App;
 
 //Lidi Route
 require '../src/routes/lidi.php';
+require '../src/routes/ombrelloni.php';
+
 // require '../src/routes/prenotazioni.php';
 // require '../src/routes/utenti.php';
 

@@ -2,7 +2,7 @@
 use \Psr\Http\Message\ResponseInterface as Response;
 use \Psr\Http\Message\ServerRequestInterface as Request;
 
-$app = new \Slim\App;
+
 //Get all Lidi
 $app->get('/api/lidi', function (Request $request, Response $response) {
 
@@ -24,12 +24,44 @@ $app->get('/api/lido/{IDLido}', function (Request $request, Response $response) 
 
     $IDLido = $request->getAttribute('IDLido');
     try {
-        $lido = new FLido();
-        //$l = $lido->getLidoById($IDLido);
-        $l = $lido->getObject($IDLido);
-        //$l = $lido->getLidoByName($IDLido);
+        $flido = new FLido();
+        $obj_lido = $flido->getObject($IDLido);
+        $obj_lido->generaGriglia();
+        $griglia = $obj_lido->getGriglia();
+        $gestore = $obj_lido->getGestore();
 
-        //print_r($l);
+        for ($i = 0; $i < count($griglia); $i++) {
+            $array[$i] = [
+                'riga' => $griglia[$i]->getRiga(),
+                'colonna' => $griglia[$i]->getColonna(),
+                'id' => $griglia[$i]->getID(),
+                'occupato' => $griglia[$i]->getOccupato(), //set  "true"
+            ];
+        }
+
+        $dati = [
+            'via' => $obj_lido->getIndirizzo()->getVia(),
+            'civico' => $obj_lido->getIndirizzo()->getCivico(),
+            'comune' => $obj_lido->getIndirizzo()->getComune(),
+            'provincia' => $obj_lido->getIndirizzo()->getProvincia(),
+
+            'idLido' => $obj_lido->getIdLido(),
+            'indirizzo' => $obj_lido->getIndirizzo(),
+            'nomeLido' => $obj_lido->getNomeLido(),
+            'nomeGestore' => $gestore->getNomeUtente(),
+            'password' => $gestore->getPassword(),
+            'loginStatus' => $gestore->getLoginStatus(),
+            //'nome' => $gestore->getNome(),
+            //'cognome' => $gestore->getCognome(),
+            'email' => $gestore->getEmail(),
+            'isGestore' => $gestore->getIsGestore(),
+            'isAmministratore' => $gestore->getIsAmministratore(),
+            'idUtenteLoggato' => 'utenteloggato!!',
+        ];
+        //$l = $lido->getLidoById($IDLido);
+        //$l = $lido->getLidoByName($IDLido);
+        $array[] = $dati;
+        echo json_encode($array);
     } catch (PDOException $e) {
         echo ' {"error":{"text": ' . $e->getMessage() . '}';
     }
@@ -83,3 +115,4 @@ $app->put('/api/prenotazione/update', function (Request $request, Response $resp
         echo ' {"error":{"text": ' . $e->getMessage() . '}';
     }
 });
+
