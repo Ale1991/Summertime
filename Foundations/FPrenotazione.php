@@ -90,5 +90,34 @@ class FPrenotazione extends Fdb
         return $arr;
 
     }
+    
+    public function getPrenotazioniByUtente($nomeUtente)
+    {
+
+        $query = "SELECT * FROM Prenotazione WHERE idUtente = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute([$nomeUtente]);
+        $arrayRes=array();
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
+        {
+            $idLido=$row["idLido"];
+            $fLido=new FLido();
+            $Lido=$fLido->getObject($idLido);
+            $Ombrellone=$row["numOmbrellone"];
+            $dataI=$row["dataInizio"];
+            $dataInizio=new DateTime();
+            $dataInizio->createFromFormat('Y/m/d', $dataI);
+            $dataF=$row["dataFine"];
+            $dataFine=new DateTime();
+            $dataFine->createFromFormat('Y/m/d', $dataF);
+            $prenotazione=new EPrenotazione($dataInizio, $dataFine, $Ombrellone, $Lido, $nomeUtente);
+            $arrayRes[]=$prenotazione;
+        }
+        return $arrayRes;
+        
+        }
+
+    
+
 
 }

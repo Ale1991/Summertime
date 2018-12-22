@@ -36,11 +36,11 @@ class ELido
     {
         $this->nomeLido = $nomeLido;
         $this->gestore = $gestore;
-        $this->indirizzo = $indirizzo->getIndirizzo();
-        $this->via = $indirizzo->getVia();
-        $this->civico = $indirizzo->getCivico();
-        $this->comune = $indirizzo->getComune();
-        $this->provincia = $indirizzo->getProvincia();
+        $this->indirizzo = $indirizzo; //MODIFICATO($this->indirizzo=$indirizzo->getIndirizzo())
+        //$this->via = $indirizzo->getVia();
+        //$this->civico = $indirizzo->getCivico();
+        //$this->comune = $indirizzo->getComune();
+        //$this->provincia = $indirizzo->getProvincia();
         $IDLido = $this->getNNNL() . $indirizzo->getIDIndirizzo();
         $this->IDLido = $IDLido;
     }
@@ -87,11 +87,11 @@ class ELido
     {$this->IDLido = $IDLido;}
     public function getIdLido()
     {return $this->IDLido;}
-    public function setDataApertura(DateTime $dataApertura)
+    public function setDataApertura(DateTime & $dataApertura)
     {$this->dataApertura = $dataApertura;}
     public function getDataApertura()
     {return $this->dataApertura;}
-    public function setDataChiusura(DateTime $dataChiusura)
+    public function setDataChiusura(DateTime & $dataChiusura)
     {$this->dataChiusura = $dataChiusura;}
     public function getDataChiusura()
     {return $this->dataChiusura;}

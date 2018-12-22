@@ -37,5 +37,21 @@ class FUtente extends Fdb
         
 
     }
+    
+    public function modificaPassword($NomeUtente,$nuovapassword)
+    {
+        $query="UPDATE Utente SET Password = ? WHERE NomeUtente = ? ";
+        $stmt=$this->db->prepare($query);
+   	$stmt->execute([$nuovapassword,$NomeUtente]);
+        
+    }
+    
+     public function cancellaUtente($NomeUtente)
+    {
+        $query="DELETE FROM Utente WHERE NomeUtente= ? ";
+        $stmt=$this->db->prepare($query);
+   	$stmt->execute([$NomeUtente]);
+        
+    }
     //put your code here
 }
