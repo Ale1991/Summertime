@@ -1,10 +1,6 @@
 <?php
-use \Psr\Http\Message\ResponseInterface as Response;
-use \Psr\Http\Message\ServerRequestInterface as Request;
-
 header('Access-Control-Allow-Origin: *');
-header('Content-type: application/json');
-
+header('Access-Control-Allow-Headers: *');
 
 require '../vendor/autoload.php';
 //include foundation
@@ -24,19 +20,10 @@ require '../src/Entity/EPrenotazione.php';
 require '../src/config/db.php';
 
 $app = new \Slim\App;
-/* $app->get('/hello/{name}', function (Request $request, Response $response, array $args) {
-    $name = $args['name'];
-    $response->getBody()->write("Hello, $name");
 
-    return $response;
-}); */
 
-//Lidi Route
-require '../src/routes/lidi.php';
-require '../src/routes/ombrelloni.php';
-
-// require '../src/routes/prenotazioni.php';
-// require '../src/routes/utenti.php';
+// API endpoint
+require '../src/api/v1/index.php';
 
 
 

@@ -24,17 +24,18 @@ class EIndirizzo
         $this->IDIndirizzo = $IDIndirizzo;
     }
 
-    public function _calcolaCodiceComune($nome, $provincia)
+    public function _calcolaCodiceComune($comune, $provincia)
     {
         $found = false;
-        $this->nome = $nome;
+        $this->comune = $comune;
         $this->provincia = $provincia;
         //$handle = fopen("$this->path", 'r');
         $handle = fopen(__DIR__ . '/codici_comuni_italiani.txt', "r");
 
         while (!feof($handle)) {
             $lettura = fgets($handle, 4096);
-            if (strpos($lettura, strtoupper($nome)) !== false) {
+            $comunecorrente = strtoupper($comune);
+            if (strpos($lettura, $comunecorrente) !== false) {
 
                 if (strpos($lettura, $provincia) !== false) {
 
@@ -46,7 +47,7 @@ class EIndirizzo
                 }
             } else {
                 //echo("La stringa '$nome ' NON e' stata trovata!"."\n"); //check verifica point
-                $this->codice = "nessun match tra il comune di: $nome e la provincia di: $provincia";
+                $this->codice = "nessun match tra il comune di: $comune e la provincia di: $provincia";
             }
         }
         fclose($handle);
@@ -124,5 +125,4 @@ class EIndirizzo
     {$this->provincia = $provincia;}
     public function getIndirizzo()
     {return $this->indirizzo;}
-
 }

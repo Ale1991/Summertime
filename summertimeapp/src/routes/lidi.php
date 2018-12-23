@@ -20,9 +20,9 @@ $app->get('/api/lidi', function (Request $request, Response $response) {
     }
 });
 //TESTATA E FUNZIONANTE
-$app->get('/api/lido/{IDLido}', function (Request $request, Response $response) { //
+$app->get('/api/lido/{idLido}', function (Request $request, Response $response) { //
 
-    $IDLido = $request->getAttribute('IDLido');
+    $IDLido = $request->getAttribute('idLido');
     try {
         $flido = new FLido();
         $obj_lido = $flido->getObject($IDLido);
@@ -94,6 +94,36 @@ $app->post('/api/lido/add', function (Request $request, Response $response) { //
 
     $lido->setRighe($righe);
     $lido->setColonne($colonne);
+    /*     $nomeLido = $request->getParam('nomeLido');
+$righe = $request->getParam('righe');
+$colonne = $request->getParam('colonne');
+
+$dataApertura = $request->getParam('dataApertura');
+
+$dataChiusura = $request->getParam('dataChiusura');
+
+$via = $request->getParam('via');
+$civico = $request->getParam('civico');
+$comune = $request->getParam('comune');
+$provincia = $request->getParam('provincia');
+
+$idGestore = $request->getParam('idGestore');
+$gestore = new EGestore($idGestore);
+
+$indirizzo = new EIndirizzo($via, $civico, $comune, $provincia);
+// $lido = new ELido($nomeLido, $gestore, $indirizzo);
+$gestore->aggiungiLido($nomeLido, $indirizzo);
+$a = $gestore->getLidi();
+$lido = $a[0];
+
+$datein = new DateTime($dataApertura);
+$lido->setDataApertura($datein);
+$dateout = new DateTime($dataChiusura);
+$lido->setDataChiusura($dateout);
+
+$lido->setRighe($righe);
+$lido->setColonne($colonne); */
+
 
     try {
         $db = new FLido();

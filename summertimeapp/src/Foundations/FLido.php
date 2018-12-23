@@ -5,7 +5,7 @@ class FLido extends Fdb
     public function inserisci(ELido &$lido)
     {
         $query = "INSERT INTO Lido VALUES (?,?,?,?,?,?,?,?,?,?,?)";
-        $arr = array($lido->getIdLido(), $lido->getNomeLido(), $lido->getRighe(), $lido->getColonne(), $lido->getDataApertura()->format("Y-m-d H:i:s"), $lido->getDataChiusura()->format("Y-m-d H:i:s"), $lido->getIndirizzo()->getVia(), $lido->getIndirizzo()->getCivico(), $lido->getIndirizzo()->getComune(), $lido->getIndirizzo()->getProvincia(), $lido->getGestore()->getNomeUtente());
+        $arr = array($lido->getIdLido(), $lido->getNomeLido(), $lido->getRighe(), $lido->getColonne(), $lido->getDataApertura()->format("Y-m-d H:i:s"), $lido->getDataChiusura()->format("Y-m-d H:i:s"), $lido->getIndirizzo()->getVia(), $lido->getIndirizzo()->getCivico(), $lido->getIndirizzo()->getComune(), $lido->getIndirizzo()->getProvincia(), $lido->getGestore());
         $stmt = $this->db->prepare($query);
         $stmt->execute($arr);
     }
