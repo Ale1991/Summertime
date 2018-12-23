@@ -12,6 +12,7 @@ $deletePrenotazione = require 'deletePrenotazione.php';
 $app->get($endpoint, function ($request, $response) {
     getPrenotazioni($request, $response);
 });
+
 //implementato e testato
 $app->post($endpoint, function ($request, $response) {
     addPrenotazione($request, $response);

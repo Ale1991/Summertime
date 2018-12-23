@@ -5,7 +5,7 @@ var mappa;
 
 function load() {
 	$.ajax({
-		url: 'CHomeGestoreServer.php',
+		url: 'http://summertimeapp/api/v1/lidi/'+idUtente,
 		//url: "map.php",
 		type: "GET",
 		cache: false,

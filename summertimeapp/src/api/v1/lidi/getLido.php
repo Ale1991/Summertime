@@ -5,10 +5,6 @@ use \Psr\Http\Message\ServerRequestInterface as Request;
 function getLido(Request $request, Response $response)
 {
     $IDLido = $request->getAttribute('idLido');
-    print_r($IDLido);
-    //$IDLido = $request->getParsedBody()['nomeLido'];
-    //$IDLido = $request->getParam('nomeLido');
-
 
     try {
         $flido = new FLido();
@@ -30,7 +26,6 @@ function getLido(Request $request, Response $response)
             'comune' => $obj_lido->getIndirizzo()->getComune(),
             'provincia' => $obj_lido->getIndirizzo()->getProvincia(),
             'idLido' => $obj_lido->getIdLido(),
-            'indirizzo' => $obj_lido->getIndirizzo(),
             'nomeLido' => $obj_lido->getNomeLido(),
             'nomeGestore' => $gestore->getNomeUtente(),
             'password' => $gestore->getPassword(),
@@ -41,9 +36,8 @@ function getLido(Request $request, Response $response)
             'idUtenteLoggato' => 'utenteloggato!!',
         ];
         $array[] = $dati;
-        echo json_encode($array);
+        echo json_encode($array);        
     } catch (PDOException $e) {
         echo ' {"error":{"text": ' . $e->getMessage() . '}';
     }
 }
-?>

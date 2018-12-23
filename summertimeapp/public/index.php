@@ -1,6 +1,7 @@
 <?php
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Headers: *');
+//header('Content-type: application/json');
 
 require '../vendor/autoload.php';
 //include foundation
@@ -24,7 +25,5 @@ $app = new \Slim\App;
 
 // API endpoint
 require '../src/api/v1/index.php';
-
-
 
 $app->run();
