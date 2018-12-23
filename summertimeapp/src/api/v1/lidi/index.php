@@ -20,8 +20,8 @@ $app->post($endpoint, function ($request, $response) {
 });
 
 //da implementare
-$app->get($endpoint.'/:idLido', function ($request, $response) {
-    //getLido($request, $response);
+$app->get('/api/v1/lido/{idLido}', function ($request, $response) {
+    getLido($request, $response);
 });
 
 //da implementare
