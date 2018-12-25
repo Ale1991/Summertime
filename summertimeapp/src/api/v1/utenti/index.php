@@ -2,35 +2,33 @@
 
 $endpoint = '/api/v1/utenti';
 
-$getLidi = require 'getUtenti.php';
-//ECC ECC ECC...
-/* $addLido = require 'addLido.php';
+$getUtenti = require 'getUtenti.php';
+$addUtente = require 'addUtente.php';
 
-//$getLido = require 'getLido.php';
-//$updateLido = require 'updateLido.php';
-//$deleteLido = require 'deleteLido.php';
+//$getUtente = require 'getUtente.php';
+//$updateUtente = require 'updateUtente.php';
+//$deleteUtente = require 'deleteUtente.php';
 
-//Get all Lidi implementato e testato
+//da implementare
 $app->get($endpoint, function ($request, $response) {
-    getLidi($request, $response);
+    getUtenti($request, $response);
 });
-//implementato e testato
+
 $app->post($endpoint, function ($request, $response) {
-    addLido($request, $response);
+    addUtente($request, $response);
 });
 
 //da implementare
-$app->get($endpoint . '/:idLido', function ($request, $response) {
-    //getLido($request, $response);
+$app->get($endpoint . '/:idUtente', function ($request, $response) {
+    //getUtente($request, $response);
 });
 
 //da implementare
-$app->put($endpoint . '/:idLido', function ($request, $response) {
-    //updateLido($request, $response);
+$app->put($endpoint . '/:idUtente', function ($request, $response) {
+    //updateUtente($request, $response);
 });
 
 //da implementare
-$app->delete($endpoint . '/:idLido', function ($request, $response) {
-    //deleteLido($request, $response);
+$app->delete($endpoint . '/:idUtente', function ($request, $response) {
+    //deleteUtente($request, $response);
 });
- */

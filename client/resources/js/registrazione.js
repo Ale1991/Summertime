@@ -88,7 +88,7 @@ $(function () {
         }
     }
 
-    $("#registration_form").submit(function () {
+    $("#registration_form").on("click", function () {
 
         error_username = false;
         error_password = false;
@@ -101,7 +101,30 @@ $(function () {
         check_email();
 
         if (error_username == false && error_password == false && error_retype_password == false && error_email == false) {
-            return true;
+            const form = {
+                nomeUtente: document.getElementById('form_username'),
+                password: document.getElementById('form_password'),
+                email: document.getElementById('form_email'),
+                isGestore: document.getElementById('isGestore')
+            };
+            requestData = {
+                nomeUtente: form.nomeUtente.value,
+                password: form.password.value,
+                email: form.email.value,
+                isGestore: form.isGestore.checked,
+            }
+            console.log(requestData)
+            $.ajax({
+                url: "http://summertimeapp/api/v1/utenti",
+                type: "POST",
+                //cache: false,
+                contentType: 'application/json',
+                data: JSON.stringify(requestData),
+                success: function (json) {
+                    var response = JSON.parse(json);
+                    console.log(response)
+                }
+            });
         } else {
             return false;
         }
