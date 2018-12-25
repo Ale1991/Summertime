@@ -34,10 +34,7 @@ function postPrenotazione() {
         //cache: false,
         contentType: 'application/json',
         data: JSON.stringify(datiPrenotazione),
-        success: function (json) {
-            console.log(json);
-            load
-        }
+        success: riepilogoPrenotazione
     });
 }
 

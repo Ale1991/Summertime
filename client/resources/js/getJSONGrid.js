@@ -1,9 +1,11 @@
 function getJSONGrid(dataResponse) {
+    document.getElementById('container-riepilogo').style.display = 'none';
     var data = JSON.parse(dataResponse);//non serve piu' perche il server invia solo content/type json
 
     dati = data.splice(data.length - 1, 1);
     mappa = data;
     var containertitolo = document.getElementById("titolo-lido");
+    //containertitolo.style.display = 'none';
 
     var nomeLido = document.createElement("h1");
     containertitolo.appendChild(nomeLido);

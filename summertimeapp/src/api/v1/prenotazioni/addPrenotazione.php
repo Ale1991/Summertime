@@ -23,7 +23,7 @@ function addPrenotazione(Request $request, Response $response)
     $indirizzoLido = new EIndirizzo($via, $civico, $comune, $provincia);
     $gestore->aggiungiLido($nome_Lido, $indirizzoLido);
     $a = $gestore->getLidi();
-    $lidouno = $a[0];
+    $lido = $a[0];
 
     try {
         $fpren = new FPrenotazione();
@@ -32,10 +32,26 @@ function addPrenotazione(Request $request, Response $response)
             $riga = ord($omb_temp[0]) - 64;
             $colonna = $omb_temp[1];
             $omb = new EOmbrellone($riga, $colonna);
-            $pren = new EPrenotazione($data_in, $data_out, $omb, $lidouno, $utente);
+            $pren = new EPrenotazione($data_in, $data_out, $omb, $lido, $utente);
             $fpren->inserisci($pren);
         }
-        echo json_encode('aggiunto con successo!');
+        $array = [
+            'messages' => 'aggiunto con successo!',
+            'nomeUtente' => $utente->getNomeUtente(),
+            'nomeGestore' => $gestore->getNomeUtente(),
+            'dataIn' => $data_in,
+            'dataOut' => $data_out,
+            'idLido' => $lido->getIdLido(),
+            'nomeLido' => $lido->getNomeLido(),
+            'via' => $lido->getIndirizzo()->getVia(),
+            'civico' => $lido->getIndirizzo()->getCivico(),
+            'comune' => $lido->getIndirizzo()->getComune(),
+            'provincia' => $lido->getIndirizzo()->getProvincia(),
+            'arrayDB' => $array_ombrelloni,
+        ];
+        echo json_encode($array);
+
+        //echo json_encode('aggiunto con successo!');
     } catch (PDOException $e) {
         echo ' {"error":{"text": ' . $e->getMessage() . '}';
     }
