@@ -50,8 +50,7 @@ function addPrenotazione(Request $request, Response $response)
             'arrayDB' => $array_ombrelloni,
         ];
         echo json_encode($array);
-
-        //echo json_encode('aggiunto con successo!');
+        
     } catch (PDOException $e) {
         echo ' {"error":{"text": ' . $e->getMessage() . '}';
     }

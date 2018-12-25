@@ -52,15 +52,8 @@
     <!-- Main -->
     <script src="./vendors/js/main.js"></script>
 
-    <!-- MIEI SCRIPT -->
-    <!-- Css per costruzione griglia  -->
-    <link rel=stylesheet type="text/css" href="./resources/css/Project_Javascript_jQuery.css">
-    <!-- Script js -->
-    <!-- <script type="text/javascript" src="./resources/js/CHomeGestoreClient.js"></script> -->
-
+    <script src="./resources/js/registrazione.js"></script>
 </head>
-
-
 
 <body>
 
@@ -71,9 +64,12 @@
             <div class="top-menu">
                 <div class="container-fluid">
                     <div class="row">
+                        <div class="col-xs-2">
+                            <div id="colorlib-logo"><a href="index.html">Tour</a></div>
+                        </div>
                         <div class="col-xs-10 text-right menu-1">
                             <ul>
-                                <li class="active"><a href="index.html">Home</a></li>
+                                <li><a href="index.html">Home</a></li>
                                 <li class="has-dropdown">
                                     <a href="tours.html">Tours</a>
                                     <ul class="dropdown">
@@ -83,11 +79,11 @@
                                         <li><a href="#">Booking</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="lidi.html">Lidi</a></li><!-- sostituito tutte le stringhe "hotels.html" con "lidi.html" -->
+                                <li><a href="lidi.html">Lidi</a></li>
                                 <li><a href="services.html">Services</a></li>
                                 <li><a href="blog.html">Blog</a></li>
                                 <li><a href="about.html">About</a></li>
-                                <li><a href="registrazione.html">Registrati</a></li>
+                                <li class="active"><a href="registrazione.html">Registrati</a></li>
                             </ul>
                         </div>
                     </div>
@@ -97,13 +93,14 @@
         <aside id="colorlib-hero">
             <div class="flexslider">
                 <ul class="slides">
-                    <li style="background-image: url(images/img_bg_1.jpg);">
+                    <li style="background-image: url(images/cover-img-3.jpg);">
                         <div class="overlay"></div>
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
                                     <div class="slider-text-inner text-center">
-                                        <h2>SummerTime!</h2>
+                                        <h1>Registrati</h1>
+                                        <h2>con Summertime!</h2>
                                     </div>
                                 </div>
                             </div>
@@ -112,55 +109,70 @@
                 </ul>
             </div>
         </aside>
-        <div id="colorlib-reservation">
-            <div class="row">
-                <div class="search-wrap">
-                    <div class="tab-content">
-                        <div id="flight" class="tab-pane fade in active">
-                            <div id="colorlib-logo">
-                                <font face="Verdana, Arial, Helvetica, sans-serif" color="white">Scegli la tua
-                                    destinazione</font><br />
+
+        <div id="colorlib-contact">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1 animate-box">
+                        <h3>Compila i seguenti campi</h3>
+
+                        <div class="row form-group">
+                            <div class="col-md-6">
+                                <label for="form_username">Nome Utente</label>
+                                <input type="text" id="form_username" name="form_username" class="form-control"
+                                    placeholder="Enter your Nickname" required>
+                                <div id="username_error_message">test</div>
                             </div>
-                            <form class="colorlib-form">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <div class="form-field">
-                                                <input type="text" id="location" class="form-control" placeholder="Inserisci il Comune di destinazione">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <input type="submit" name="submit" id="submit" value="Cerca Lidi" class="btn btn-primary btn-block">
-                                    </div>
-                                </div>
-                            </form>
+                            <div class="col-md-6">
+                                <label for="form_password">Password</label>
+                                <input type="password" id="form_password" name="form_password" class="form-control"
+                                    placeholder="Enter your password" required>
+                                <div id="password_error_message">test</div>
+                            </div>
                         </div>
+
+                        <div class="row form-group">
+                            <div class="col-md-6">
+                                <label for="form_email">Email</label>
+                                <input type="text" id="form_email" name="form_email" class="form-control" placeholder="Enter your email address"
+                                    required>
+                                <div id="email_error_message">test</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="form_retype_password">Conferma Password</label>
+                                <input type="password" id="form_retype_password" name="form_retype_password" class="form-control"
+                                    placeholder="Enter your password again" required>
+                                <div id="retype_password_error_message">test</div>
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="form-group text-center">
+                                <label for="isGestore">sei un Gestore?
+                                    <input type="checkbox" id="isGestore" name="isGestore" class="form-control">
+                                </label>
+                            </div>
+                            <div class="form-group text-center">
+                                <input type="submit" value="Send Message" class="btn btn-primary" id="registration_form">
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
+
+        <footer id="colorlib-footer" role="contentinfo">
+
+        </footer>
     </div>
 
-    <footer id="colorlib-footer" role="contentinfo">
-        <div class="container">
-            <div class="row row-pb-md">
-                <div class="col-md-3 col-md-push-1">
-                    <h4>Contact Information</h4>
-                    <ul class="colorlib-footer-links">
-                        <!-- <li>291 South 21th Street, <br> Suite 721 New York NY 10016</li> -->
-                        <!-- <li><a href="tel://1234567920">+ 1235 2355 98</a></li> -->
-                        <li><a href="mailto:summertimeunivaq@gmail.com">summertimeunivaq@gmail.com</a></li>
-                        <!-- <li><a href="#">yoursite.com</a></li> -->
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </footer>
-    </div>
     <div class="gototop js-top">
         <a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>
     </div>
+
+
+
 </body>
 
 </html>
