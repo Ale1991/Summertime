@@ -5,7 +5,6 @@
     <meta charset="utf-8">
     <title>Summertime Lido</title>
 
-    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
     <!-- Animate.css -->
     <link rel="stylesheet" href="./vendors/css/animate.css">
     <!-- Icomoon Icon Fonts-->
@@ -54,15 +53,25 @@
 
     <!-- MIEI SCRIPT -->
     <!-- Css per costruzione griglia  -->
-    <link rel=stylesheet type="text/css" href="./resources/css/Project_Javascript_jQuery.css">
+
     <!-- Script js -->
-    <!-- <script type="text/javascript" src="./resources/js/CHomeGestoreClient.js"></script> -->
+    <script type="text/javascript" src="./resources/js/search.js"></script>
 
-</head>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
 
+<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="./resources/js/nomiComuni.js"></script>
 
-
+    <script type="text/javascript">
+    //var nomiComuni = ["Sulmona","Pescara","Roccaraso"];
+    $(document).ready(function(){
+        $("#location").autocomplete({source: nomiComuni});
+    })
+    </script>
 <body>
+
+
+
 
     <div class="colorlib-loader"></div>
 
@@ -126,12 +135,14 @@
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <div class="form-field">
-                                                <input type="text" id="location" class="form-control" placeholder="Inserisci il Comune di destinazione">
+                                                <input type="text" id="location" class="form-control" placeholder="Inserisci il Comune di destinazione"
+                                                    autocomplete="on">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-2">
-                                        <input type="submit" name="submit" id="submit" value="Cerca Lidi" class="btn btn-primary btn-block">
+                                        <input type="button" name="submitRicerca" id="submitRicerca" value="Cerca Lidi"
+                                            class="btn btn-primary btn-block">
                                     </div>
                                 </div>
                             </form>
