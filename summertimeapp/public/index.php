@@ -27,3 +27,4 @@ $app = new \Slim\App;
 require '../src/api/v1/index.php';
 
 $app->run();
+?>

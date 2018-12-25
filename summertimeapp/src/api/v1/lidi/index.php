@@ -32,3 +32,4 @@ $app->put($endpoint . '/:idLido', function ($request, $response) {
 $app->delete($endpoint . '/:idLido', function ($request, $response) {
     //deleteLido($request, $response);
 });
+?>

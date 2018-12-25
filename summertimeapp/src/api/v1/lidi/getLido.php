@@ -5,7 +5,6 @@ use \Psr\Http\Message\ServerRequestInterface as Request;
 function getLido(Request $request, Response $response)
 {
     $IDLido = $request->getAttribute('idLido');
-
     try {
         $flido = new FLido();
         $obj_lido = $flido->getObject($IDLido);
@@ -41,3 +40,4 @@ function getLido(Request $request, Response $response)
         echo ' {"error":{"text": ' . $e->getMessage() . '}';
     }
 }
+?>

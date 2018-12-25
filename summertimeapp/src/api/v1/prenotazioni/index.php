@@ -2,13 +2,16 @@
 
 $endpoint = '/api/v1/prenotazioni';
 
-$getPrenotazioni = require 'getPrenotazioni.php';
-$addLido = require 'addPrenotazione.php';
-$getPrenotazione = require 'getPrenotazione.php';
-$updatePrenotazione = require 'updatePrenotazione.php';
-$deletePrenotazione = require 'deletePrenotazione.php';
+//$getPrenotazioni = require 'getPrenotazioni.php';
+$addPrenotazione = require 'addPrenotazione.php';
+//$getPrenotazione = require 'getPrenotazione.php';
+//$updatePrenotazione = require 'updatePrenotazione.php';
+//$deletePrenotazione = require 'deletePrenotazione.php';
 
-//Get all Prenotazioni implementato e testato
+$getOmbrelloni = require 'getOmbrelloni.php';
+
+
+//da implementare
 $app->get($endpoint, function ($request, $response) {
     getPrenotazioni($request, $response);
 });
@@ -32,3 +35,8 @@ $app->put($endpoint . '/:idPrenotazione', function ($request, $response) {
 $app->delete($endpoint . '/:idPrenotazione', function ($request, $response) {
     //deletePrenotazione($request, $response);
 });
+//IMPLEMENTATO
+$app->post($endpoint. '/ombrelloni', function ($request, $response) {
+    getOmbrelloni($request, $response);
+});
+

@@ -3,86 +3,95 @@ const id_Lido = 'BNCCIA30I804';
 var dataPrenotazione = '';
 var dati;
 var mappa;
-
-function load() {
+/* jQuery.getScript("./getJSONGrid.js")
+.done(function(){
+    console.log('caricato')
+}) */
+/* function load() {
     $.ajax({
-        //url: 'http://summertime/CHomeGestoreServer.php',
         url: 'http://summertimeapp/api/v1/lidi/' + id_Lido,
         type: "GET",
-        //cache: false,
+        contentType: 'application/json',
+        //crossDomain: true,
+        success: getJSONGrid
+    });
+} */
+/* function load() {
+    $.ajax({
+        url: 'http://summertimeapp/api/v1/lidi/' + id_Lido,
+        type: "GET",
         contentType: 'application/json',
         //dataType: 'json',
         //data: JSON.stringify(requestData),
         success: getJSONGrid//console.log('ok')
     });
-}
+} */
 
-function getJSONGrid(dataResponse) {
-    var data = JSON.parse(dataResponse);
-    //var json = JSON.stringify(data);
-    console.log(data);
+/* function getJSONGrid(dataResponse) {
+    var data = JSON.parse(dataResponse);//non serve piu' perche il server invia solo content/type json
+ 
     dati = data.splice(data.length - 1, 1);
     mappa = data;
     var containertitolo = document.getElementById("titolo-lido");
-
+ 
     var nomeLido = document.createElement("h1");
     containertitolo.appendChild(nomeLido);
     var textNomeLido = document.createTextNode('Lido ' + dati[0].nomeLido);
     nomeLido.appendChild(textNomeLido);
-
+ 
     var nomeGestore = document.createElement("h3");
     containertitolo.appendChild(nomeGestore);
     textNomeGestore = document.createTextNode(dati[0].nomeGestore);//
     nomeGestore.appendChild(textNomeGestore);
-
+ 
     var idLido = document.createElement("h6");
     containertitolo.appendChild(idLido);
     textIdLido = document.createTextNode(dati[0].idLido);
     idLido.appendChild(textIdLido);
-
+ 
     var containerHeaderText = document.getElementById("headText");
     var nomeLidoHead = document.createElement("h1");
     containerHeaderText.appendChild(nomeLidoHead);
     nomeLidoHead.appendChild(textNomeLido);
-
+ 
     var numerorighe = data[data.length - 1].riga;
     var numerocolonne = data[data.length - 1].colonna;
-
+ 
     document.getElementById("container-ombrelloni").style.width = 40 * 1.8 * numerocolonne + "px";//set logica dimensione righe
-    document.getElementById("container-ombrelloni").style.backgroundImage = "url('sabbia.jpg')";
-
+    //document.getElementById("container-ombrelloni").style.backgroundImage = "url('./resources/images/sabbia.jpg')";
+ 
     var i = 0;
     for (var rows = 0; rows < numerorighe; rows++) {
         for (var columns = 0; columns < numerocolonne; columns++) {
-
+ 
             var element = document.createElement("div");//sintassi pure js
             var container = document.getElementById("container-ombrelloni");
             container.appendChild(element);
-
+ 
             var divClass = document.createAttribute("class");
             divClass.value = "grid-ombrelloni";
             element.setAttributeNode(divClass);
-
+ 
             var divID = document.createAttribute("id");
             divID.value = data[i].id;
             element.setAttributeNode(divID);
-
+ 
             var divRiga = document.createAttribute("riga");
             divRiga.value = data[i].riga;
             element.setAttributeNode(divRiga);
-
+ 
             var divColonna = document.createAttribute("colonna");
             divColonna.value = data[i].colonna;
             element.setAttributeNode(divColonna);
-
+ 
             var divOccupato = document.createAttribute("occupato");
             divOccupato.value = data[i].occupato;
             element.setAttributeNode(divOccupato);
-
+ 
             var divSelected = document.createAttribute("selected");
             divSelected.value = "false";
             element.setAttributeNode(divSelected);
-
+ 
             if (element.getAttributeNode("occupato").value == 'false') {
                 element.style.borderColor = "green";
             }
@@ -93,13 +102,13 @@ function getJSONGrid(dataResponse) {
             i++;
         };
     };
-}
+} */
 
-$(function () {
+/* $(function () {
     load();
 });
-
-function sendDate() {
+ */
+/* function postDate() {
     const form = {
         dateIn: document.getElementById('dateIn'),
         dateOut: document.getElementById('dateOut'),
@@ -111,7 +120,7 @@ function sendDate() {
     }
 
     $.ajax({
-        url: "http://summertimeapp/api/ombrelloni/disponibili",
+        url: "http://summertimeapp/api/ombrelloni/disponibili",//da cambiare con le nuove routes
         type: "POST",
         cache: false,
         contentType: 'application/json',
@@ -131,7 +140,7 @@ function sendDate() {
             }
         }
     });
-}
+} */
 
 $(document).ready(function () {
     $('#dateIn').datepicker('setStartDate', 'today');
@@ -153,7 +162,7 @@ $(document).ready(function () {
         }
     });
 
-    $(".grid-ombrelloni").click(function () {
+    $(document).on("click", ".grid-ombrelloni", function () {
         var clickedDiv = document.getElementById(this.id);
 
         if (clickedDiv.getAttribute("selected") == 'false') {
@@ -166,9 +175,7 @@ $(document).ready(function () {
             element.setAttributeNode(liID);
             var text = document.createTextNode('posto_' + this.id);
             element.appendChild(text);
-
             clickedDiv.style.borderColor = "blue";
-
             if (dataPrenotazione != '') {
                 btnPrenotazione.style.display = 'block';
             }
@@ -188,7 +195,7 @@ $(document).ready(function () {
                 }
             }
         }
-    })
+    });
 
     var btnDisponibilita = document.getElementById("submit");
     btnDisponibilita.addEventListener('click', function () {
@@ -201,7 +208,7 @@ $(document).ready(function () {
             messaggioErrori += "inserire la data di check out!"
         }
         if (messaggioErrori == '') {
-            sendDate();
+            postDate();
         }
         else {
             alert(messaggioErrori);
@@ -246,7 +253,7 @@ $(document).ready(function () {
                 'provincia': dati[0].provincia
             }
 
-            var ajaxPOST = $.post("http://summertimeapp/api/prenotazioni", datiPrenotazione, function () {
+            var ajaxPOST = $.post("http://summertimeapp/api/prenotazioni", datiPrenotazione, function () {//da cambiare con le nuove routes
 
                 //var json = $.parseJSON(ajaxPOST.responseText);
                 console.log(ajaxPOST.responseText)
