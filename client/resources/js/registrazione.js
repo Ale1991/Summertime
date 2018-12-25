@@ -11,27 +11,19 @@ $(function () {
     var error_email = false;
 
     $("#form_username").focusout(function () {
-
         check_username();
-
     });
 
     $("#form_password").focusout(function () {
-
         check_password();
-
     });
 
     $("#form_retype_password").focusout(function () {
-
         check_retype_password();
-
     });
 
     $("#form_email").focusout(function () {
-
         check_email();
-
     });
 
     function check_username() {
@@ -113,16 +105,13 @@ $(function () {
                 email: form.email.value,
                 isGestore: form.isGestore.checked,
             }
-            console.log(requestData)
             $.ajax({
                 url: "http://summertimeapp/api/v1/utenti",
                 type: "POST",
-                //cache: false,
                 contentType: 'application/json',
                 data: JSON.stringify(requestData),
                 success: function (json) {
                     var response = JSON.parse(json);
-                    console.log(response)
                 }
             });
         } else {
