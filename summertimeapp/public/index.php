@@ -17,14 +17,21 @@ require '../src/Entity/EIndirizzo.php';
 require '../src/Entity/ELido.php';
 require '../src/Entity/EOmbrellone.php';
 require '../src/Entity/EPrenotazione.php';
+//include utility
+require '../src/Utility/DBSessionHandler.php';
+require '../src/Utility/Session.php';
 //include my light fdb
 require '../src/config/db.php';
 
-$app = new \Slim\App;
+// enable session on db
+// Session::dbSession();
+Session::generate();
 
+$app = new \Slim\App;
 
 // API endpoint
 require '../src/api/v1/index.php';
 
 $app->run();
+
 ?>

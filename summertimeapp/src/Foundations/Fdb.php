@@ -15,7 +15,7 @@ class Fdb
         $this->hostname = "localhost";
         $this->dbname = "summertime";
         $this->user = "root";
-        $this->pass = "summertime";
+        $this->pass = "";
         //$this->obj=$x;
         $this->connetti($this->hostname, $this->dbname, $this->user, $this->pass);
         $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
