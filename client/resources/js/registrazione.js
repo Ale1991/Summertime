@@ -109,10 +109,10 @@ $(function () {
                 url: "http://summertimeapp/api/v1/utenti",
                 type: "POST",
                 contentType: 'application/json',
-                data: requestData,//JSON.stringify(requestData),
-                success: function (json) {
-                   // var response = JSON.parse(json);
-                    console.log(json)
+                data: JSON.stringify(requestData),//JSON.stringify(requestData),
+                success: function (jsonRisposta) {
+                    var response = JSON.parse(jsonRisposta);
+                    console.log(response)
                 }
             });
         } else {
