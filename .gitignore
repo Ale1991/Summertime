@@ -243,3 +243,5 @@ TSWLatexianTemp*
 
 # Word temporary
 ~$*.doc*
+summertimeapp/src/config/db.php
+summertimeapp/src/Foundations/Fdb.php
