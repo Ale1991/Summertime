@@ -22,6 +22,8 @@ function addUtente(Request $request, Response $response)
             'email' => $utente->getEmail($email),
             'isGestore' => $utente->getIsGestore($isGestore),
         ];
+        $futente = new FUtente();
+        $futente->inserisci($utente);
         echo json_encode($array);
 
     } catch (PDOException $e) {
