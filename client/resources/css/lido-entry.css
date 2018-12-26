@@ -1,0 +1,59 @@
+.lido-entry {
+    /* margin-bottom: 3em; */
+    /* padding: 10px; */
+    margin-left: 20px;
+}
+
+.lido-entry .lido-img {
+    height: 280px;
+    max-width: 782px;
+    display: block;
+    margin-bottom: 20px;
+    position: relative;
+
+}
+    
+.lido-entry .lido-img .price {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    background: #00BBF0;
+    color: #fff;
+    padding: 8px 12px;
+    margin: 0; 
+}
+
+.lido-entry .lido-img .price span {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.lido-entry .lido-img .price span small {
+    font-size: 16px;
+}
+
+.lido-entry .desc h3 {
+    margin-bottom: 10px;
+}
+
+.lido-entry .desc h3 a {
+    color: #000;
+}
+
+.lido-entry .desc .place {
+    color: #b3b3b3;
+    font-size: 12px;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.lido-entry .desc .star {
+    margin-bottom: 10px;
+    font-size: 12px;
+    color: #b3b3b3;
+}
+
+.lido-entry .desc .star span i {
+    color: #FFDD00; 
+}
+    
