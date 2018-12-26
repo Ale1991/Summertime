@@ -21,8 +21,6 @@
     <link rel="stylesheet" href="./vendors/css/owl.theme.default.min.css">
     <!-- Date Picker -->
     <link rel="stylesheet" href="./vendors/css/bootstrap-datepicker.css">
-    <!-- Flaticons  -->
-    <!-- <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css"> -->
     <!-- Theme style  -->
     <link rel="stylesheet" href="./vendors/css/style.css">
     <!-- jQuery  -->
@@ -52,7 +50,12 @@
     <!-- Main -->
     <script src="./vendors/js/main.js"></script>
 
+    <!-- MIEI SCRIPT -->
+    <!-- Css per costruzione griglia  -->
+    <link rel="stylesheet" href="./resources/css/login.css">
+    <!-- Script js -->
     <script src="./resources/js/registrazione.js"></script>
+    <script type="text/javascript" src="./resources/js/login.js"></script>
 </head>
 
 <body>
@@ -67,17 +70,36 @@
                         <div class="col-xs-10 text-right menu-1">
                             <ul>
                                 <li><a href="index.html">Home</a></li>
-                                <!--<li class="has-dropdown">
-                                    <a href="tours.html">Tours</a>
-                                    <ul class="dropdown">
-                                        <li><a href="#">Destination</a></li>
-                                        <li><a href="#">Cruises</a></li>
-                                        <li><a href="#">Lidi</a></li>
-                                        <li><a href="#">Booking</a></li>
-                                    </ul>
-                                </li> -->
                                 <li class="active"><a href="registrazione.html">Registrati</a></li>
                             </ul>
+                        </div>
+                        <button id="modal-btn" class="button">Login</button>
+                        <div id="mymodal" class="modal">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <span class="close" id="closemodal">&times;</span>
+                                    <h2>Effettua il Login</h2>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-md-6 col-centered">
+                                        <label for="form_username">Nome Utente</label>
+                                        <input type="text" id="form_username" name="form_username" class="form-control"
+                                            placeholder="Enter your Nickname" required>
+                                        <!--  <div id="username_error_message">test</div> -->
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-md-6 col-centered">
+                                        <label for="form_password">Nome Utente</label>
+                                        <input type="password" id="form_password" name="form_password" class="form-control"
+                                            placeholder="Enter your Password" required>
+                                        <!--  <div id="username_error_message">test</div> -->
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <h3>Non sei ancora registrato? <a href="registrazione.html">Registrati</a></h3>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -172,8 +194,6 @@
     <div class="gototop js-top">
         <a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>
     </div>
-
-
 
 </body>
 
