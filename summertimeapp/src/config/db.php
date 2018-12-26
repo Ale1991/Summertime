@@ -2,7 +2,7 @@
 
 class db{
     private $dbhost = "localhost";
-    private $dbuser = "summertime";
+    private $dbuser = "root";
     private $dbpass = "summertime";
     private $dbname = "summertime";
 
