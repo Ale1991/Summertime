@@ -461,7 +461,8 @@ h1, h2, h3, h4, h5, h6, figure {
           padding: 10px !important; } }
   #colorlib-reservation .tab-content {
     background: #2C2E3E;
-    padding: 30px 60px; }
+    padding: 30px 60px; 
+  }
 
 .colorlib-form label {
   font-weight: normal;

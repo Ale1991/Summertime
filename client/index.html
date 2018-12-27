@@ -86,17 +86,22 @@
                                 <div class="row form-group">
                                     <div class="col-md-6 col-centered">
                                         <label for="form_username">Nome Utente</label>
-                                        <input type="text" id="form_username" name="form_username" class="form-control"
+                                        <input type="text" id="form_username_log" name="form_username_log" class="form-control"
                                             placeholder="Enter your Nickname" required>
-                                       <!--  <div id="username_error_message">test</div> -->
+                                         <div id="username_error_message">test</div>
                                     </div>
                                 </div>
                                 <div class="row form-group">
                                     <div class="col-md-6 col-centered">
-                                        <label for="form_password">Nome Utente</label>
-                                        <input type="password" id="form_password" name="form_password" class="form-control"
+                                        <label for="form_password">Password</label>
+                                        <input type="password" id="form_password_log" name="form_password_log" class="form-control"
                                             placeholder="Enter your Password" required>
-                                       <!--  <div id="username_error_message">test</div> -->
+                                        <!--  <div id="username_error_message">test</div> -->
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-md-6 col-centered">
+                                        <input type="submit" value="LogIn" class="btn btn-primary btn-block" id="login_form">
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -118,6 +123,7 @@
                                 <div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
                                     <div class="slider-text-inner text-center">
                                         <h1>SummerTime!</h1>
+                                        <div id="successLogin"></div>
                                     </div>
                                 </div>
                             </div>
@@ -128,28 +134,26 @@
         </aside>
         <div id="colorlib-reservation">
             <div class="row">
-                <div class="search-wrap">
-                    <div class="tab-content">
-                        <div id="flight" class="tab-pane fade in active">
-                            <div id="colorlib-logo">
-                                <font face="Verdana, Arial, Helvetica, sans-serif" color="white">Scegli la tua
-                                    destinazione</font><br />
-                            </div>
-                            <form class="colorlib-form">
-                                <div class="row">
-                                    <div class="col-md-8">
-                                        <div class="form-group">
-                                            <div class="form-field">
-                                                <input type="text" id="location" class="form-control" placeholder="Inserisci il Comune di destinazione"
-                                                    autocomplete="on">
-                                                <input type="button" name="submitRicerca" id="submitRicerca" value="Cerca Lidi"
-                                                    class="btn btn-primary btn-block">
-                                            </div>
+                <div class="tab-content">
+                    <div id="flight" class="tab-pane fade in active">
+                        <div id="colorlib-logo">
+                            <font face="Verdana, Arial, Helvetica, sans-serif" color="white">Scegli la tua
+                                destinazione</font><br />
+                        </div>
+                        <form class="colorlib-form">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <div class="form-field">
+                                            <input type="text" id="location" class="form-control" placeholder="Inserisci il Comune di destinazione"
+                                                autocomplete="on">
+                                            <input type="button" name="submitRicerca" id="submitRicerca" value="Cerca Lidi"
+                                                class="btn btn-primary btn-block">
                                         </div>
                                     </div>
                                 </div>
-                            </form>
-                        </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

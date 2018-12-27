@@ -5,8 +5,8 @@ class FUtente extends Fdb
 {
     public function inserisci(EUtente &$utente)
     {
-        $query = "INSERT INTO Utente VALUES (?,?,?)";
-        $arr = array($utente->getNomeUtente(), $utente->getEmail(), $utente->getPassword());
+        $query = "INSERT INTO Utente VALUES (?,?,?,?)";
+        $arr = array($utente->getNomeUtente(), $utente->getEmail(), $utente->getPassword(), $utente->getIsGestore() );
         $stmt = $this->db->prepare($query);
         $stmt->execute($arr);
     }

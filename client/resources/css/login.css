@@ -43,6 +43,7 @@ body {
   width: 100%;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.2);
+  z-index: 1000;
 }
 
 .modal-content {
@@ -98,6 +99,7 @@ body {
     float: none;
     margin: 0 auto;
 }
+
 
 @keyframes modalopen {
   from {
