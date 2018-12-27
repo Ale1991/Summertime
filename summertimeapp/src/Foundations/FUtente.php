@@ -5,8 +5,8 @@ class FUtente extends Fdb
 {
     public function inserisci(EUtente &$utente)
     {
-        $query = "INSERT INTO utente VALUES (?,?,?,?)";
-        $arr = array($utente->getNomeUtente(), $utente->getEmail(), $utente->getPassword(), $utente->getIsGestore());
+        $query = "INSERT INTO Utente VALUES (?,?,?)";
+        $arr = array($utente->getNomeUtente(), $utente->getEmail(), $utente->getPassword());
         $stmt = $this->db->prepare($query);
         $stmt->execute($arr);
     }
@@ -23,4 +23,21 @@ class FUtente extends Fdb
         $utente->setPassword($user["Password"]);
         return $utente;
     }
+    
+        public function modificaPassword($NomeUtente,$nuovapassword)
+    {
+        $query="UPDATE Utente SET Password = ? WHERE NomeUtente = ? ";
+        $stmt=$this->db->prepare($query);
+   	$stmt->execute([$nuovapassword,$NomeUtente]);
+        
+    }
+    
+     public function cancellaUtente($NomeUtente)
+    {
+        $query="DELETE FROM Utente WHERE NomeUtente= ? ";
+        $stmt=$this->db->prepare($query);
+   	$stmt->execute([$NomeUtente]);
+        
+    }
+    //p
 }
