@@ -21,6 +21,7 @@ class FUtente extends Fdb
         $utente = new EUtente($NomeUtente);
         $utente->setEmail($user["Email"]);
         $utente->setPassword($user["Password"]);
+        $utente->setIsGestore($user["is_Gestore"]);
         return $utente;
     }
     

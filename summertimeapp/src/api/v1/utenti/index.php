@@ -2,25 +2,27 @@
 
 $endpoint = '/api/v1/utenti';
 
-$getUtenti = require 'getUtenti.php';
+$getUtenti = require 'getUtente.php';
 $addUtente = require 'addUtente.php';
+$deleteUtente = require 'deleteUtente.php';
+$updateUtente = require 'updateUtente.php';
 
 //$getUtente = require 'getUtente.php';
 //$updateUtente = require 'updateUtente.php';
 //$deleteUtente = require 'deleteUtente.php';
 
 //da implementare
-$app->get($endpoint, function ($request, $response) {
-    getUtenti($request, $response);
-});
+//$app->get($endpoint, function ($request, $response) {
+//    
+//});
 
 $app->post($endpoint, function ($request, $response) {
     addUtente($request, $response);
 });
 
 //da implementare
-$app->get($endpoint . '/:idUtente', function ($request, $response) {
-    //getUtente($request, $response);
+$app->get($endpoint . '/{idUtente}', function ($request, $response) {
+    getUtente($request, $response);
 });
 
 //da implementare
@@ -33,15 +35,15 @@ $app->delete($endpoint . '/:idUtente', function ($request, $response) {
     //deleteUtente($request, $response);
 });
 
-$app->get($endpoint . '/login', function ($request, $response) {
+//$app->get($endpoint . '/login', function ($request, $response) {
+//
+//});
 
-});
+//$app->post($endpoint . '/login', function ($request, $response) {
+//    $nomeUtente = $request->getParsedBody()['nomeUtente'];
+//    $password = $request->getParsedBody()['password'];
 
-$app->post($endpoint . '/login', function ($request, $response) {
-    $nomeUtente = $request->getParsedBody()['nomeUtente'];
-    $password = $request->getParsedBody()['password'];
-
-    try {
+ /*   try {
         $futente = new FUtente();
         $utente = $futente->getObject($nomeUtente);
         if ($utente->getPassword() == $password) {
@@ -71,3 +73,4 @@ $app->get($endpoint . '/logout', function ($request, $response) {
     // Redirect to home page after logout
     //$response->redirect($app->urlFor('/'), 303);
 });
+*/
