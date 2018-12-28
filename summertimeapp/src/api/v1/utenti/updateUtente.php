@@ -3,7 +3,7 @@
 use \Psr\Http\Message\ResponseInterface as Response;
 use \Psr\Http\Message\ServerRequestInterface as Request;
 
-//da testare
+
 function updateUtente(Request $request, Response $response)
 {
     $arr = $request->getParams();
