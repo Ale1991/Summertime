@@ -20,14 +20,14 @@ $app->post($endpoint, function ($request, $response) {
     addUtente($request, $response);
 });
 
-//da implementare
+
 $app->get($endpoint . '/{idUtente}', function ($request, $response) {
     getUtente($request, $response);
 });
 
 //da implementare
-$app->put($endpoint . '/:idUtente', function ($request, $response) {
-    //updateUtente($request, $response);
+$app->put($endpoint, function ($request, $response) {
+    updateUtente($request, $response);
 });
 
 //da implementare

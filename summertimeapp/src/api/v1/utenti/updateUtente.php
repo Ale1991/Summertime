@@ -6,12 +6,15 @@ use \Psr\Http\Message\ServerRequestInterface as Request;
 //da testare
 function updateUtente(Request $request, Response $response)
 {
-    $id_Utente = $request->getParsedBody()['idUtente'];
-    $nuovaPassword = $request->getParsedBody()['nuovaPassword'];
+    $arr = $request->getParams();
+    $idUtente=$arr[0]["idUtente"];
+    $nuovaPassword =$arr[0]["nuovaPassword"];
+    //echo var_dump($nuovaPassword);
     try {
         $fUtente= new FUtente();
-        $fUtente->modificaPassword($id_Utente, $nuovaPassword);
-        //echo json_encode($array);        
+        $fUtente->modificaPassword($idUtente, $nuovaPassword);
+        $messages="Password modificata con successo";
+        echo json_encode($messages);        
     } catch (PDOException $e) {
         echo ' {"error":{"text": ' . $e->getMessage() . '}';
     }
