@@ -16,7 +16,7 @@ function startSession(Request $request, Response $response)
         if ($utente->getPassword() == $password) {
 
             if (!isset($_SESSION['nomeUtente']) || session_id() == '') {
-                //session_start();
+                session_start();
                 $_SESSION['nomeUtente'] = $nomeUtente;
                 $_SESSION['id'] = session_id();
                 $message = [

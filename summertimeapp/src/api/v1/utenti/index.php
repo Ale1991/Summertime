@@ -50,3 +50,18 @@ $app->get('/api/v1/logout', function ($request, $response) {
 $app->get("/api/v1/isLogged", function ($request, $response) {
     isLoggedUtente($request, $response);
 });
+
+
+//test alessio
+$startSession = require 'startSession.php';
+$stopSession = require 'stopSession.php';
+
+//test alessio
+$app->post($endpoint . '/login', function ($request, $response) {
+    startSession($request, $response);
+
+});
+//test alessio
+$app->post($endpoint . '/logout', function ($request, $response) {
+    stopSession($request, $response);
+});

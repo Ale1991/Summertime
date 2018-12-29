@@ -4,9 +4,9 @@ use \Psr\Http\Message\ServerRequestInterface as Request;
 
 function stopSession(Request $request, Response $response)
 {
-/*     if (!isset($_SESSION['nomeUtente']) || session_id() == '') {
+    if (!isset($_SESSION['nomeUtente']) || session_id() == '') {
         session_start();
-    } */
+    }
 
     $nomeUtente = $request->getParsedBody()['nomeUtente'];
 
