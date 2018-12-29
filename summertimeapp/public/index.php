@@ -1,6 +1,13 @@
 <?php
-header('Access-Control-Allow-Origin: *');
+//header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Headers: *');
+//header('Access-Control-Allow-Credentials: true');
+header("Access-Control-Allow-Origin: http://summertime");
+header("Access-Control-Allow-Credentials: true");
+header("Access-Control-Allow-Methods: GET, POST");
+header("Access-Control-Allow-Headers: Content-Type, *");
+
+
 //header('Content-type: application/json');
 
 require '../vendor/autoload.php';
@@ -23,9 +30,9 @@ require '../src/Utility/Session.php';
 //include my light fdb
 require '../src/config/db.php';
 
-// enable session on db
+//enable session on db
 // Session::dbSession();
-Session::generate();
+//Session::generate();
 
 $app = new \Slim\App;
 
@@ -33,5 +40,7 @@ $app = new \Slim\App;
 require '../src/api/v1/index.php';
 
 $app->run();
+
+
 
 ?>

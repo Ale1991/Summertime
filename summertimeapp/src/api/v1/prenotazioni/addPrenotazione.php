@@ -19,38 +19,51 @@ function addPrenotazione(Request $request, Response $response)
     $data_out = date("Y-m-d", strtotime($data_out));
 
     $gestore = new EGestore($nome_Gestore);
-    $utente = new EUtente($id_Utente);
+
     $indirizzoLido = new EIndirizzo($via, $civico, $comune, $provincia);
     $gestore->aggiungiLido($nome_Lido, $indirizzoLido);
     $a = $gestore->getLidi();
     $lido = $a[0];
 
     try {
-        $fpren = new FPrenotazione();
-        for ($i = 0; $i < count($array_ombrelloni); $i++) {
-            $omb_temp = $array_ombrelloni[$i];
-            $riga = ord($omb_temp[0]) - 64;
-            $colonna = $omb_temp[1];
-            $omb = new EOmbrellone($riga, $colonna);
-            $pren = new EPrenotazione($data_in, $data_out, $omb, $lido, $utente);
-            $fpren->inserisci($pren);
-        }
-        $array = [
-            'messages' => 'aggiunto con successo!',
-            'nomeUtente' => $utente->getNomeUtente(),
-            'nomeGestore' => $gestore->getNomeUtente(),
-            'dataIn' => $data_in,
-            'dataOut' => $data_out,
-            'idLido' => $lido->getIdLido(),
-            'nomeLido' => $lido->getNomeLido(),
-            'via' => $lido->getIndirizzo()->getVia(),
-            'civico' => $lido->getIndirizzo()->getCivico(),
-            'comune' => $lido->getIndirizzo()->getComune(),
-            'provincia' => $lido->getIndirizzo()->getProvincia(),
-            'arrayDB' => $array_ombrelloni,
-        ];
-        echo json_encode($array);
-        
+        // if (!isset($_SESSION['nomeUtente'])) {//|| session_id() == ''
+        //     echo json_encode('DEVI ESSERE LOGGATO PER EFFETTUARE LA PRENOTAZIONE');
+        // } else {
+        //$id_Utente = $_SESSION['nomeUtente'];
+        //print_r($_SESSION['nomeUtente']);
+        //if ($id_Utente == $_SESSION['nomeUtente']) {
+            $utente = new EUtente($id_Utente);
+            $fpren = new FPrenotazione();
+            for ($i = 0; $i < count($array_ombrelloni); $i++) {
+                $omb_temp = $array_ombrelloni[$i];
+                $riga = ord($omb_temp[0]) - 64;
+                $colonna = $omb_temp[1];
+                $omb = new EOmbrellone($riga, $colonna);
+                $pren = new EPrenotazione($data_in, $data_out, $omb, $lido, $utente);
+                $fpren->inserisci($pren);
+            }
+            $array = [
+                'messages' => 'aggiunto con successo!',
+                'nomeUtente' => $utente->getNomeUtente(),
+                'nomeGestore' => $gestore->getNomeUtente(),
+                'dataIn' => $data_in,
+                'dataOut' => $data_out,
+                'idLido' => $lido->getIdLido(),
+                'nomeLido' => $lido->getNomeLido(),
+                'via' => $lido->getIndirizzo()->getVia(),
+                'civico' => $lido->getIndirizzo()->getCivico(),
+                'comune' => $lido->getIndirizzo()->getComune(),
+                'provincia' => $lido->getIndirizzo()->getProvincia(),
+                'arrayDB' => $array_ombrelloni,
+            ];
+            echo json_encode($array);
+
+        // } else {
+        //     $message = 'devi essere loggato per prenotare!';
+        //     echo json_encode($message);
+        // }
+
+        //}
     } catch (PDOException $e) {
         echo ' {"error":{"text": ' . $e->getMessage() . '}';
     }
