@@ -2,11 +2,13 @@
 
 $endpoint = '/api/v1/utenti';
 
-$getUtenti = require 'getUtente.php';
-$addUtente = require 'addUtente.php';
-$deleteUtente = require 'deleteUtente.php';
-$updateUtente = require 'updateUtente.php';
-
+require 'getUtente.php';
+require 'addUtente.php';
+require 'deleteUtente.php';
+require 'updateUtente.php';
+require 'login.php';
+require 'logout.php';
+require 'isLogged.php';
 //$getUtente = require 'getUtente.php';
 //$updateUtente = require 'updateUtente.php';
 //$deleteUtente = require 'deleteUtente.php';
@@ -35,42 +37,16 @@ $app->delete($endpoint . '/:idUtente', function ($request, $response) {
     //deleteUtente($request, $response);
 });
 
-//$app->get($endpoint . '/login', function ($request, $response) {
-//
-//});
-
-//$app->post($endpoint . '/login', function ($request, $response) {
-//    $nomeUtente = $request->getParsedBody()['nomeUtente'];
-//    $password = $request->getParsedBody()['password'];
-
- /*   try {
-        $futente = new FUtente();
-        $utente = $futente->getObject($nomeUtente);
-        if ($utente->getPassword() == $password) {
-            //session_start();//????????????????????????????
-            $_SESSION['utente'] = $nomeUtente;
-            $message = [
-                "text" => 'Successfully logged!',
-                "session" => $_SESSION,
-            ];
-            echo json_encode($message);
-        } else {
-            $message = [
-                "text" => 'Nome Utente o Password errati!',
-                "session" => '',
-            ];
-            echo json_encode($message);//da gestire l'eccezione lato FUtente! verifica se esiste il nome utente richiesto, altrimenti lanciare da restituire
-        }
-
-    } catch (PDOException $e) {
-        echo ' {"error":{"text": ' . $e->getMessage() . '}';
-    }
+$app->post('/api/v1/login', function ($request, $response) {
+    loginUtente($request, $response);
 
 });
 
-$app->get($endpoint . '/logout', function ($request, $response) {
-    Session::destroy();
-    // Redirect to home page after logout
-    //$response->redirect($app->urlFor('/'), 303);
+$app->get('/api/v1/logout', function ($request, $response) {
+    logoutUtente($request, $response);
+
 });
-*/
+
+$app->get("/api/v1/isLogged", function ($request, $response) {
+    isLoggedUtente($request, $response);
+});
