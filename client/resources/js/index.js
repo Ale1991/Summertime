@@ -12,10 +12,7 @@ var getUrlParameter = function getUrlParameter(sParam) {
         }
     }
 };
-const id_Lido = getUrlParameter('IDLido');
-//const id_Lido = 'BNCCIA30I804';
-
-const idUtente = 'Alessio1991';
+var id_Lido = getUrlParameter('IDLido');
 var dataPrenotazione = '';
 var datiPrenotazione;
 var dati;
@@ -117,7 +114,6 @@ $(document).ready(function () {
     btnPrenotazione.style.display = 'none';
 
     btnPrenotazione.addEventListener('click', postPrenotazione);
-
 
 })
 

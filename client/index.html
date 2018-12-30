@@ -66,6 +66,7 @@
 
     <div class="colorlib-loader"></div>
     <div id="page">
+
         <nav class="colorlib-nav" role="navigation">
             <div class="top-menu">
                 <div class="container-fluid">
@@ -76,7 +77,8 @@
                                 <li><a href="registrazione.html">Registrati</a></li>
                             </ul>
                         </div>
-                        <button id="modal-btn" class="button">Login</button>
+                        <button id="modal-btn-login" class="button">Login</button>
+                        <button id="modal-btn-logout" class="button">Logout</button>
                         <div id="mymodal" class="modal">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -88,7 +90,7 @@
                                         <label for="form_username">Nome Utente</label>
                                         <input type="text" id="form_username_log" name="form_username_log" class="form-control"
                                             placeholder="Enter your Nickname" required>
-                                         <div id="username_error_message">test</div>
+                                        <div id="username_error_message">test</div>
                                     </div>
                                 </div>
                                 <div class="row form-group">
@@ -101,7 +103,7 @@
                                 </div>
                                 <div class="row form-group">
                                     <div class="col-md-6 col-centered">
-                                        <input type="submit" value="LogIn" class="btn btn-primary btn-block" id="login_form">
+                                        <input type="button" value="LogIn" class="btn btn-primary btn-block" id="login_form">
                                     </div>
                                 </div>
                                 <div class="modal-footer">

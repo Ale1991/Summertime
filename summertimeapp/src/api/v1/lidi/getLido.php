@@ -32,8 +32,11 @@ function getLido(Request $request, Response $response)
             'email' => $gestore->getEmail(),
             'isGestore' => $gestore->getIsGestore(),
             'isAmministratore' => $gestore->getIsAmministratore(),
+//<<<<<<< HEAD
             'idUtenteLoggato' => 'utenteloggato!!',
             
+//======
+//>>>>>>> b951ed335ea39236caea50320b0de828e9e8f2eb
         ];
         $array[] = $dati;
         echo json_encode($array);        

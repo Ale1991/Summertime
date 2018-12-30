@@ -3,6 +3,22 @@ function postPrenotazione() {
         alert("seleziona almeno un ombrellone!")
     }
     else {
+
+        if (typeof sessionStorage['dataStored'] === 'undefined') {
+            $('#modal-btn-login').show();
+            $('#modal-btn-logout').hide();
+            var idUtente = 'Guest';
+        } else {
+            $('#modal-btn-login').hide();
+            $('#modal-btn-logout').show();
+            var dataSession = sessionStorage['dataStored'];
+            var dataParsed = JSON.parse(dataSession);
+            //console.log(dataParsed)
+            var idUtente = dataParsed.session['nomeUtente']
+        }
+        //var sessione = JSON.parse(sessionStorage.getItem('dataStored'));
+        //var idUtente = sessione.session['nomeUtente'];
+        console.log(idUtente)
         var array = [];
         var listaOmbrelloni = document.getElementById('selectedList').getElementsByTagName("li");
         for (var i = 0; i < document.getElementById('selectedList').getElementsByTagName("li").length; i++) {
@@ -16,7 +32,7 @@ function postPrenotazione() {
             'dataOut': dataOut,
             'ombrelloni': array,
             'idLido': dati[0].idLido,
-            'nomeGestore':dati[0].nomeGestore,
+            'nomeGestore': dati[0].nomeGestore,
             'nomeLido': dati[0].nomeLido,
             'dataApertura': dati[0].dataApertura,
             'dataChiusura': dati[0].dataChiusura,
