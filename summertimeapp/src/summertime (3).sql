@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Dic 27, 2018 alle 10:26
+-- Creato il: Dic 30, 2018 alle 20:04
 -- Versione del server: 10.1.30-MariaDB
 -- Versione PHP: 7.2.2
 
@@ -25,16 +25,21 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `immaginilidi`
+-- Struttura della tabella `copertina`
 --
 
-CREATE TABLE `immaginilidi` (
-  `idFoto` int(11) NOT NULL,
-  `nomeFoto` varchar(50) NOT NULL,
-  `size` varchar(25) NOT NULL,
-  `type` varchar(25) NOT NULL,
-  `immagine` blob NOT NULL
+CREATE TABLE `copertina` (
+  `idLido` varchar(50) NOT NULL,
+  `nomeFoto` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dump dei dati per la tabella `copertina`
+--
+
+INSERT INTO `copertina` (`idLido`, `nomeFoto`) VALUES
+('a', 'img-20181230-5c28a7c4f0f7dIMG_20180526_091713.jpg'),
+('RSDVNTVRM66D763', 'Estate_2013_Rosa_dei_venti_02.jpg');
 
 -- --------------------------------------------------------
 
@@ -123,7 +128,22 @@ INSERT INTO `prenotazione` (`id`, `idLido`, `numOmbrellone`, `idUtente`, `dataIn
 (53, 'RSDVNTVRM66D763', 'A3', 'Alessio1991', '2018-12-18', '2018-12-18', '2018-12-18 18:28:36'),
 (54, 'RSDVNTVRM66D763', 'A4', 'Alessio1991', '2018-12-18', '2018-12-18', '2018-12-18 18:28:36'),
 (55, 'RSDVNTVRM66D763', 'A3', 'Alessio1991', '2018-12-21', '2018-12-21', '2018-12-20 13:47:10'),
-(56, 'RSDVNTVRM66D763', 'C4', 'Alessio1991', '2018-12-21', '2018-12-21', '2018-12-20 13:47:11');
+(56, 'RSDVNTVRM66D763', 'C4', 'Alessio1991', '2018-12-21', '2018-12-21', '2018-12-20 13:47:11'),
+(57, 'RSDVNTVRM66D763', 'A4', 'Alessio1991', '2018-12-27', '2018-12-27', '2018-12-27 17:44:32'),
+(58, 'RSDVNTVRM66D763', 'A3', 'Alessio1991', '2018-12-31', '2018-12-31', '2018-12-27 18:32:55'),
+(59, 'RSDVNTVRM66D763', 'B3', 'Alessio1991', '2018-12-31', '2018-12-31', '2018-12-27 18:32:55');
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `sessions`
+--
+
+CREATE TABLE `sessions` (
+  `sessions_id` varchar(32) NOT NULL,
+  `sessions_userID` varchar(10) NOT NULL,
+  `sessions_date` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -145,20 +165,20 @@ CREATE TABLE `utente` (
 INSERT INTO `utente` (`NomeUtente`, `Email`, `Password`, `is_Gestore`) VALUES
 ('Alessio91', 'alessio.susco91@gmail.com', 'alessio', 0),
 ('fggdgf', 'stefanomoren@gmail.com', '23456', 0),
-('Mimmo', 'mimmo@gmail.com', 'pazzo', 0),
+('Freddie12345', 'gianni@gmail.com', 'Mercury12345', 0),
 ('satch93', 'satch@gmail.com', 'satch', 0),
 ('sffsg', 'stefanomoren@gmail.com', 'dsrgddf', 0),
-('steff', 'stefanomoren@gmail.com', 'wewe', 0);
+('ste95', 'a@gmail.com', 'dajefunonzia', 0);
 
 --
 -- Indici per le tabelle scaricate
 --
 
 --
--- Indici per le tabelle `immaginilidi`
+-- Indici per le tabelle `copertina`
 --
-ALTER TABLE `immaginilidi`
-  ADD PRIMARY KEY (`idFoto`);
+ALTER TABLE `copertina`
+  ADD PRIMARY KEY (`idLido`);
 
 --
 -- Indici per le tabelle `lido`
@@ -179,6 +199,12 @@ ALTER TABLE `prenotazione`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indici per le tabelle `sessions`
+--
+ALTER TABLE `sessions`
+  ADD PRIMARY KEY (`sessions_userID`);
+
+--
 -- Indici per le tabelle `utente`
 --
 ALTER TABLE `utente`
@@ -189,16 +215,10 @@ ALTER TABLE `utente`
 --
 
 --
--- AUTO_INCREMENT per la tabella `immaginilidi`
---
-ALTER TABLE `immaginilidi`
-  MODIFY `idFoto` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT per la tabella `prenotazione`
 --
 ALTER TABLE `prenotazione`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
