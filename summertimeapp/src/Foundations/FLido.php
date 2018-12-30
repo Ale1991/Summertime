@@ -53,4 +53,15 @@ class FLido extends Fdb
         $db = null;
         return $lidi;
     }
+    
+    public function getNomeCopertina($idLido)
+    {
+        $query = "SELECT nomeFoto FROM copertina WHERE idLido = ? ";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute([$idLido]);
+        $row=$stmt->fetch();
+        return $row["nomeFoto"];
+        
+        
+    }
 }

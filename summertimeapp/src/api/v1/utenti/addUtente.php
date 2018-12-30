@@ -8,6 +8,7 @@ function addUtente(Request $request, Response $response)
     $password = $request->getParsedBody()['password'];
     $email = $request->getParsedBody()['email'];
     $isGestore = $request->getParsedBody()['isGestore'];
+    //print var_dump($nomeUtente);
 
     try {
         $utente = new EUtente($nomeUtente);
