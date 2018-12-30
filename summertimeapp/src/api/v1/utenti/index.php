@@ -31,8 +31,8 @@ $app->put($endpoint, function ($request, $response) {
 });
 
 //da implementare
-$app->delete($endpoint . '/:idUtente', function ($request, $response) {
-    //deleteUtente($request, $response);
+$app->delete($endpoint . '/{idUtente}', function ($request, $response) {
+    deleteUtente($request, $response);
 });
 
 //test alessio

@@ -6,12 +6,13 @@ use \Psr\Http\Message\ServerRequestInterface as Request;
 //da testare
 function deleteUtente(Request $request, Response $response)
 {
-    $id_Utente = $request->getParsedBody()['idUtente'];
+    $id_Utente = $request->getAttribute('idUtente');
     
     try {
         $fUtente= new FUtente();
         $fUtente->cancellaUtente($id_Utente);
-        //echo json_encode($array);        
+        $message="Utente eliminato";
+        echo json_encode($message);        
     } catch (PDOException $e) {
         echo ' {"error":{"text": ' . $e->getMessage() . '}';
     }
