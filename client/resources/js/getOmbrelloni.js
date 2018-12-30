@@ -10,9 +10,13 @@ function getOmbrelloni() {
     }
 
     $.ajax({
-        url: "http://summertimeapp/api/v1/prenotazioni/ombrelloni",
+        url: "http://summertimeapp.server/api/v1/prenotazioni/ombrelloni",
         type: "POST",
         //cache: false,
+        crossDomain: true,
+        xhrFields: {
+            withCredentials: true
+        },
         contentType: 'application/json',
         data: JSON.stringify(requestData),
         success: function (json) {

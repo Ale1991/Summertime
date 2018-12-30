@@ -1,7 +1,11 @@
 function getListaLidi() {
     $.ajax({
-        url: 'http://summertimeapp/api/v1/lidi',
+        url: 'http://summertimeapp.server/api/v1/lidi',
         type: "GET",
+        crossDomain: true,
+        xhrFields: {
+            withCredentials: true
+        },
         contentType: 'application/json',
         success: plotListaLidi
     });

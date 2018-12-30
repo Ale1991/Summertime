@@ -10,8 +10,6 @@ function closeModal() {
 
 $(document).ready(function () {
 
-
-    //console.log(sessionStorage['dataStored'])
     if (typeof sessionStorage['dataStored'] === 'undefined') {
         $('#modal-btn-login').show();
         $('#modal-btn-logout').hide();
@@ -21,13 +19,17 @@ $(document).ready(function () {
         $('#modal-btn-logout').show();
         var dataSession = sessionStorage['dataStored'];
         var dataParsed = JSON.parse(dataSession);
-        console.log(dataParsed)
-        var idUtente = dataParsed.session['nomeUtente']
+        var idUtente = dataParsed.sessions_userid
     }
-    console.log(idUtente)
+    var cont = document.getElementById('colorlib-logo');
+    var p = document.createElement('p');
+    cont.appendChild(p);
+    var idp = document.createAttribute('id');
+    idp.value = 'textp';
+    p.setAttributeNode(idp);
+    var textp = document.createTextNode('Benvenuto ' + idUtente);
+    p.appendChild(textp);
 
-
-    //$('#modal-btn-logout').hide();
     $('#modal-btn-login').on('click', openModal);
     $('#closemodal').on('click', closeModal);
     $('#username_error_message').hide();
@@ -37,11 +39,9 @@ $(document).ready(function () {
             'nomeUtente': $('#form_username_log').val(),
             'password': $('#form_password_log').val(),
         }
-        //console.log(JSON.stringify(datiLogin))
         $.ajax({
-            url: "http://summertimeapp/api/v1/utenti/login",
+            url: "http://summertimeapp.server/api/v1/utenti/login",
             type: "POST",
-            //cache: false,
             crossDomain: true,
             xhrFields: {
                 withCredentials: true
@@ -49,11 +49,10 @@ $(document).ready(function () {
             contentType: 'application/json',
             data: JSON.stringify(datiLogin),
             success: function (jsonRisposta) {
-                console.log(jsonRisposta)
-                var risposta = JSON.parse(jsonRisposta);
 
-                if (risposta.text == 'Successfully logged!') {
-                    //session_id = risposta.session['id'];
+                var risposta = JSON.parse(jsonRisposta);
+                console.log(risposta)
+                if (risposta.message.includes('Success')) {
                     sessionStorage.setItem('dataStored', jsonRisposta);
                     $('#modal-btn-login').hide();
                     $('#modal-btn-logout').show();
@@ -64,50 +63,28 @@ $(document).ready(function () {
                     var idh2 = document.createAttribute('id');
                     idh2.value = 'h2text';
                     h2.setAttributeNode(idh2);
-                    var text = document.createTextNode(risposta.text);
+                    var text = document.createTextNode(risposta.message + 'Welcome ' + risposta.sessions_userid);
                     h2.appendChild(text);
                     $("#h2text").fadeToggle(6000, "swing", function () {
                         this.remove();
                     });
-                } else {
-                    if (risposta.text == 'Already Logged') {
-                        sessionStorage.setItem('dataStored', jsonRisposta);
-                        $('#modal-btn-login').hide();
-                        $('#modal-btn-logout').show();
-                        closeModal()
-                        var container = document.getElementById('successLogin');
-                        var h2 = document.createElement('h1');
-                        container.appendChild(h2);
-                        var idh2 = document.createAttribute('id');
-                        idh2.value = 'h2text';
-                        h2.setAttributeNode(idh2);
-                        var text = document.createTextNode(risposta.text);
-                        h2.appendChild(text);
-                        $("#h2text").fadeToggle(6000, "swing", function () {
-                            this.remove();
-                        });
-
-                    } else {
-                        $('#username_error_message').html(risposta.text);
-                        $('#username_error_message').show();
-                    }
-
                 }
+                else {
+                    $('#username_error_message').html(risposta.message);
+                    $('#username_error_message').show();
+                }
+                $('#textp').text('Benvenuto ' + risposta.sessions_userid)
             }
         });
 
     })
 
-
-
     $('#modal-btn-logout').on('click', function () {
-        //console.log(JSON.stringify(datiLogout))
         datiLogout = {
             'nomeUtente': $('#form_username_log').val(),
-            //     'password': $('#form_password_log').val(),
         }
         $.ajax({
-            url: "http://summertimeapp/api/v1/utenti/logout",
+            url: "http://summertimeapp.server/api/v1/utenti/logout",
             type: "POST",
             crossDomain: true,
             xhrFields: {
@@ -120,6 +97,7 @@ $(document).ready(function () {
                 sessionStorage.removeItem('dataStored');
                 $('#modal-btn-login').show();
                 $('#modal-btn-logout').hide();
+                $('#textp').text('Benvenuto Guest');
             }
         });
     })

@@ -6,9 +6,7 @@ require 'getUtente.php';
 require 'addUtente.php';
 require 'deleteUtente.php';
 require 'updateUtente.php';
-require 'login.php';
-require 'logout.php';
-require 'isLogged.php';
+
 //$getUtente = require 'getUtente.php';
 //$updateUtente = require 'updateUtente.php';
 //$deleteUtente = require 'deleteUtente.php';
@@ -36,21 +34,6 @@ $app->put($endpoint, function ($request, $response) {
 $app->delete($endpoint . '/:idUtente', function ($request, $response) {
     //deleteUtente($request, $response);
 });
-
-$app->post('/api/v1/login', function ($request, $response) {
-    loginUtente($request, $response);
-
-});
-
-$app->get('/api/v1/logout', function ($request, $response) {
-    logoutUtente($request, $response);
-
-});
-
-$app->get("/api/v1/isLogged", function ($request, $response) {
-    isLoggedUtente($request, $response);
-});
-
 
 //test alessio
 $startSession = require 'startSession.php';

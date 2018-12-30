@@ -20,8 +20,12 @@ var mappa;
 
 function load() {
     $.ajax({
-        url: 'http://summertimeapp/api/v1/lidi/' + id_Lido,
+        url: 'http://summertimeapp.server/api/v1/lidi/' + id_Lido,
         type: "GET",
+        crossDomain: true,
+        xhrFields: {
+            withCredentials: true
+        },
         contentType: 'application/json',
         success: getJSONGrid
     });

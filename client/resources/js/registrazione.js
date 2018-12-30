@@ -106,8 +106,12 @@ $(function () {
                 isGestore: form.isGestore.checked,
             }
             $.ajax({
-                url: "http://summertimeapp/api/v1/utenti",
+                url: "http://summertimeapp.server/api/v1/utenti",
                 type: "POST",
+                crossDomain: true,
+                xhrFields: {
+                    withCredentials: true
+                },
                 contentType: 'application/json',
                 data: JSON.stringify(requestData),//JSON.stringify(requestData),
                 success: function (jsonRisposta) {
