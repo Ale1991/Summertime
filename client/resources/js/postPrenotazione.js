@@ -14,12 +14,10 @@ function postPrenotazione() {
             $('#modal-btn-logout').show();
             var dataSession = sessionStorage['dataStored'];
             var dataParsed = JSON.parse(dataSession);
-            //console.log(dataParsed)
             var idUtente = dataParsed.sessions_userid;
             var sessions_id = dataParsed.sessions_id;
         }
-        //var sessione = JSON.parse(sessionStorage.getItem('dataStored'));
-        //var idUtente = sessione.session['nomeUtente'];
+
         console.log(idUtente)
         var array = [];
         var listaOmbrelloni = document.getElementById('selectedList').getElementsByTagName("li");

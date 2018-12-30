@@ -40,7 +40,7 @@ function deleteSessionByUserId($nomeUtente)
 
 function deleteOldSession()
 {
-    $time = time() - 10;
+    $time = time() - 600;
     $sql = "DELETE FROM sessions WHERE sessions_date < '$time'"; //
     $db = new db();
     $db = $db->connect();
@@ -92,7 +92,7 @@ function startSession(Request $request, Response $response)
             ];
         } else {
             if (!empty($sessionObj) && $validate == true) {
-                if ($sessionObj[0]->sessions_date < time() - 10) {
+                if ($sessionObj[0]->sessions_date < time() - 600) {
                     deleteOldSession();
                     createSessionByUserId($nomeUtente);
                     $sessionObj = getSessionByUserId($nomeUtente);

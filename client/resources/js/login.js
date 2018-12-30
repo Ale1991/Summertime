@@ -7,6 +7,29 @@ function openModal() {
 function closeModal() {
     document.getElementById('mymodal').style.display = 'none';
 }
+function logout() {
+    datiLogout = {
+        'nomeUtente': $('#form_username_log').val(),
+    }
+    $.ajax({
+        url: "http://summertimeapp.server/api/v1/utenti/logout",
+        type: "POST",
+        crossDomain: true,
+        xhrFields: {
+            withCredentials: true
+        },
+        contentType: 'application/json',
+        data: JSON.stringify(datiLogout),
+        success: function (jsonRisposta) {
+            console.log(jsonRisposta)
+            sessionStorage.removeItem('dataStored');
+            $('#modal-btn-login').show();
+            $('#modal-btn-logout').hide();
+            $('#textp').text('Benvenuto Guest');
+        }
+    });
+}
+
 
 $(document).ready(function () {
 
@@ -79,28 +102,7 @@ $(document).ready(function () {
 
     })
 
-    $('#modal-btn-logout').on('click', function () {
-        datiLogout = {
-            'nomeUtente': $('#form_username_log').val(),
-        }
-        $.ajax({
-            url: "http://summertimeapp.server/api/v1/utenti/logout",
-            type: "POST",
-            crossDomain: true,
-            xhrFields: {
-                withCredentials: true
-            },
-            contentType: 'application/json',
-            data: JSON.stringify(datiLogout),
-            success: function (jsonRisposta) {
-                console.log(jsonRisposta)
-                sessionStorage.removeItem('dataStored');
-                $('#modal-btn-login').show();
-                $('#modal-btn-logout').hide();
-                $('#textp').text('Benvenuto Guest');
-            }
-        });
-    })
+    $('#modal-btn-logout').on('click', logout)
 
 
 })
