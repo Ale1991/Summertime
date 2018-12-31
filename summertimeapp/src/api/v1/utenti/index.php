@@ -4,25 +4,20 @@ $endpoint = '/api/v1/utenti';
 
 require 'getUtente.php';
 require 'addUtente.php';
-require 'deleteUtente.php';
 require 'updateUtente.php';
-
-//$getUtente = require 'getUtente.php';
-//$updateUtente = require 'updateUtente.php';
-//$deleteUtente = require 'deleteUtente.php';
-
-//da implementare
-//$app->get($endpoint, function ($request, $response) {
-//    
-//});
-
-$app->post($endpoint, function ($request, $response) {
-    addUtente($request, $response);
-});
+require 'deleteUtente.php';
+require 'startSession.php';
+require 'stopSession.php';
 
 
+//implementato e funzionante
 $app->get($endpoint . '/{idUtente}', function ($request, $response) {
     getUtente($request, $response);
+});
+
+//implementato e funzionante
+$app->post($endpoint, function ($request, $response) {
+    addUtente($request, $response);
 });
 
 //da implementare
@@ -35,16 +30,12 @@ $app->delete($endpoint . '/{idUtente}', function ($request, $response) {
     deleteUtente($request, $response);
 });
 
-//test alessio
-$startSession = require 'startSession.php';
-$stopSession = require 'stopSession.php';
-
-//test alessio
+//implementato e funzionante
 $app->post($endpoint . '/login', function ($request, $response) {
     startSession($request, $response);
 
 });
-//test alessio
+//implementato e funzionante
 $app->post($endpoint . '/logout', function ($request, $response) {
     stopSession($request, $response);
 });

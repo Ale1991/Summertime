@@ -18,7 +18,6 @@ function postPrenotazione() {
             var sessions_id = dataParsed.sessions_id;
         }
 
-        console.log(idUtente)
         var array = [];
         var listaOmbrelloni = document.getElementById('selectedList').getElementsByTagName("li");
         for (var i = 0; i < document.getElementById('selectedList').getElementsByTagName("li").length; i++) {
@@ -48,7 +47,6 @@ function postPrenotazione() {
     $.ajax({
         url: "http://summertimeapp.server/api/v1/prenotazioni",
         type: "POST",
-        //cache: false,
         crossDomain: true,
         xhrFields: {
             withCredentials: true

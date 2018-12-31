@@ -21,7 +21,6 @@ function logout() {
         contentType: 'application/json',
         data: JSON.stringify(datiLogout),
         success: function (jsonRisposta) {
-            console.log(jsonRisposta)
             sessionStorage.removeItem('dataStored');
             $('#modal-btn-login').show();
             $('#modal-btn-logout').hide();
@@ -74,7 +73,6 @@ $(document).ready(function () {
             success: function (jsonRisposta) {
 
                 var risposta = JSON.parse(jsonRisposta);
-                console.log(risposta)
                 if (risposta.message.includes('Success')) {
                     sessionStorage.setItem('dataStored', jsonRisposta);
                     $('#modal-btn-login').hide();

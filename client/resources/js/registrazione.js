@@ -113,10 +113,9 @@ $(function () {
                     withCredentials: true
                 },
                 contentType: 'application/json',
-                data: JSON.stringify(requestData),//JSON.stringify(requestData),
+                data: JSON.stringify(requestData),
                 success: function (jsonRisposta) {
                     var response = JSON.parse(jsonRisposta);
-                    console.log(response)
                 }
             });
         } else {

@@ -20,14 +20,12 @@ function plotListaLidi(dataResponse) {
     data.forEach(element => {
         if (element.comune.trim().toLowerCase() === $("#location").val().trim().toLowerCase()) {
             array_match.push(element)
-            console.log(element.comune.trim().toLowerCase())
         }
     });
     if (array_match.length == 0) {
         message = 'nessun lido trovato'
     }
 
-    console.log(array_match)
     if (array_match.length > 0) {
         var container_lidi = document.getElementById('lista-lidi');
         array_match.forEach(element => {
@@ -45,15 +43,23 @@ function plotListaLidi(dataResponse) {
             divDueClass.value = "lido-entry";
             divDue.setAttributeNode(divDueClass);
 
-            a = document.createElement('a');
-            a.href = "lido.html" + '?' + 'IDLido=' + element.IDLido;
-            var aClass = document.createAttribute("class");
-            aClass.value = "lido-img";
-            a.setAttributeNode(aClass);
-            var aStyle = document.createAttribute("style");
-            aStyle.value = "background-image: url(images/hotel-1.jpg);";
-            a.setAttributeNode(aStyle);
-            divDue.appendChild(a);
+            //AJAX CALL FOR IMAGE
+            $.ajax({
+                url: 'http://summertimeapp.server/api/v1/copertina/' + element.IDLido,
+                success: function (image_string) {
+                    var image = new Image();
+                    image.src = 'data:image/jpg;base64,' + image_string;
+                    image.style.maxHeight = "280px";
+                    image.style.maxWidth = "779px";
+                    a = document.createElement('a');
+                    a.href = "lido.html" + '?' + 'IDLido=' + element.IDLido;
+                    var aClass = document.createAttribute("class");
+                    aClass.value = "lido-img";
+                    a.setAttributeNode(aClass);
+                    a.appendChild(image)
+                    divDue.appendChild(a);
+                }
+            });
 
             var divTre = document.createElement("div");
             divDue.appendChild(divTre);

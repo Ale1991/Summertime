@@ -1,11 +1,10 @@
 function getJSONGrid(dataResponse) {
     document.getElementById('container-riepilogo').style.display = 'none';
-    var data = JSON.parse(dataResponse);//non serve piu' perche il server invia solo content/type json
+    var data = JSON.parse(dataResponse);
 
     dati = data.splice(data.length - 1, 1);
     mappa = data;
     var containertitolo = document.getElementById("titolo-lido");
-    //containertitolo.style.display = 'none';
 
     var nomeLido = document.createElement("h1");
     containertitolo.appendChild(nomeLido);
@@ -14,13 +13,18 @@ function getJSONGrid(dataResponse) {
 
     var nomeGestore = document.createElement("h3");
     containertitolo.appendChild(nomeGestore);
-    textNomeGestore = document.createTextNode(dati[0].nomeGestore);//
+    textNomeGestore = document.createTextNode("Gestore: " + dati[0].nomeGestore);//
     nomeGestore.appendChild(textNomeGestore);
 
     var idLido = document.createElement("h6");
     containertitolo.appendChild(idLido);
-    textIdLido = document.createTextNode(dati[0].idLido);
+    textIdLido = document.createTextNode("ID: " + dati[0].idLido);
     idLido.appendChild(textIdLido);
+
+    var indirizzo = document.createElement("h6");
+    containertitolo.appendChild(indirizzo);
+    textindirizzo = document.createTextNode("via " + dati[0].via + " n. " + dati[0].civico + ', ' + dati[0].comune + ", " + dati[0].provincia);
+    indirizzo.appendChild(textindirizzo);
 
     var containerHeaderText = document.getElementById("headText");
     var nomeLidoHead = document.createElement("h1");
@@ -31,7 +35,6 @@ function getJSONGrid(dataResponse) {
     var numerocolonne = data[data.length - 1].colonna;
 
     document.getElementById("container-ombrelloni").style.width = 40 * 1.8 * numerocolonne + "px";//set logica dimensione righe
-    //document.getElementById("container-ombrelloni").style.backgroundImage = "url('./resources/images/sabbia.jpg')";
 
     var i = 0;
     for (var rows = 0; rows < numerorighe; rows++) {

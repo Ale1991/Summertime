@@ -1,6 +1,5 @@
 function riepilogoPrenotazione(jsonPrenotazione) {
     var responsePrenotazione = JSON.parse(jsonPrenotazione);
-    //console.log(responsePrenotazione)
     if (responsePrenotazione.messages == 'devi essere loggato per prenotare!') {
         alert(responsePrenotazione.messages)
     } else {
@@ -18,7 +17,6 @@ function riepilogoPrenotazione(jsonPrenotazione) {
                 contentType: 'application/json',
                 data: JSON.stringify(datiLogout),
                 success: function (jsonRisposta) {
-                    console.log(jsonRisposta)
                     sessionStorage.removeItem('dataStored');
                     $('#modal-btn-login').show();
                     $('#modal-btn-logout').hide();
