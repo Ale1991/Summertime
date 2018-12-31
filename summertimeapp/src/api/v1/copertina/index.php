@@ -3,10 +3,10 @@
 $endpoint = '/api/v1/copertina';
 
 
-$addCopertina = require 'addCopertina.php';
-$getCopertina = require 'getCopertina.php';
-$updateCopertina = require 'updateCopertina.php';
-$deleteCopertina = require 'deleteCopertina.php';
+require 'addCopertina.php';
+require 'getCopertina.php';
+require 'updateCopertina.php';
+require 'deleteCopertina.php';
 
 //Get all Lidi implementato e testato
 $app->get($endpoint, function ($request, $response) {

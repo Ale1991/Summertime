@@ -3,12 +3,12 @@
 $endpoint = '/api/v1/prenotazioni';
 
 //$getPrenotazioni = require 'getPrenotazioni.php';
-$addPrenotazione = require 'addPrenotazione.php';
+require 'addPrenotazione.php';
 //$getPrenotazione = require 'getPrenotazione.php';
 //$updatePrenotazione = require 'updatePrenotazione.php';
 //$deletePrenotazione = require 'deletePrenotazione.php';
 
-$getOmbrelloni = require 'getOmbrelloni.php';
+require 'getOmbrelloni.php';
 
 
 //da implementare

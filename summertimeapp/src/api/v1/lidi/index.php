@@ -2,11 +2,11 @@
 
 $endpoint = '/api/v1/lidi';
 
-$getLidi = require 'getLidi.php';
-$addLido = require 'addLido.php';
-$getLido = require 'getLido.php';
-$updateLido = require 'updateLido.php';
-$deleteLido = require 'deleteLido.php';
+require 'getLidi.php';
+require 'addLido.php';
+require 'getLido.php';
+require 'updateLido.php';
+require 'deleteLido.php';
 
 //Get all Lidi implementato e testato
 $app->get($endpoint, function ($request, $response) {
@@ -20,7 +20,6 @@ $app->post($endpoint, function ($request, $response) {
 //implementato, testato e funzionante nel client js
 $app->get($endpoint . '/{idLido}', function ($request, $response) {
     getLido($request, $response);
-    //$response = $response->withHeader('Content-type', 'application/json');//da sistemare l'header di risposta php del server sempre (Content-Type: text/html;)
 });
 
 //non implementare
