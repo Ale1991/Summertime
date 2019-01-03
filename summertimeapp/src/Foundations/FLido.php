@@ -64,4 +64,37 @@ class FLido extends Fdb
         
         
     }
+    
+    public function getTuttiILidiObj()
+    {
+        $query= "SELECT * FROM Lido ";
+        $stmt=$this->db->prepare($query);
+   	$stmt->execute();
+        $arrayRes=array();
+        while ($user = $stmt->fetch(PDO::FETCH_ASSOC))
+        {
+            $fu=new FUtente();
+            $gestore=$fu->getObject($user["idGestore"]);
+            $lido=new ELido($user["nomeLido"],$gestore, $indirizzo);
+            $lido->setRighe($user["righe"]);
+            $lido->setColonne($user["colonne"]);
+            $a=new DateTime($user["dataApertura"]);
+            $b=new DateTime($user["dataChiusura"]);
+            $lido->setDataApertura($a);
+            $lido->setDataChiusura($b);
+            $arrayRes[]=$lido;
+            
+        }
+        return $arrayRes;
+    }
+    
+      public function getTuttiILidiArray()
+    {
+        $query= "SELECT * FROM Lido ";
+        $stmt=$this->db->prepare($query);
+   	$stmt->execute();
+        $user = $stmt->fetchAll(PDO::FETCH_OBJ);
+        return $user;
+
+    }
 }

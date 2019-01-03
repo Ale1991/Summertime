@@ -9,21 +9,29 @@ function createSessionByUserId($nomeUtente)
     $sessions_id = session_id();
     $sessions_userid = $nomeUtente;
     $sessions_date = time();
-    //INSERT INTO DB I DATI DI SESSIONE DOPO IL LOGIN
-    $db = new db();
-    $db = $db->connect();
-    $query = "INSERT INTO sessions (sessions_id,sessions_userid,sessions_date) VALUES ('$sessions_id', '$sessions_userid', '$sessions_date')";
     $arr = array($sessions_id, $sessions_userid, $sessions_date);
-    $stmt = $db->query($query);
+    //INSERT INTO DB I DATI DI SESSIONE DOPO IL LOGIN
+    $a=new Fdb();
+    $query = "INSERT INTO sessions  VALUES (?,?,?)";
+    
+    $stmt = $a->db->prepare($query);
+    $stmt->execute($arr);
+    
+    //$db = new db();
+    //$db = $db->connect();
+    //$query = "INSERT INTO sessions (sessions_id,sessions_userid,sessions_date) VALUES ('$sessions_id', '$sessions_userid', '$sessions_date')";
+    //$arr = array($sessions_id, $sessions_userid, $sessions_date);
+    //$stmt = $db->query($query);
 }
 
 function getSessionByUserId($nomeUtente)
 {
 //RECUPERA DAL DB I DATI DI SESSIONE IN BASE AL SESSIONID/USERID
-    $sql = "SELECT * FROM sessions WHERE sessions_userid = '$nomeUtente'"; //
-    $db = new db();
-    $db = $db->connect();
-    $stmt = $db->query($sql);
+    $sql = "SELECT * FROM sessions WHERE sessions_userid = ? "; //
+    $a = new Fdb();
+    //$db = $db->connect();
+    $stmt = $a->db->prepare($sql);
+    $stmt->execute([$nomeUtente]);
     $obj = $stmt->fetchAll(PDO::FETCH_OBJ);
     $db = null;
     return $obj;
@@ -41,11 +49,16 @@ function deleteSessionByUserId($nomeUtente)
 function deleteOldSession()
 {
     $time = time() - 600;
-    $sql = "DELETE FROM sessions WHERE sessions_date < '$time'"; //
-    $db = new db();
-    $db = $db->connect();
-    $stmt = $db->query($sql);
-    $db = null;
+    //$sql = "DELETE FROM sessions WHERE sessions_date < '$time'"; //
+    $sql = "DELETE FROM sessions WHERE sessions_date < ? ";
+    $a=new Fdb();
+    $stmt = $a->db->prepare($sql);
+    $stmt->execute([$time]);
+    
+    //$db = new db();
+    //$db = $db->connect();
+    //$stmt = $db->query($sql);
+    //$db = null;
     session_start();
     session_unset();
     session_destroy();
