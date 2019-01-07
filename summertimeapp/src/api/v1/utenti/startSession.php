@@ -11,12 +11,12 @@ function createSessionByUserId($nomeUtente)
     $sessions_date = time();
     $arr = array($sessions_id, $sessions_userid, $sessions_date);
     //INSERT INTO DB I DATI DI SESSIONE DOPO IL LOGIN
-    $a=new Fdb();
+    $a = new Fdb();
     $query = "INSERT INTO sessions  VALUES (?,?,?)";
-    
+
     $stmt = $a->db->prepare($query);
     $stmt->execute($arr);
-    
+
     //$db = new db();
     //$db = $db->connect();
     //$query = "INSERT INTO sessions (sessions_id,sessions_userid,sessions_date) VALUES ('$sessions_id', '$sessions_userid', '$sessions_date')";
@@ -48,13 +48,13 @@ function deleteSessionByUserId($nomeUtente)
 
 function deleteOldSession()
 {
-    $time = time() - 600;
+    $time = time() - 30;
     //$sql = "DELETE FROM sessions WHERE sessions_date < '$time'"; //
-    $sql = "DELETE FROM sessions WHERE sessions_date < ? ";
-    $a=new Fdb();
+    $sql = 'DELETE FROM sessions WHERE sessions_date < ? ';
+    $a = new Fdb();
     $stmt = $a->db->prepare($sql);
     $stmt->execute([$time]);
-    
+
     //$db = new db();
     //$db = $db->connect();
     //$stmt = $db->query($sql);
@@ -69,6 +69,8 @@ function startSession(Request $request, Response $response)
     //GET USERNAME AND PASSWORD FROM AJAX
     $nomeUtente = $request->getParsedBody()['nomeUtente'];
     $password = $request->getParsedBody()['password'];
+
+    deleteOldSession();
 
     try {
         //VALIDATE USERNAME AND PASSWORD ON DB
@@ -105,8 +107,7 @@ function startSession(Request $request, Response $response)
             ];
         } else {
             if (!empty($sessionObj) && $validate == true) {
-                if ($sessionObj[0]->sessions_date < time() - 600) {
-                    deleteOldSession();
+                if ($sessionObj[0]->sessions_date < time() - 30) {
                     createSessionByUserId($nomeUtente);
                     $sessionObj = getSessionByUserId($nomeUtente);
                     $jsonResponse = [

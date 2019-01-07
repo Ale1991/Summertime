@@ -25,7 +25,7 @@ function plotListaLidi(dataResponse) {
     if (array_match.length == 0) {
         message = 'nessun lido trovato'
     }
-
+    
     if (array_match.length > 0) {
         var container_lidi = document.getElementById('lista-lidi');
         array_match.forEach(element => {
